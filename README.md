@@ -1,6 +1,6 @@
 # Cipele46 Web
 
-Source kod od http://cipele46.org
+Source kod http://cipele46.org.
 
 ## Instalacija
 
