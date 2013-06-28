@@ -22,15 +22,15 @@ Cipele46Web::Application.configure do
   config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    address: " smtp.live.com",
+    address: "smtp.live.com",
     port: 587,
     domain: "cipele46.org",
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["SMTP_USERNAME"],
-    password: ENV["SMTP_PASSWORD"]
+    authentication: :plain,
+    enable_starttls_auto: true,  
+    user_name: "noreply@cipele46.org",
+    password: "pp"
   }
-
+  
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
