@@ -13,3 +13,5 @@ cp config/database.yml.example config/database.yml
 ```
 
 Editiraj `application.yml` i namjesti svoj gmail username/password (bit će korišten za slanja mailova u developmentu) te `database.yml` za konfiguraciju baze.
+
+rake db:migrate
