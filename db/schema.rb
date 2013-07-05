@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130705172707) do
+ActiveRecord::Schema.define(:version => 20130705174133) do
+
+  create_table "ads", :force => true do |t|
+    t.string   "title"
+    t.string   "image_url"
+    t.text     "description"
+    t.integer  "type"
+    t.integer  "status"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.integer  "city_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "ads", ["category_id"], :name => "index_ads_on_category_id"
+  add_index "ads", ["city_id"], :name => "index_ads_on_city_id"
+  add_index "ads", ["user_id"], :name => "index_ads_on_user_id"
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -60,6 +77,16 @@ ActiveRecord::Schema.define(:version => 20130705172707) do
   end
 
   add_index "cities", ["region_id"], :name => "index_cities_on_region_id"
+
+  create_table "favorites", :force => true do |t|
+    t.integer  "ad_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favorites", ["ad_id"], :name => "index_favorites_on_ad_id"
+  add_index "favorites", ["user_id"], :name => "index_favorites_on_user_id"
 
   create_table "regions", :force => true do |t|
     t.string   "name"
