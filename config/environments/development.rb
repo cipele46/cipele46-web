@@ -1,3 +1,5 @@
+$stdout.sync = true
+
 Cipele46Web::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -26,11 +28,11 @@ Cipele46Web::Application.configure do
     port: 587,
     domain: "cipele46.org",
     authentication: :plain,
-    enable_starttls_auto: true,  
+    enable_starttls_auto: true,
     user_name: "press@cipele46.org",
     password: "zelenasvinja46pr"
   }
-  
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
