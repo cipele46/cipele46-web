@@ -20,15 +20,14 @@ Cipele46Web::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-
+  
   config.action_mailer.smtp_settings = {
-    address: "smtp.live.com",
-    port: 587,
-    domain: "cipele46.org",
-    authentication: :plain,
-    enable_starttls_auto: true,  
-    user_name: "press@cipele46.org",
-    password: "zelenasvinja46pr"
+    :address => "smtp.gmail.com",
+    :port => "587",
+    :domain => "localhost.localdomain",
+    :authentication => :plain,
+    :user_name => "cipele46web",
+    :password => "zelenasvinja46pr"
   }
   
   # Print deprecation notices to the Rails logger
