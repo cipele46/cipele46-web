@@ -1,3 +1,5 @@
+$stdout.sync = true
+
 Cipele46Web::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -20,7 +22,7 @@ Cipele46Web::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default :charset => "utf-8"
-  
+
   config.action_mailer.smtp_settings = {
     :address => "smtp.gmail.com",
     :port => "587",
@@ -29,7 +31,7 @@ Cipele46Web::Application.configure do
     :user_name => "cipele46web",
     :password => "zelenasvinja46pr"
   }
-  
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
