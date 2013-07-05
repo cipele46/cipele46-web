@@ -27,8 +27,8 @@ Cipele46Web::Application.configure do
     domain: "cipele46.org",
     authentication: :plain,
     enable_starttls_auto: true,  
-    user_name: "noreply@cipele46.org",
-    password: "pp"
+    user_name: "press@cipele46.org",
+    password: "zelenasvinja46pr"
   }
   
   # Print deprecation notices to the Rails logger
