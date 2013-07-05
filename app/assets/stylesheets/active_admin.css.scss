@@ -1,0 +1,10 @@
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+.view_link,
+#index_footer,
+#footer {visibility: hidden}
+.pagination {visibility: visible}
+
+.yes_label { color: #fff; background-color: #38678B; width: 25px; text-align: center; vertical-align: middle; display: block }
+.no_label { color: #fff; background-color: #B3BCC1; padding: 20px }
