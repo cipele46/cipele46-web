@@ -1,4 +1,5 @@
 class Ad < ActiveRecord::Base
+  VALID_FOR = 30 # in days
   TYPES = { :supply => 1, :demand => 2 }
   STATUS = { :pending => 1, :active => 2, :closed => 3 }
 
@@ -21,4 +22,8 @@ class Ad < ActiveRecord::Base
   validates :phone, :presence => true
   validates :title, :presence => true
   validates :ad_type, :presence => true
+  
+  def expires_at
+    created_at + VALID_FOR.days 
+  end
 end
