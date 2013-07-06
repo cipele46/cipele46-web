@@ -6,6 +6,7 @@ class Ad < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :city
+  has_many :favorites, :dependent => :destroy
 
   attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone, :email
     
@@ -25,5 +26,9 @@ class Ad < ActiveRecord::Base
   
   def expires_at
     created_at + VALID_FOR.days 
+  end
+  
+  def is_favorite
+    Favorites.where(:user_id => user.id)
   end
 end

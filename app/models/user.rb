@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
-  has_many :ads
+  has_many :ads, :dependent => :destroy
+  has_many :favorites, :dependent => :destroy
 end
