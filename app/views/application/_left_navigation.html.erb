@@ -22,7 +22,7 @@
             <a href="#">Kategorije</a>
             <ul>
                 <% @categories.each do |category| %>
-                  <li><a href="#"><%= category.name %> (<%= ads_in_category(category) %>)</a></li>
+                  <li><%= link_to "#{category.name} (#{ads_in_category(category)})", ads_path(:category_id => category.id) %></li>
                 <% end -%>
             </ul>
         </li>

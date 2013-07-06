@@ -12,13 +12,18 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def ads_in_category(category)
+  def ads_in_category_count(category)
     Ad.active.where(category_id: category.id).count
   end
 
-  def ads_in_region(region)
+  def ads_in_region_count(region)
     cities = region.cities.map{ |c| c.id }
     Ad.active.where(city_id: cities).count
+  end
+  
+  def ads_in_region_and_category_count(region, category)
+    cities = region.cities.map{ |c| c.id }
+    Ad.active.where(city_id: cities).where(category_id: category.id)
   end
 
   def ads_plural(ads_count)
