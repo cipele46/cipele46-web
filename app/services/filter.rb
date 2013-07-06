@@ -8,7 +8,7 @@ class Filter
     @ads = Ad.active
 
     type = params[:type]
-    @ads = @ads.by_type(type)            if type
+    @ads = @ads.by_type(type)            if type && type !~ /all/
 
     region_id = params[:region_id]
     @ads = @ads.by_region(region_id)     if (region_id and region_id.to_i > 0)
