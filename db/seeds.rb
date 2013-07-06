@@ -52,3 +52,26 @@ user.add_role :admin
   end
   
 end
+
+
+[
+  "Hrana",
+  "Zdravlje i higijena",
+  "Odjeća i obuća",
+  "Elektronika",
+  "Sve za djecu",
+  "Namještaj",
+  "Kućanski aparati",
+  "Kućanske potrepštine",
+  "Poslovi i usluge",
+  "Hobi i zabava",
+  "Ostalo"
+].each do |categoryName|
+
+  category = Category.find_by_name categoryName
+  unless category
+    category = Category.create(:name => categoryName)
+  end
+
+end
+
