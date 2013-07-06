@@ -1,5 +1,4 @@
 class Filter
-
   def initialize(params, ads)
     @params = params
     @ads   =  ads
@@ -8,6 +7,7 @@ class Filter
   def perform
     @ads = Ad.active
 
+    @ads = @ads.by_type(params[:type])            if params[:type]
     @ads = @ads.by_region(params[:region_id])     if params[:region_id]
     @ads = @ads.by_category(params[:category_id]) if params[:category_id]
 
@@ -22,5 +22,6 @@ class Filter
   end
 
   private
+
     attr_reader :params
 end

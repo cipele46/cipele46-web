@@ -13,6 +13,8 @@ class AdsController < ApplicationController
     @ads = @filter.perform
 
     session[:filters] = @filter.session
+    
+    respond_with @ads
   end
 
   def show
