@@ -1,5 +1,6 @@
 <div class="page-content-wrapper inner-page giving clearfix">
   <aside class="sidebar-wrapper">
+    <% unless is_own_ad @ad %>
     <div class="page-sidebar <%= ad_type_decode @ad.ad_type %>">
       <h3>Kontakt</h3>
       <p class="sidebar-number">099 232 456</p>
@@ -11,6 +12,7 @@
         <a href="#" class="sidebar-button" type="submit" title="Pošalji">Pošalji upit</a>
       </form>
     </div>
+    <% else %>
     <div class="page-sidebar <%= ad_type_decode @ad.ad_type %>">
       <h3>Kontakt</h3>
       <p class="sidebar-number">099 232 456</p>
@@ -20,6 +22,7 @@
       <p class="sidebar-button-description">Zatvoren oglas je rješen i ne vidi se u kategorijama ili tražilici</p>
       <a style="margin-top:34px;" href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Obriši oglas</a>
     </div>
+    <% end %>
   </aside>
   <div class="page-content">
     <%= render 'application/breadcrumbs' %>

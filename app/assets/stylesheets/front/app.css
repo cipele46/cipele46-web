@@ -516,6 +516,10 @@ button {
 	text-align: center;
 }
 
+.sidebar-selected-item {
+  color: #f4715b;
+  font-weight: bold;
+}
 
 /* Board
 ***************************************************************/
@@ -557,7 +561,7 @@ button {
 .cards-board-filter a:focus,
 .cards-board-filter li.current a:link,
 .cards-board-filter li.current a:visited {
-    color: #f4715b;
+/*    color: #f4715b; */
 }
 
 .cards-board-filter > ul > li > a:link,

@@ -3,8 +3,6 @@ class AdsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @demands = Ad.active.demands.count
-    @supplies = Ad.active.supplies.count
     @categories = Category.order(:name)
     @regions = Region.order(:name)
     @total_ads_count = Ad.active.count
@@ -13,7 +11,11 @@ class AdsController < ApplicationController
 
     @filter = Filter.new(session[:filters])
     @ads = @filter.perform
-    
+
+    @selected_category_id = session[:filters]["category_id"]
+    @selected_region_id = session[:filters]["region_id"]
+    @selected_type = session[:filters]["type"]
+
     respond_with @ads, :include => [ :city, :category, :region ]
   end
 
