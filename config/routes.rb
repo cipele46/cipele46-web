@@ -1,4 +1,6 @@
 Cipele46Web::Application.routes.draw do
+  
+
   get "categories/index"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -19,5 +21,8 @@ Cipele46Web::Application.routes.draw do
   resources :categories, :only => [:index]
   
   match "favorites/:id" => "favorites#toggle", as: :toggle
+
+  match "blog"      => "blog#index", as: :blogs
+  match "blog/:id"  => "blog#show", as: :blog
 
 end
