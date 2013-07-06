@@ -1,0 +1,29 @@
+<div style="width: 200px; border: 1px solid blue; float: left; margin: 20px; padding: 5px">
+  <strong>LEFT NAVIGATION</strong>
+  <hr>
+  
+  <strong>Vrsta oglasa</strong>
+  <ul>
+    <li>Svi oglasi (<%= @offers + @demands %>)</li>
+    <li>Ponuda (<%= @offers %>)</li>
+    <li>Potražnja (<%= @demands %>)</li>
+  </ul>
+  <hr>
+
+  <strong>Kategorije</strong>
+  <ul>
+    <% @categories.each do |category| %>
+      <li><%= category.name %></li>
+    <% end -%>    
+  </ul>
+  <hr>
+
+  <strong>Županije</strong>
+  <ul>
+    <% @regions.each do |region| %>
+      <li><%= region.name %></li>
+    <% end -%>
+  </ul>
+  <hr>
+
+</div>
