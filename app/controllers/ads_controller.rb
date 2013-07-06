@@ -10,9 +10,10 @@ class AdsController < ApplicationController
     @total_ads_count = Ad.active.count
 
     session[:filters].merge!(params)
-
     @filter = Filter.new(session[:filters], @ads)
     @ads = @filter.perform
+    
+    respond_with @ads
   end
 
   def show
