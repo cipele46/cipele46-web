@@ -141,7 +141,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
-    letter_opener (1.1.1)
+    letter_opener (1.1.2)
       launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -151,6 +151,7 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    method_source (0.8.1)
     mime-types (1.23)
     mini_magick (3.6.0)
       subexec (~> 0.2.1)
@@ -178,6 +179,10 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
@@ -230,6 +235,7 @@ GEM
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
+    slop (3.4.5)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -281,6 +287,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   omniauth-facebook
+  pry
   quiet_assets (>= 1.0.2)
   rails (= 3.2.13)
   rolify (>= 3.2.0)
