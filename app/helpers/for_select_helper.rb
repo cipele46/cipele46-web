@@ -9,7 +9,16 @@ module ForSelectHelper
   end
 
   def cities_for_select
-    @cities_for_select ||= City.all.map { |c| [c.name, c.id] }
+    @cities_for_select ||= load_cities_for_select
+  end
+
+  private
+
+  def load_cities_for_select
+    Region.order(:name).includes(:cities).map do |region|
+      cities = region.cities.map { |c| [c.name, c.id] }
+      [region.name, cities]
+    end
   end
 
 end

@@ -1,5 +1,5 @@
 Cipele46Web::Application.routes.draw do
-  
+
 
   get "categories/index"
 
@@ -19,7 +19,7 @@ Cipele46Web::Application.routes.draw do
   resources :users
   resources :regions, :only => [:index]
   resources :categories, :only => [:index, :show]
-  
+
   match "favorites/:id" => "favorites#toggle", as: :toggle
 
   match "blog"      => "blog#index", as: :blogs
