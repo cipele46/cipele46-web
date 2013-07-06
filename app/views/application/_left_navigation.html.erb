@@ -21,7 +21,7 @@
         <li class="expanded">
             <a href="#">Kategorije</a>
             <ul>
-                <li><%= link_to "Sve kategorije", ads_path(:category_id => 0) %></li>
+              <li><%= link_to "Sve kategorije (#{ads_count})", ads_path(:category_id => 0) %></li>
                 <% @categories.each do |category| %>
                   <li><%= link_to "#{category.name} (#{ads_in_category_count(category)})", ads_path(:category_id => category.id) %></li>
                 <% end -%>
@@ -30,7 +30,7 @@
         <li class="expanded">
             <a href="#">Županije</a>
             <ul>
-                <li><%= link_to "Sve županije", ads_path(:region_id => 0) %></li>
+                <li><%= link_to "Sve županije(#{ads_count})", ads_path(:region_id => 0) %></li>
                 <% @regions.each do |region| %>
                   <li><%= link_to "#{region.name} (#{ads_in_region_count(region)})", ads_path(:region_id => region.id) %></li>
                 <% end -%>
