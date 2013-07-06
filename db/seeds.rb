@@ -14,7 +14,7 @@ YAML.load(ENV['ROLES']).each do |role|
   puts 'role: ' << role
 end
 
-user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+user = User.find_or_create_by_email :first_name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts 'user: ' << user.name
 user.confirm!
 user.add_role :admin
@@ -84,8 +84,8 @@ placeholderAdDescription =
 
 [
   [ "Poklanjam kaput", 1, 1, 1, 'adSeedImg1.jpg', Ad::STATUS[:active], Ad::TYPES[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 100 kuna", 2, 1, 2, 'adSeedImg2.jpg', Ad::STATUS[:active], Ad::TYPES[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim plave papuče", 3, 1, 3, 'adSeedImg3.jpg', Ad::STATUS[:active], Ad::TYPES[:demand], "091 555 666", "email@domena.hr"]
+  [ "Trebalo bi mi 100 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad::STATUS[:active], Ad::TYPES[:demand], "091 555 666", "email@domena.hr"],
+  [ "Tražim plave papuče", 3, 1, 30, 'adSeedImg3.jpg', Ad::STATUS[:active], Ad::TYPES[:demand], "091 555 666", "email@domena.hr"]
 ].each do |adData|
   
   ad = Ad.find_by_title adData[0]
