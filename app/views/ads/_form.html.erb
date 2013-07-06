@@ -1,8 +1,8 @@
-<%= f.input :type, :as => :radio_buttons, :collection => ad_types_for_select %>
+<%= f.input :ad_type, :as => :radio_buttons, :collection => ad_types_for_select %>
 <%= f.input :title %>
 <%= f.input :description %>
 <%= f.input :category_id, :collection => categories_for_select, :prompt => false %>
 <%= f.input :city_id, :collection => cities_for_select, :prompt => false %>
 <%= f.input :phone, :hint => "Neće biti direktno vidljiv drugim korisnicima" %>
-<%# f.input :image %>
+<%= f.input :image %>
 <%= f.input :email, :hint => "Opcionalno, bit će javno prikazan uz oglas" %>
