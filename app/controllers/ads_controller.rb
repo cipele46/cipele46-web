@@ -9,10 +9,10 @@ class AdsController < ApplicationController
     @regions = Region.order(:name)
     @total_ads_count = Ad.active.count
 
-    @filter = Filter.new(params.merge(session[:filters]), @ads)
-    @ads = @filter.perform
+    session[:filters].merge!(params)
 
-    session[:filters] = @filter.session
+    @filter = Filter.new(session[:filters], @ads)
+    @ads = @filter.perform
   end
 
   def show
