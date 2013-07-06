@@ -1,12 +1,8 @@
 class CategoriesController < ApplicationController
+  respond_to :json
+
   def index
-    @categories = Category.find(:all, :order => :name)
-     
-    respond_to do |format|
-      format.json do 
-        render :json => @categories
-      end
-    end
+    @categories = Category.order(:name)
+    respond_with @categories
   end
-  
 end

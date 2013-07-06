@@ -1,10 +1,22 @@
 class AdsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :index]
   respond_to :html, :json
+
+  def index
+    @demands = Ad.active.demands.count
+    @supplies = Ad.active.supplies.count
+    @categories = Category.order(:name)
+    @regions = Region.order(:name)
+    @total_ads_count = Ad.active.count
+
+    @filter = Filter.new(params.merge(session[:filters]), @ads)
+    @ads = @filter.perform
+
+    session[:filters] = @filter.session
+  end
 
   def show
     @ad = Ad.find(params[:id])
-
   end
 
   def new
@@ -25,6 +37,13 @@ class AdsController < ApplicationController
     @ad.update_attributes params[:ad]
 
     respond_with @ad
+  end
+  
+  def destroy
+    @ad = current_user.ads.find(params[:id])
+    @ad.destroy
+    
+    redirect_to root_url, :notice => "Oglas obrisan"
   end
   
   def dispatch_email

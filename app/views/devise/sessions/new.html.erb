@@ -1,0 +1,28 @@
+<div class="page-content-wrapper inner-page clearfix">
+  <div class="page-content-container" style="height : 300px">
+    <div class="login-form-container">
+    <h2 class="form-heading">Da bi ostavio oglas, moraš se prijaviti!</h2>
+    <div class="login-col-container">
+      <div class="login-col-content">
+        <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+          <%= f.input :email, :label => "E-mail", :autofocus => true %>
+          <%= f.input :password, :label => "Lozinka" %>
+          <%= f.input :remember_me, :label => "Zapamti me", :as => :boolean if devise_mapping.rememberable? %>
+          <span><%= link_to "Zaboravili ste lozinku?", root_path %></span>
+          <%= f.button :submit, "Prijavi se", :class => 'btn-primary' %>
+        <% end %>
+      </div>
+      <div class="col-divider">ili</div>
+    </div>
+    <div class="login-col-container">
+      <div class="login-col-content">
+        <ul class="social-list clearfix">
+          <li class="social-item facebook">Facebook</li>
+          <li class="social-item google">Sign in</li>
+          <li class="social-item twitter">Twitter</li>
+        </ul>
+      </div>
+    </div>
+    <div class="login-footer"></div>
+  </div>
+</div>

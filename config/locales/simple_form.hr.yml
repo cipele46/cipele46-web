@@ -12,8 +12,14 @@ hr:
       default_message: "Please review the problems below:"
     labels:
       ad:
-        title: Naslov
+        ad_type: Tip oglasa
+        category_id: Kategorija
+        city_id: Grad
         description: Opis
+        email: Email
+        image: Slika
+        phone: Telefon
+        title: Naslov
     # Labels and hints examples
     # labels:
     #   defaults:
