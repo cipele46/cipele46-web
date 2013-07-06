@@ -9,4 +9,5 @@ Cipele46Web::Application.routes.draw do
   ActiveAdmin.routes(self)
   resources :ads, :only => [:create, :edit, :new, :show, :update]
   resources :users
+  resources :regions, :only => [:index]
 end
