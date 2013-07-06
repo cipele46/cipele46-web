@@ -4,12 +4,12 @@
     <div class="page-sidebar">
       <h3>Kontakt</h3>
       <p class="sidebar-number"><%= @ad.phone %></p>
-		<%= form_tag dispatch_email_path, method: :post do %>
+		  <%= form_tag dispatch_email_path, method: :post do %>
 		    <p class="sidebar-input-description">Poruka</p>
-			<%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku" %>
-	        <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
+			  <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku" %>
+	      <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
 		  	<%= text_field_tag "user_info[email]", "", placeholder: "Upiši email" %><br />
-		  	<%= submit_tag "Pošalji", :class => 'sidebar-button' %>
+		  	<%= button_tag "Pošalji", :class => 'sidebar-button' %>
 		<% end %>
     </div>
     <% else %>
@@ -17,10 +17,9 @@
       <h3>Kontakt</h3>
 	      <p class="sidebar-number"><%= @ad.phone %></p>
 	      <p class="sidebar-email"><%= @ad.email %></p>
-		    <%= link_to "Uredi oglas", edit_ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:44px;"  %>
-	      <a href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Zatvori oglas</a>
-	      <p class="sidebar-button-description">Zatvoren oglas je rješen i ne vidi se u kategorijama ili tražilici</p>
-    		<%= link_to "Obriši oglas", ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:34px;", :confirm => "Sigurno želite obrisati ovaj oglas?", :method=>:delete %>
+        <%= button_tag "Uredi oglas", :class => 'sidebar-button' %>
+        <%= button_tag "Zatvori oglas", :class => 'sidebar-button', :confirm => "Sigurno želite zatvoriti ovaj oglas?" %>
+        <%= button_tag "Obriši oglas", :class => 'sidebar-button', :confirm => "Sigurno želite obrisati ovaj oglas?" %>
     </div>
     <% end %>
   </aside>

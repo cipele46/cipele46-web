@@ -505,7 +505,7 @@ button {
     margin-top:0px;
 }
 
-.page-sidebar a.sidebar-button:link{
+.page-sidebar .sidebar-button{
     display: block;
     color: #fff;
     font-weight: bold;
@@ -517,9 +517,13 @@ button {
     margin-top: 20px;
     border: 0px;
     text-align: center;
+    width:100%;
+}
+.page-sidebar .sidebar-button:hover {
+    cursor:pointer;
 }
 
-.page-sidebar a.sidebar-button-gray:link{
+.page-sidebar .sidebar-button-gray{
     display: block;
     color: #fff;
     font-weight: bold;
@@ -531,6 +535,10 @@ button {
     margin-top: 20px;
     border: 0px;
     text-align: center;
+    width:100%;
+}
+.page-sidebar .sidebar-button-gray:hover {
+    cursor:pointer;
 }
 
 .page-sidebar ul.sidebar-blog-arhiva li a:link {
@@ -586,7 +594,7 @@ button {
 .cards-board-filter a:focus,
 .cards-board-filter li.current a:link,
 .cards-board-filter li.current a:visited {
-/*    color: #f4715b; */
+    color: #f4715b;
 }
 
 .cards-board-filter > ul > li > a:link,
