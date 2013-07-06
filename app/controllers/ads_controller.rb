@@ -1,9 +1,10 @@
 class AdsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
+  respond_to :html, :json
 
   def show
     @ad = Ad.find(params[:id])
-        
+
   end
 
   def new
