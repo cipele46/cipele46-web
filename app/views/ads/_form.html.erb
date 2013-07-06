@@ -1,7 +1,7 @@
 <%= f.input :title %>
 <%= f.input :description %>
 <%= f.input :category_id, :collection => categories_for_select, :prompt => false %>
-<%= f.input :city_id, :collection => cities_for_select, :prompt => false %>
+<%= f.input :city_id, :as => :grouped_select, :collection => cities_for_select, :prompt => false, :group_method => :last %>
 <%= f.input :phone, :hint => "Neće biti direktno vidljiv drugim korisnicima" %>
 <%= f.input :image %>
 <%= f.input :email, :hint => "Opcionalno, bit će javno prikazan uz oglas" %>
