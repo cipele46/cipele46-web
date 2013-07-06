@@ -19,5 +19,7 @@ Cipele46Web::Application.routes.draw do
   resources :categories, :only => [:index]
   
   match "favorites/:id" => "favorites#toggle", as: :toggle
+  
+  match "dispatch_email/:id", to: "ads#dispatch_email",  as: "dispatch_email", method: :post
 
 end

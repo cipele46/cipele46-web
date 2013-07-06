@@ -26,4 +26,16 @@ class AdsController < ApplicationController
 
     respond_with @ad
   end
+  
+  def dispatch_email
+    user_info = params[:user_info]
+    ad = Ad.find(params[:id])
+    
+    if UserMailer.send_email(ad,user_info).deliver
+      flash[:notice] = "Sent!"
+    else
+      flash[:error] = "Could't send you message."
+    end
+    redirect_to ad_path(ad)
+  end
 end

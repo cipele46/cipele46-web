@@ -136,7 +136,7 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
-    letter_opener (1.1.1)
+    letter_opener (1.1.2)
       launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)

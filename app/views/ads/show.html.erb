@@ -1,16 +1,36 @@
 <br/>
+<!-- TITLE -->
 <h1><%= @ad.title %><h1><br/>
-<b><%= @ad.category.name %></b><br/>
-<b><%= @ad.city.region.name %>,<%= @ad.city.name %></b><br/>
+<!-- CATEGORY -->
+<a href="#"><%= @ad.category.name %> (<%= ads_in_category(@ad.category) %>)</a>
+<!-- REGION,CITY -->
+<a href="#"><%= @ad.city.region.name %> (<%= ads_in_region(@ad.city.region) %>)</a>
+<!-- AD DUE DATE -->
 jos <b><%= time_ago_in_words @ad.expires_at %></b> dana <br/>
+<!-- AD IMAGE -->
 <%= image_tag @ad.image.url(:medium) %><br/>
+<!-- AD DESCRIPTION -->
 <p>
 	<%= @ad.description %>
 </p>
+<!-- FAVORITE -->
 <% if @ad.is_favorite %>
-	<%= link_to "Spremi u favorite", toggle_path(@ad.id), remote: :true %>
+	<%= link_to "Spremi u favorite", toggle_path(@ad.id) %>
 <% else %>
-	<%= link_to "Ukloni iz favorita", toggle_path(@ad.id), remote: :true  %>
+	<%= link_to "Ukloni iz favorita", toggle_path(@ad.id) %>
+<% end %>
+<br/>
+<!-- PHONE -->
+<%= @ad.phone %>
+<br/>
+<!-- CONTACT FORM -->
+<%= form_tag dispatch_email_path, method: :post do %>
+	<span>Posalji upit</span></br>
+	<%= label_tag "user_info[message]", "Poruka" %><br/>
+	<%= text_area_tag "user_info[message]", "", size: "60x10" %><br/>
+	<span>Tvoja email adresa na koju ce ti odgovoriti</span></br>
+  	<%= text_field_tag "user_info[email]" %><br />
+  	<%= submit_tag "Posalji" %>
 <% end %>
 
 
