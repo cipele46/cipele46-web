@@ -12,17 +12,17 @@ class Ad < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("ads.created_at >= :date", :date => 1.month.ago).where(status: 2) } 
+  scope :active, lambda { where("ads.created_at >= :date", :date => 1.month.ago).where(status: 2) }
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
-  scope :by_region, lambda { |region_id| 
+  scope :by_region, lambda { |region_id|
     region = Region.find(region_id)
     Ad.where(city_id: region.cities.map(&:id))
   }
   scope :by_category, lambda {|category_id| where(category_id: category_id)}
   scope :by_type, lambda {|type| where(ad_type: TYPES[type.to_sym])}
-  scope :by_query, lambda { |query| 
+  scope :by_query, lambda { |query|
     joins(:city => :region).joins(:category).where("title like :q or description like :q or regions.name like :q or cities.name like :q or categories.name like :q", :q => "%#{query}%")
   }
 
@@ -48,7 +48,7 @@ class Ad < ActiveRecord::Base
   def closed?
     Time.current > (created_at + VALID_FOR.days)
   end
-  
+
   def region
     city.region
   end
@@ -61,6 +61,6 @@ class Ad < ActiveRecord::Base
     else
       STATUS[:closed]
     end
-  end  
-  
+  end
+
 end
