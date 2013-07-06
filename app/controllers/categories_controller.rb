@@ -5,5 +5,4 @@ class CategoriesController < ApplicationController
     @categories = Category.order(:name)
     respond_with @categories
   end
-
 end
