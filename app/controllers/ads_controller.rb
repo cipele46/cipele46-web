@@ -3,23 +3,13 @@ class AdsController < ApplicationController
   respond_to :html, :json
 
   def index
-    # imported from home controller
     @demands = Ad.active.demands.count
     @supplies = Ad.active.supplies.count
     @categories = Category.order(:name)
     @regions = Region.order(:name)
     @total_ads_count = Ad.active.count
-    # end import
 
-    @ads = Ad.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-
-    if category = Category.find(params[:category_id]) rescue false
-      @ads = category.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-    end
-
-    if region = Region.find(params[:region_id]) rescue false
-      @ads = region.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-    end
+    @ads = Filter.new(params, @ads).perform
   end
 
   def show
