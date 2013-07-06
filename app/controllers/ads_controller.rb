@@ -9,12 +9,11 @@ class AdsController < ApplicationController
     @regions = Region.order(:name)
     @total_ads_count = Ad.active.count
 
-    @filter = Filter.new(params.merge(session[:filters]), @ads)
+    session[:filters].merge!(params)
+    @filter = Filter.new(session[:filters], @ads)
     @ads = @filter.perform
-
-    session[:filters] = @filter.session
     
-    respond_with @ads
+    respond_with @ads, :include => [ :city, :category, :region ]
   end
 
   def show
