@@ -12,12 +12,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     resize_to_fit(800, 600)
   end
 
+  version :mob_large do
+    resize_to_fit(580, 435)
+  end
+
   version :medium do
-    resize_to_fit(500, 300)
+    resize_to_fit(500, 375)
   end
 
   version :small do
-    resize_to_fit(100, 100)
+    resize_to_fit(260, 195)
   end
 
   def extension_white_list
