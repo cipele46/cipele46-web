@@ -1,0 +1,8 @@
+<h2>Uredi oglas</h2>
+
+<%= simple_form_for @ad do |f| %>
+  <%= render 'ads/form', :f => f %>
+
+  <%= f.button :submit %>
+  <%= link_to "Odustani", root_path %>
+<% end %>
