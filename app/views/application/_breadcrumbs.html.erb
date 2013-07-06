@@ -1,6 +1,6 @@
     <header class="page-content-header clearfix">
       <ul class="breadcrumbs clearfix">
-        <li><%= link_to @ad.category.name, root_path %></li>
-        <li><%= link_to @ad.city.region.name, root_path %></li>
+        <li><%= link_to @ad.category.name, ads_path(:category_id => @ad.category.id) %></li>
+        <li><%= link_to @ad.city.region.name, ads_path(:region_id => @ad.city.region.id) %></li>
       </ul>
     </header>
