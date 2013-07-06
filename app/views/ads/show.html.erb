@@ -4,12 +4,12 @@
     <div class="page-sidebar">
       <h3>Kontakt</h3>
       <p class="sidebar-number"><%= @ad.phone %></p>
-		  <%= form_tag dispatch_email_path, method: :post do %>
+		  <%= form_tag dispatch_email_path, method: :post, :class => "hidden" do %>
 		    <p class="sidebar-input-description">Poruka</p>
-			  <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku" %>
+			  <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku", :disabled => true %>
 	      <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
-		  	<%= text_field_tag "user_info[email]", "", placeholder: "Upiši email" %><br />
-		  	<%= button_tag "Pošalji", :class => 'sidebar-button' %>
+		    <%= text_field_tag "user_info[email]", "", placeholder: "Upiši email", :disabled => true %><br />
+		    <%= button_tag "Pošalji", :class => 'sidebar-button', :disabled => true %>
 		<% end %>
     </div>
     <% else %>
