@@ -136,6 +136,8 @@ GEM
       activesupport (>= 3.0.0)
     launchy (2.3.0)
       addressable (~> 2.3)
+    letter_opener (1.1.1)
+      launchy (~> 2.2)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -256,6 +258,7 @@ DEPENDENCIES
   html2haml (>= 1.0.1)
   hub (>= 1.10.2)
   jquery-rails
+  letter_opener
   mini_magick
   mysql2
   quiet_assets (>= 1.0.2)

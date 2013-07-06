@@ -12,7 +12,7 @@ class Ad < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) }
+  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago).where(status: 2) } 
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
@@ -48,9 +48,6 @@ class Ad < ActiveRecord::Base
     else
       STATUS[:closed]
     end
-  end
+  end  
   
-  def is_favorite
-    Favorites.where(:user_id => user.id)
-  end
 end
