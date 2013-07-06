@@ -13,21 +13,33 @@ module ApplicationHelper
   end
 
   def ads_count
+    @ads.count
+  end
+
+  def total_ads_count
     Ad.active.count
   end
 
+  def supplies_count
+    @ads.supplies.count
+  end
+
+  def demands_count
+    @ads.demands.count
+  end
+
   def ads_in_category_count(category)
-    Ad.active.where(category_id: category.id).count
+    @ads.where(category_id: category.id).count
   end
 
   def ads_in_region_count(region)
     cities = region.cities.map{ |c| c.id }
-    Ad.active.where(city_id: cities).count
+    @ads.where(city_id: cities).count
   end
 
   def ads_in_region_and_category_count(region, category)
     cities = region.cities.map{ |c| c.id }
-    Ad.active.where(city_id: cities).where(category_id: category.id)
+    @ads.where(city_id: cities).where(category_id: category.id)
   end
 
   def ads_plural(ads_count)

@@ -13,26 +13,36 @@
         <li class="expanded">
             <a href="#">Vrsta oglasa</a>
             <ul>
-                <li class="current"><%= link_to "Svi oglasi (#{(@demands + @supplies)})", ads_path(:type => :all) %></li>
-                <li class="giving"><%= link_to "Ponuda (#@supplies)", ads_path(:type => :supply) %></li>
-                <li class="receiving"><%= link_to "Potražnja (#@demands)", ads_path(:type => :demand)%></li>
+                <li class="current"><%= link_to "Svi oglasi (#{(total_ads_count)})", ads_path(:type => :all) %></li>
+                <li class="giving"><%= link_to "Ponuda (#{supplies_count})", ads_path(:type => :supply) %></li>
+                <li class="receiving"><%= link_to "Potražnja (#{demands_count})", ads_path(:type => :demand)%></li>
             </ul>
         </li>
         <li class="expanded">
             <a href="#">Kategorije</a>
             <ul>
-              <li><%= link_to "Sve kategorije (#{ads_count})", ads_path(:category_id => 0) %></li>
+                <li class=<%=@selected_category_id.to_i == 0 ? 'sidebar-selected-item': ''%>>
+                  <%= link_to "Sve kategorije (#{ads_count})", ads_path(:category_id => 0) %>
+                </li>
+
                 <% @categories.each do |category| %>
-                  <li><%= link_to "#{category.name} (#{ads_in_category_count(category)})", ads_path(:category_id => category.id) %></li>
+                  <li class=<%=@selected_category_id.to_i == category.id ? 'sidebar-selected-item': ''%>>
+                    <%=link_to "#{category.name} (#{ads_in_category_count(category)})", ads_path(:category_id => category.id)%>
+                  </li>
                 <% end -%>
             </ul>
         </li>
         <li class="expanded">
             <a href="#">Županije</a>
             <ul>
-                <li><%= link_to "Sve županije(#{ads_count})", ads_path(:region_id => 0) %></li>
+                <li class=<%=@selected_region_id.to_i == 0 ? 'sidebar-selected-item': ''%>>
+                  <%= link_to "Sve županije (#{ads_count})", ads_path(:region_id => 0) %>
+                </li>
+
                 <% @regions.each do |region| %>
-                  <li><%= link_to "#{region.name} (#{ads_in_region_count(region)})", ads_path(:region_id => region.id) %></li>
+                  <li class=<%=@selected_region_id.to_i == region.id ? 'sidebar-selected-item': ''%>>
+                    <%= link_to "#{region.name} (#{ads_in_region_count(region)})", ads_path(:region_id => region.id) %>
+                  </li>
                 <% end -%>
             </ul>
         </li>
