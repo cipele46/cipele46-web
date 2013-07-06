@@ -30,4 +30,8 @@ module ApplicationHelper
     end
   end
 
+  def ad_is_favorite(ad_id)
+    Favorites.where("user_id = ? AND ad_id = ?", current_user.id, ad_id).count > 0 ? true : false
+  end
+
 end
