@@ -6,16 +6,18 @@ class Filter
   end
 
   def perform
-    @ads = Ad.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
+    @ads = Ad.active
 
-    if category = Category.find(params[:category_id]) rescue false
-      @ads = category.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-    end
+    @ads = @ads.by_region(params[:region_id])     if params[:region_id]
+    @ads = @ads.by_category(params[:category_id]) if params[:category_id]
 
-    if region = Region.find(params[:region_id]) rescue false
-      @ads = region.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-    end
+    @ads.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
+  end
 
-    @ads
+  def session
+    hash = {}
+    hash[:category_id] = params[:category_id] if params[:category_id]
+    hash[:region_id]   = params[:region_id] if params[:region_id]
+    hash
   end
 end
