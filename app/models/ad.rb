@@ -7,7 +7,7 @@ class Ad < ActiveRecord::Base
   belongs_to :city
 
   attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone, :email
-  
+    
   mount_uploader :image, ImageUploader
 
   scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) } 
@@ -20,5 +20,5 @@ class Ad < ActiveRecord::Base
   validates :description, :presence => true
   validates :phone, :presence => true
   validates :title, :presence => true
-  validates :type, :presence => true
+  validates :ad_type, :presence => true
 end
