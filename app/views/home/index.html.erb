@@ -1,3 +1,13 @@
 <%= render 'application/left_navigation' %>
 
-<div style="border: 1px solid #bbb; margin: 20px 0 0 250px; padding: 10px">home</div>
+<div style="margin: 20px 0 0 250px; padding: 10px">
+  <%= paginate @ads  %>
+  <% @ads.each do |ad| %>
+    <div style="width: 200px; height: 200px; border: 1px dashed #ccc; float: left; margin: 5px">
+      <h3><%= ad.title %></h3>
+      <% if ad.image.url %>
+        <%= image_tag ad.image.url(:small) %>
+      <% end -%>
+    </div>
+  <% end -%>
+</div>

@@ -13,7 +13,7 @@
   <strong>Kategorije</strong>
   <ul>
     <% @categories.each do |category| %>
-      <li><%= category.name %></li>
+      <li><%= category.name (<%= ads_in_category(category) %>) %></li>
     <% end -%>    
   </ul>
   <hr>
@@ -21,7 +21,7 @@
   <strong>Županije</strong>
   <ul>
     <% @regions.each do |region| %>
-      <li><%= region.name %></li>
+      <li><%= region.name (<%= ads_in_region(region) %>) %></li>
     <% end -%>
   </ul>
   <hr>

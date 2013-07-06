@@ -12,4 +12,12 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def ads_in_region(category)
+    Ad.active.where(category: category)
+  end
+
+  def ads_in_region(region)
+    Ad.active.where(region: region)
+  end
+
 end
