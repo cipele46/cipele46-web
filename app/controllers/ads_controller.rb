@@ -1,10 +1,25 @@
 class AdsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :index]
   respond_to :html, :json
+
+  def index
+    # imported from home controller
+    @demands = Ad.active.demands.count
+    @supplies = Ad.active.supplies.count
+    @categories = Category.order(:name)
+    @regions = Region.order(:name)
+    @total_ads_count = Ad.active.count
+    # end import
+
+    if category = Category.find(params[:category_id]) rescue false
+      @ads = category.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
+    else
+      @ads = Ad.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
+    end
+  end
 
   def show
     @ad = Ad.find(params[:id])
-
   end
 
   def new
