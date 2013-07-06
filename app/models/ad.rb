@@ -12,5 +12,12 @@ class Ad < ActiveRecord::Base
   scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) } 
   scope :offers, where(type: 1)
   scope :demands, where(type: 2)
+  
 
+
+end
+
+def due_date_formatted(ad)
+(Time.zone.now - ad.created_at).to_i / 1.day
+ # time_ago_in_words @ad.created_at
 end
