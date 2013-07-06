@@ -561,7 +561,7 @@ button {
 .cards-board-filter a:focus,
 .cards-board-filter li.current a:link,
 .cards-board-filter li.current a:visited {
-    color: #f4715b;
+/*    color: #f4715b; */
 }
 
 .cards-board-filter > ul > li > a:link,
