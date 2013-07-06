@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+  <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="assets/images/shoes46_icon_72.png">
+  <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="assets/images/shoes46_icon_144.png">
+  <link rel="Shortcut Icon" href="assets/images/favicon.ico" type="image/x-icon" />
   <title>Cipele46</title>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <link rel="stylesheet" href="assets/css/app-ie.css" />
+  <![endif]-->
 </head>
-<body>
+<body id="page">
   <%= render 'application/top_navigation' %>
-  <%= yield %>
+  <div class="page-content-wrapper clearfix">
+    <%= yield %>
+  </div>
+
+<script>
+    $(document).ready(function(){
+        app.init();
+    });
+</script>
 </body>
 </html>

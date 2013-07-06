@@ -6,27 +6,24 @@ class Ad < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :city
-  attr_accessible :description, :status, :title, :type, :category_id, :user_id, :city_id, :image, :phone, :email
 
+  attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone, :email
+    
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) }
-  scope :offers, where(type: 1)
-  scope :demands, where(type: 2)
-  
-
+  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) } 
+  scope :supplies, where(ad_type: 1)
+  scope :demands, where(ad_type: 2)
+    
 
   validates :category_id, :presence => true
   validates :city_id, :presence => true
   validates :description, :presence => true
   validates :phone, :presence => true
   validates :title, :presence => true
-  validates :type, :presence => true
+  validates :ad_type, :presence => true
   
   def expires_at
     created_at + VALID_FOR.days 
   end
-  
 end
-
-

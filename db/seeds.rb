@@ -75,3 +75,34 @@ end
 
 end
 
+placeholderAdDescription =
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt"\
+" ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"\
+" laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"\
+" voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat"\
+" non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."\
+
+[
+  [ "Poklanjam kaput", 1, 1, 1, 'adSeedImg1.jpg', Ad::STATUS[:active], Ad::TYPES[:supply], "091 555 666", "email@domena.hr"],
+  [ "Trebalo bi mi 100 kuna", 2, 1, 2, 'adSeedImg2.jpg', Ad::STATUS[:active], Ad::TYPES[:demand], "091 555 666", "email@domena.hr"],
+  [ "Tražim plave papuče", 3, 1, 3, 'adSeedImg3.jpg', Ad::STATUS[:active], Ad::TYPES[:demand], "091 555 666", "email@domena.hr"]
+].each do |adData|
+  
+  ad = Ad.find_by_title adData[0]
+  unless ad
+    ad = Ad.create(
+      :title => adData[0],
+      :description => placeholderAdDescription,
+      :category_id => adData[1],
+      :user_id => adData[2],
+      :city_id => adData[3],
+      :image => File.open("db/seed/#{adData[4]}"),
+      :status => adData[5],
+      :ad_type => adData[6],
+      :phone => adData[7],
+      :email => adData[8]
+    )
+  end
+
+end
+
