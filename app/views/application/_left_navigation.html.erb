@@ -30,7 +30,7 @@
             <a href="#">Županije</a>
             <ul>
                 <% @regions.each do |region| %>
-                  <li><a href="#"><%= region.name %> (<%= ads_in_region_count(region) %>)</a></li>
+                  <li><%= link_to "#{region.name} (#{ads_in_region_count(region)})", ads_path(:region_id => region.id) %></li>
                 <% end -%>
             </ul>
         </li>
