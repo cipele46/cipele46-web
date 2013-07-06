@@ -11,6 +11,13 @@ class AdsController < ApplicationController
     @ad = current_user.ads.new
   end
 
+  def create
+    @ad = AdCreation.new(current_user)
+    @ad.create params[:ad]
+
+    respond_with @ad.ad
+  end
+
   def edit
     @ad = current_user.ads.find(params[:id])
   end

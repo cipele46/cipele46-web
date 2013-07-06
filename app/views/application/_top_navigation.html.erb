@@ -15,7 +15,7 @@
   </div>
   <% if current_user %>
   <ul class="nav-user">
-      <li class="nav-user-new-add"><a href="add.html">objavi oglas</a></li>
+      <li class="nav-user-new-add"><%= link_to "objavi oglas", new_ad_path %></li>
       <li class="nav-user-settings">
           <a href="#home"><%= current_user.name %></a>
           <div>
