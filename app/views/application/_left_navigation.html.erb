@@ -13,9 +13,9 @@
         <li class="expanded">
             <a href="#">Vrsta oglasa</a>
             <ul>
-                <li class="current"><a href="#">Svi oglasi (<%= @demands + @supplies %>)</a></li>
-                <li class="giving"><a href="#">Ponuda (<%= @supplies %>)</a></li>
-                <li class="receiving"><a href="#">Potražnja (<%= @demands %>)</a></li>
+                <li class="current"><%= link_to "Svi oglasi (#{(@demands + @supplies)})", ads_path(:type => :all) %></li>
+                <li class="giving"><%= link_to "Ponuda (#@supplies)", ads_path(:type => :supply) %></li>
+                <li class="receiving"><%= link_to "Potražnja (#@demands)", ads_path(:type => :demand)%></li>
             </ul>
         </li>
         <li class="expanded">
@@ -30,7 +30,7 @@
             <a href="#">Županije</a>
             <ul>
                 <% @regions.each do |region| %>
-                  <li><a href="#"><%= region.name %> (<%= ads_in_region_count(region) %>)</a></li>
+                  <li><%= link_to "#{region.name} (#{ads_in_region_count(region)})", ads_path(:region_id => region.id) %></li>
                 <% end -%>
             </ul>
         </li>

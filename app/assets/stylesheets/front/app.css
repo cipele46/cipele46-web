@@ -810,16 +810,13 @@ a.card-favorite:visited {
     display: block;
     position: absolute;
     z-index: 10;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
     text-align: right;
-    top: 15px;
+    top: 35px;
     right: 0;
-    padding-top: 10px;
-}
-a.card-favorite:link:before,
-a.card-favorite:visited:before {
+
     speak: none;
     font-style: normal;
     font-weight: normal;
@@ -829,19 +826,18 @@ a.card-favorite:visited:before {
     content: "\e49d";
     font-size: 20px;
     color: #ccc;
+
+    /* we want 40x40 click area, but we must have equal padding on all sides for scale animation to look good */
+    padding: 10px;
+    margin: -10px;
 }
-a.card-favorite:hover:before,
-a.card-favorite:active:before,
-a.card-favorite:focus:before {
+a.card-favorite:hover,
+a.card-favorite:active,
+a.card-favorite:focus {
     color: #ffd33d;
 }
-a.card-favorite.selected:link:before,
-a.card-favorite.selected:visited:before {
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
+a.card-favorite.selected:link,
+a.card-favorite.selected:visited {
     font-family: "Flaticons Solid";
     content: "\e0b5";
     font-size: 20px;

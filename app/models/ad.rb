@@ -1,7 +1,7 @@
 class Ad < ActiveRecord::Base
   VALID_FOR = 30 # in days
-  TYPES = { :supply => 1, :demand => 2 }
-  STATUS = { :pending => 1, :active => 2, :closed => 3 }
+  TYPES     = { :supply => 1, :demand => 2 }
+  STATUS    = { :pending => 1, :active => 2, :closed => 3 }
 
   belongs_to :category
   belongs_to :user
@@ -16,6 +16,12 @@ class Ad < ActiveRecord::Base
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
+  scope :by_region, lambda { |region_id| 
+    region = Region.find(region_id)
+    Ad.where(city_id: region.cities.map(&:id))
+  }
+  scope :by_category, lambda {|category_id| where(category_id: category_id)}
+  scope :by_type, lambda {|type| where(ad_type: TYPES[type.to_sym])}
 
   validates :category_id, :presence => true
   validates :city_id, :presence => true
