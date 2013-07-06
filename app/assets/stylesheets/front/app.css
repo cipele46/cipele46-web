@@ -196,9 +196,9 @@ button {
     font-size: 1.8em;
     padding-top: 3px;
     -webkit-transition: color .1s linear;
-    -moz-transition: color .1s linear;
-    -o-transition: color .1s linear;
-    transition:  color .1s linear;
+	-moz-transition: color .1s linear;
+	-o-transition: color .1s linear;
+	transition:  color .1s linear;
 }
 .page-header nav li a:hover,
 .page-header nav li a:active,
@@ -209,34 +209,34 @@ button {
 }
 
 #search {
-    width: 230px;
-    height: 38px;
-    line-height: 38px;
-    background: #fff;
-    float: left;
-    margin-left: 30px;
-    border-bottom: solid 2px #f4715b;
-    margin-top: 20px;
+	width: 230px;
+	height: 38px;
+	line-height: 38px;
+	background: #fff;
+	float: left;
+	margin-left: 30px;
+	border-bottom: solid 2px #f4715b;
+	margin-top: 20px;
 }
 #search input,
 #search button {
-    background: #fff;
-    height: 36px;
-    line-height: 36px;
-    color: #777;
-    border: none;
-    outline: none;
-    font-size: 1.8em;
+	background: #fff;
+	height: 36px;
+	line-height: 36px;
+	color: #777;
+	border: none;
+	outline: none;
+	font-size: 1.8em;
 }
 #search input {
     width: 170px;
 }
 #search button {
-    float: right;
-    width: 30px;
-    position: relative;
-    background: transparent;
-    margin-top: 2px;
+	float: right;
+	width: 30px;
+	position: relative;
+	background: transparent;
+	margin-top: 2px;
 }
 #search button:after {
     display: block;
@@ -286,9 +286,9 @@ button {
     font-weight: bold;
     font-size: 1.8em;
     -webkit-transition: color .1s linear;
-    -moz-transition: color .1s linear;
-    -o-transition: color .1s linear;
-    transition:  color .1s linear;
+	-moz-transition: color .1s linear;
+	-o-transition: color .1s linear;
+	transition:  color .1s linear;
 }
 .nav-user-settings > a:after {
     font-family: "Flaticons Stroke";
@@ -304,9 +304,9 @@ button {
     margin-left: 2px;
     margin-top: 29px;
     -webkit-transition: color .1s linear;
-    -moz-transition: color .1s linear;
-    -o-transition: color .1s linear;
-    transition:  color .1s linear;
+	-moz-transition: color .1s linear;
+	-o-transition: color .1s linear;
+	transition:  color .1s linear;
 }
 .nav-user-not-logged > a:after {
     font-family: "Flaticons Stroke";
@@ -389,20 +389,20 @@ button {
 /* Sidebar */
 
 .sidebar-wrapper{
-
+	
 }
 
 .page-sidebar h3 {
-    font-size:24px;
-    font-weight: bold;
-    color: #f4715b;
-    margin-top:8px;
+	font-size:24px;
+	font-weight: bold;
+	color: #f4715b;
+	margin-top:8px;
 }
 .page-sidebar .sidebar-number {
-    color:#777777;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top:26px;
+	color:#777777;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top:26px;
 }
 
 .page-sidebar .sidebar-number:before {
@@ -418,13 +418,13 @@ button {
     color: #f4715b;
     left: 5px;
     top: 8px;
-    margin-right:20px;
+	margin-right:20px;
 }
 .page-sidebar .sidebar-email {
-    color:#777777;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 18px;
+	color:#777777;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 18px;
 }
 .page-sidebar .sidebar-email:before {
     display: inline-block;
@@ -439,81 +439,81 @@ button {
     color: #f4715b;
     left: 5px;
     top: 8px;
-    margin-right:20px;
+	margin-right:20px;
 }
 
 .page-sidebar .sidebar-input-description {
-    font-size:12px;
-    color:#777777;
-    font-weight: normal;
-    margin-top: 36px;
-    margin-bottom: 2px;
+	font-size:12px;
+	color:#777777;
+	font-weight: normal;
+	margin-top: 36px;
+	margin-bottom: 2px;
 }
 .page-sidebar .sidebar-button-description {
-    font-size:12px;
-    color:#777777;
-    font-weight: normal;
-    margin-top: 6px;
-    margin-bottom: 2px;
-    text-align: center;
-    line-height: 16px;
+	font-size:12px;
+	color:#777777;
+	font-weight: normal;
+	margin-top: 6px;
+	margin-bottom: 2px;
+	text-align: center;
+	line-height: 16px;
 }
 .page-sidebar .sidebar-input-description-email {
-    font-size:12px;
-    color:#777777;
-    font-weight: normal;
-    margin-top: 10px;
-    margin-bottom: 4px;
+	font-size:12px;
+	color:#777777;
+	font-weight: normal;
+	margin-top: 10px;
+	margin-bottom: 4px;
 }
 .page-sidebar textarea {
-    background: #fff;
-    line-height: 24px;
-    color: #777;
-    border: 1px solid #cccccc;
-    outline: none;
-    font-size: 1.7em;
-    padding:10px;
-    width: 220px;
+	background: #fff;
+	line-height: 24px;
+	color: #777;
+	border: 1px solid #cccccc;
+	outline: none;
+	font-size: 1.7em;
+	padding:10px;
+	width: 220px;
 }
 
 .page-sidebar input {
-    background: #fff;
-    height: 36px;
-    line-height: 36px;
-    color: #777;
-    border: 1px solid #cccccc;
-    outline: none;
-    font-size: 1.7em;
-    padding-left:10px;
-    width: 230px;
-    margin-top:0px;
+	background: #fff;
+	height: 36px;
+	line-height: 36px;
+	color: #777;
+	border: 1px solid #cccccc;
+	outline: none;
+	font-size: 1.7em;
+	padding-left:10px;
+	width: 230px;
+	margin-top:0px;
 }
 
 .page-sidebar a.sidebar-button:link{
-    display: block;
-    color: #fff;
-    font-weight: bold;
-    font-size: 2em;
-    background: #f4715b;
-    height: 48px;
-    line-height: 48px;
-    padding: 0 30px;
-    margin-top: 20px;
-    border: 0px;
-    text-align: center;
+	display: block;
+	color: #fff;
+	font-weight: bold;
+	font-size: 2em;
+	background: #f4715b;
+	height: 48px;
+	line-height: 48px;
+	padding: 0 30px;
+	margin-top: 20px;
+	border: 0px;
+	text-align: center;
 }
 .page-sidebar a.sidebar-button-gray:link{
-    display: block;
-    color: #fff;
-    font-weight: bold;
-    font-size: 2em;
-    background: #999999;
-    height: 52px;
-    line-height: 52px;
-    padding: 0 30px;
-    margin-top: 20px;
-    border: 0px;
-    text-align: center;
+	display: block;
+	color: #fff;
+	font-weight: bold;
+	font-size: 2em;
+	background: #999999;
+	height: 52px;
+	line-height: 52px;
+	padding: 0 30px;
+	margin-top: 20px;
+	border: 0px;
+	text-align: center;
 }
 
 
@@ -548,9 +548,9 @@ button {
     color: #444;
     position: relative;
     -webkit-transition: color .1s linear;
-    -moz-transition: color .1s linear;
-    -o-transition: color .1s linear;
-    transition:  color .1s linear;
+	-moz-transition: color .1s linear;
+	-o-transition: color .1s linear;
+	transition:  color .1s linear;
 }
 .cards-board-filter a:hover,
 .cards-board-filter a:active,
@@ -582,9 +582,9 @@ button {
     font-size: 20px;
     margin-left: 2px;
     -webkit-transition: color .1s linear;
-    -moz-transition: color .1s linear;
-    -o-transition: color .1s linear;
-    transition:  color .1s linear;
+	-moz-transition: color .1s linear;
+	-o-transition: color .1s linear;
+	transition:  color .1s linear;
 }
 .cards-board-filter > ul > li.expanded > a:after {
     content: "\e5a4";
@@ -603,8 +603,8 @@ button {
     top: 6px;
     content: " ";
     -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+  	-webkit-border-radius: 50%;
+  	border-radius: 50%;
 }
 .cards-board-filter li.giving a:after {
     background: #f4715b;
@@ -673,9 +673,9 @@ button {
     padding: 10px;
     color: #f4715b;
     -webkit-transition: all .1s linear;
-    -moz-transition: all .1s linear;
-    -o-transition: all .1s linear;
-    transition:  all .1s linear;
+	-moz-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	transition:  all .1s linear;
 }
 .cards-pager li span {
     border: solid 1px transparent;
@@ -738,8 +738,8 @@ button {
     color: #212121;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
-    -o-transition: all .1s linear;
-    transition:  all .1s linear;
+	-o-transition: all .1s linear;
+	transition:  all .1s linear;
 }
 .card p {
     font-size: 1.4em;
@@ -749,15 +749,15 @@ button {
 .card footer {
     border-top: solid 1px #ccc;
     -webkit-transition: all .1s linear;
-    -moz-transition: all .1s linear;
-    -o-transition: all .1s linear;
-    transition:  all .1s linear;
-    margin-top: 10px;
-    padding-top: 10px;
-    font-size: 1.2em;
-    color: #777;
-    position: relative;
-    z-index: 5;
+	-moz-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	transition:  all .1s linear;
+	margin-top: 10px;
+	padding-top: 10px;
+	font-size: 1.2em;
+	color: #777;
+	position: relative;
+	z-index: 5;
 }
 .card footer .card-place {
     display: block;
@@ -919,7 +919,7 @@ a.card-favorite.selected:visited {
     border-bottom: solid 1px #ccc;
     margin-bottom: 20px;
     font-size: 1.4em;
-    color: #777;
+	color: #777;
 }
 
 /* Inner pages */
@@ -937,10 +937,10 @@ a.card-favorite.selected:visited {
 }
 
 .page-content-wrapper.inner-page .page-sidebar {
-    background: #fff;
-    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
-    border-top: solid 6px #f4715b;
-    padding: 20px;
+	background: #fff;
+	border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+	border-top: solid 6px #f4715b;
+	padding: 20px;
 
 }
 
@@ -958,28 +958,28 @@ a.card-favorite.selected:visited {
     padding: 0 10px;
 }
 .article p {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 .article h1,
 .article h2,
 .article h3,
 .article h4 {
-    color: #e82490;
+	color: #e82490;
 }
 .article h1 {
-    font-size: 18px;
+	font-size: 18px;
 }
 .article h2 {
-    font-size: 16px;
+	font-size: 16px;
 }
 .article h3,
 .article h4 {
-    font-size: 14px;
+	font-size: 14px;
 }
 .article a:link,
 .article a:visited {
-    color: #e82490;
-    text-decoration: underline;
+	color: #e82490;
+	text-decoration: underline;
 }
 /* ADD PAGE */
 /***************************************************************/
@@ -1301,8 +1301,8 @@ a.card-favorite.selected:visited {
 }
 
 #search {
-    width: 350px;
-    margin-left: 50px;
+	width: 350px;
+	margin-left: 50px;
 }
 #search input {
     width: 310px;
