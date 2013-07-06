@@ -16,7 +16,9 @@ class Filter
       ads = ads.by_category(params.category_id)   if params.category_id && params.category_id.to_i > 0
     end
 
-    ads = ads.by_query(params.q) if params.q
+    if q = params.delete_field(:q) rescue false
+      ads = ads.by_query(q) 
+    end
 
     ads.order("id desc").page(params.page).per(ADS_PER_PAGE)
   end
