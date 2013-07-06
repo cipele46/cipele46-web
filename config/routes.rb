@@ -11,7 +11,7 @@ Cipele46Web::Application.routes.draw do
     root :to => 'home#index'
   end
   get 'home' => 'home#index'
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :ads, :only => [:create, :edit, :new, :show, :update]
   resources :users
