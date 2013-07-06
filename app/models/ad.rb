@@ -12,7 +12,7 @@ class Ad < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago).where(status: 2) } 
+  scope :active, lambda { where("ads.created_at >= :date", :date => 1.month.ago).where(status: 2) } 
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
@@ -22,6 +22,9 @@ class Ad < ActiveRecord::Base
   }
   scope :by_category, lambda {|category_id| where(category_id: category_id)}
   scope :by_type, lambda {|type| where(ad_type: TYPES[type.to_sym])}
+  scope :by_query, lambda { |query| 
+    joins(:city => :region).joins(:category).where("title like :q or description like :q or regions.name like :q or cities.name like :q or categories.name like :q", :q => "%#{query}%")
+  }
 
   validates :category_id, :presence => true
   validates :city_id, :presence => true
