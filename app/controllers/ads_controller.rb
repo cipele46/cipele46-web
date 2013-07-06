@@ -10,10 +10,11 @@ class AdsController < ApplicationController
     @total_ads_count = Ad.active.count
 
     session[:filters].merge!(params)
-    @filter = Filter.new(session[:filters], @ads)
+
+    @filter = Filter.new(session[:filters])
     @ads = @filter.perform
     
-    respond_with @ads
+    respond_with @ads, :include => [ :city, :category, :region ]
   end
 
   def show

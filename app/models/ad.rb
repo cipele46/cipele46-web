@@ -45,6 +45,10 @@ class Ad < ActiveRecord::Base
   def closed?
     Time.current > (created_at + VALID_FOR.days)
   end
+  
+  def region
+    city.region
+  end
 
   def set_status
     self.status = if supply?
