@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20130706080949) do
 
   create_table "ads", :force => true do |t|
     t.string   "title"
-    t.string   "image_url"
+    t.string   "image"
     t.text     "description"
     t.integer  "type"
     t.integer  "status"
