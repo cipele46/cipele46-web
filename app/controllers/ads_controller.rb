@@ -13,7 +13,7 @@ class AdsController < ApplicationController
     @filter = Filter.new(session[:filters], @ads)
     @ads = @filter.perform
     
-    respond_with @ads
+    respond_with @ads, :include => [ :city, :category, :region ]
   end
 
   def show
