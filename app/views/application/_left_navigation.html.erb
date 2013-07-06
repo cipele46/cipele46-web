@@ -22,7 +22,7 @@
             <a href="#">Kategorije</a>
             <ul>
                 <li class=<%=@selected_category_id.to_i == 0 ? 'sidebar-selected-item': ''%>>
-                  <%= link_to "Sve kategorije", ads_path(:category_id => 0) %>
+                  <%= link_to "Sve kategorije (#{ads_count})", ads_path(:category_id => 0) %>
                 </li>
 
                 <% @categories.each do |category| %>
@@ -36,7 +36,7 @@
             <a href="#">Županije</a>
             <ul>
                 <li class=<%=@selected_region_id.to_i == 0 ? 'sidebar-selected-item': ''%>>
-                  <%= link_to "Sve županije", ads_path(:region_id => 0) %>
+                  <%= link_to "Sve županije (#{ads_count})", ads_path(:region_id => 0) %>
                 </li>
 
                 <% @regions.each do |region| %>

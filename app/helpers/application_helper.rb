@@ -12,6 +12,10 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def ads_count
+    Ad.active.count
+  end
+
   def ads_in_category_count(category)
     Ad.active.where(category_id: category.id).count
   end
