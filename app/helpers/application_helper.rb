@@ -21,4 +21,13 @@ module ApplicationHelper
     Ad.active.where(city_id: cities).count
   end
 
+  def ads_plural(ads_count)
+    ads_count = ads_count.to_s
+    if ads_count[ads_count.size-1,ads_count.size] == '1' && ads_count[ads_count.size-2,ads_count.size] != '11'  && ads_count[ads_count.size-2,ads_count.size] != '111'  && ads_count[ads_count.size-2,ads_count.size] != '1111' && ads_count[ads_count.size-2,ads_count.size] != '11111'  
+      'oglas'
+    else
+      'oglasa'
+    end
+  end
+
 end

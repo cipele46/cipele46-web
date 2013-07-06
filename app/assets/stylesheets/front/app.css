@@ -11,22 +11,22 @@
 
 @font-face {
     font-family: "Flaticons Solid";
-    src: url("/assets/fonts/flaticons-solid.eot");
-    src: url("/assets/fonts/flaticons-solid.eot?#iefix") format("embedded-opentype"),
-        url("/assets/fonts/flaticons-solid.woff") format("woff"),
-        url("/assets/fonts/flaticons-solid.ttf") format("truetype"),
-        url("/assets/fonts/flaticons-solid.svg#flaticons-solid") format("svg");
+    src: url("/assets/flaticons-solid.eot");
+    src: url("/assets/flaticons-solid.eot?#iefix") format("embedded-opentype"),
+        url("/assets/flaticons-solid.woff") format("woff"),
+        url("/assets/flaticons-solid.ttf") format("truetype"),
+        url("/assets/flaticons-solid.svg#flaticons-solid") format("svg");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Flaticons Stroke";
-    src: url("/assets/fonts/flaticons-stroke.eot");
-    src: url("/assets/fonts/flaticons-stroke.eot?#iefix") format("embedded-opentype"),
-        url("/assets/fonts/flaticons-stroke.woff") format("woff"),
-        url("/assets/fonts/flaticons-stroke.ttf") format("truetype"),
-        url("/assets/fonts/flaticons-stroke.svg#flaticons-stroke") format("svg");
+    src: url("/assets/flaticons-stroke.eot");
+    src: url("/assets/flaticons-stroke.eot?#iefix") format("embedded-opentype"),
+        url("/assets/flaticons-stroke.woff") format("woff"),
+        url("/assets/flaticons-stroke.ttf") format("truetype"),
+        url("/assets/flaticons-stroke.svg#flaticons-stroke") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -157,7 +157,7 @@ button {
     display: block;
     width: 62px;
     height: 80px;
-    background: url(../images/shoes46_logo.png) left center no-repeat;
+    background: url(/assets/shoes46_logo.png) left center no-repeat;
     text-indent: -9999px;
     float: left;
 }
@@ -185,9 +185,9 @@ button {
     font-size: 1.8em;
     padding-top: 3px;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .page-header nav li a:hover,
 .page-header nav li a:active,
@@ -198,34 +198,34 @@ button {
 }
 
 #search {
-	width: 230px;
-	height: 38px;
-	line-height: 38px;
-	background: #fff;
-	float: left;
-	margin-left: 30px;
-	border-bottom: solid 2px #f4715b;
-	margin-top: 20px;
+    width: 230px;
+    height: 38px;
+    line-height: 38px;
+    background: #fff;
+    float: left;
+    margin-left: 30px;
+    border-bottom: solid 2px #f4715b;
+    margin-top: 20px;
 }
 #search input,
 #search button {
-	background: #fff;
-	height: 36px;
-	line-height: 36px;
-	color: #777;
-	border: none;
-	outline: none;
-	font-size: 1.8em;
+    background: #fff;
+    height: 36px;
+    line-height: 36px;
+    color: #777;
+    border: none;
+    outline: none;
+    font-size: 1.8em;
 }
 #search input {
     width: 170px;
 }
 #search button {
-	float: right;
-	width: 30px;
-	position: relative;
-	background: transparent;
-	margin-top: 2px;
+    float: right;
+    width: 30px;
+    position: relative;
+    background: transparent;
+    margin-top: 2px;
 }
 #search button:after {
     display: block;
@@ -266,6 +266,8 @@ button {
     margin-top: 20px;
 }
 
+.nav-user-not-logged a:link,
+.nav-user-not-logged a:visited,
 .nav-user-settings a:link,
 .nav-user-settings a:visited {
     display: block;
@@ -273,9 +275,9 @@ button {
     font-weight: bold;
     font-size: 1.8em;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .nav-user-settings > a:after {
     font-family: "Flaticons Stroke";
@@ -291,10 +293,34 @@ button {
     margin-left: 2px;
     margin-top: 29px;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
+.nav-user-not-logged > a:after {
+    font-family: "Flaticons Stroke";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    content: "\e5a7";
+    color: #ccc;
+    display: block;
+    float: right;
+    font-size: 24px;
+    margin-left: 2px;
+    margin-top: 29px;
+    -webkit-transition: color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
+}
+.nav-user-not-logged a:hover,
+.nav-user-not-logged a:active,
+.nav-user-not-logged a:focus,
+.nav-user-not-logged:hover > a:link,
+.nav-user-not-logged:hover > a:visited,
+.nav-user-not-logged:hover > a:after,
 .nav-user-settings a:hover,
 .nav-user-settings a:active,
 .nav-user-settings a:focus,
@@ -303,6 +329,7 @@ button {
 .nav-user-settings:hover > a:after {
     color: #f4715b;
 }
+.nav-user-not-logged > a,
 .nav-user-settings > a {
     height: 80px;
     line-height: 80px;
@@ -365,6 +392,10 @@ button {
     margin-left: 10px;
     display: none;
 }
+#cards-board-filter-nav > li { /* padding needs to be used instead of margin or slide animations are jumpy */
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
 .cards-board-filter > ul > li.expanded ul {
     display: block;
 }
@@ -375,9 +406,9 @@ button {
     color: #444;
     position: relative;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .cards-board-filter a:hover,
 .cards-board-filter a:active,
@@ -409,9 +440,9 @@ button {
     font-size: 20px;
     margin-left: 2px;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .cards-board-filter > ul > li.expanded > a:after {
     content: "\e5a4";
@@ -430,8 +461,8 @@ button {
     top: 6px;
     content: " ";
     -moz-border-radius: 50%;
-  	-webkit-border-radius: 50%;
-  	border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
 .cards-board-filter li.giving a:after {
     background: #f4715b;
@@ -500,9 +531,9 @@ button {
     padding: 10px;
     color: #f4715b;
     -webkit-transition: all .1s linear;
-	-moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition:  all .1s linear;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition:  all .1s linear;
 }
 .cards-pager li span {
     border: solid 1px transparent;
@@ -565,8 +596,8 @@ button {
     color: #212121;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition:  all .1s linear;
+    -o-transition: all .1s linear;
+    transition:  all .1s linear;
 }
 .card p {
     font-size: 1.4em;
@@ -576,15 +607,15 @@ button {
 .card footer {
     border-top: solid 1px #ccc;
     -webkit-transition: all .1s linear;
-	-moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition:  all .1s linear;
-	margin-top: 10px;
-	padding-top: 10px;
-	font-size: 1.2em;
-	color: #777;
-	position: relative;
-	z-index: 5;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition:  all .1s linear;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 1.2em;
+    color: #777;
+    position: relative;
+    z-index: 5;
 }
 .card footer .card-place {
     display: block;
@@ -750,22 +781,26 @@ a.card-favorite.selected:visited:before {
     border-bottom: solid 1px #ccc;
     margin-bottom: 20px;
     font-size: 1.4em;
-	color: #777;
+    color: #777;
 }
 
 /* Inner pages */
 /**************************************************************/
 .page-content-wrapper.inner-page .page-content-container,
 .page-content-wrapper.inner-page .page-sidebar {
-   background: #fff;
-   border-bottom: solid 2px rgba(0, 0, 0, 0.2);
-   border-top: solid 6px #f4715b;
-   padding: 20px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    border-top: solid 6px #f4715b;
+
 }
 
 .page-content-wrapper.inner-page .page-content-container {
-   background: #fff;
-   margin: 10px;
+    background: #fff;
+    margin: 10px;
+    padding: 30px 60px;
 }
 
 
@@ -781,30 +816,188 @@ a.card-favorite.selected:visited:before {
     padding: 0 10px;
 }
 .article p {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .article h1,
 .article h2,
 .article h3,
 .article h4 {
-	color: #e82490;
+    color: #e82490;
 }
 .article h1 {
-	font-size: 18px;
+    font-size: 18px;
 }
 .article h2 {
-	font-size: 16px;
+    font-size: 16px;
 }
 .article h3,
 .article h4 {
-	font-size: 14px;
+    font-size: 14px;
 }
 .article a:link,
 .article a:visited {
-	color: #e82490;
-	text-decoration: underline;
+    color: #e82490;
+    text-decoration: underline;
+}
+/* ADD PAGE */
+/***************************************************************/
+#addPage .page-sidebar{
+    padding:20px;
+}
+#addPage .page-sidebar .logo{
+    display: block;
+    width: 62px;
+    height: 65px;
+    margin-right:10px;
+    background: url(/assets/shoes46_logo.png) left center no-repeat;
+    text-indent: -9999px;
+    float: left;
 }
 
+#addPage .page-sidebar p{
+    line-height:121%;
+    font-size:110%;
+    color:#7f7f7f;
+}
+#addPage .page-sidebar .addButton{
+    display: block;
+    margin-top:30px;
+    width:100%;
+    height:35px;
+    color:white;
+    background:#f4715b;
+    font-size: 20px;
+    line-height:35px;
+    text-align: center;
+    font-weight: bold;
+}
+#addPage .page-sidebar .cancle{
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+    color:#7f7f7f;
+    text-decoration: none;
+    font-size: 14px;
+}
+#addPage .page-sidebar .cancle:hover{
+    text-decoration: underline;
+}
+#addPage .page-content-container .radio{
+    display:none;
+}
+#addPage .page-content-container label{
+    background:url("/assets/radio.png") no-repeat;
+    background-size: 10px 10px;
+    background-position: left center;
+    padding-left:20px;
+    cursor:pointer;
+    font-weight: bold;
+    font-size:16px;
+}
+#addPage .page-content-container #trazim{
+    margin-left:50px;
+}
+#addPage .page-content-container #naslov{
+    width:100%;
+    border:none;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top:35px;
+}
+#addPage .page-content-container #tekst{
+    border:none;
+    width:100%;
+    height:90px;
+    resize:none;
+    margin-top:30px;
+    border-bottom:1px solid #dddddd;
+}
+#addPage .page-content-container .inputArea{
+    margin-top:35px;
+}
+#addPage .page-content-container .inputArea{
+    width:240px;
+    height:45px;
+}
+/* CUSTOM DROP DOWNS! */
+/***************************************************************/
+.dropdownSelect {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    height:100%;
+    padding: 10px;
+    margin: 0;
+
+    background: #eeeeee;
+    color: #444444;
+    cursor: pointer;
+    font-size:18px;
+}
+.dropdownSelect input{
+    display:none;
+}
+
+.dropdownSelect:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    border-style: solid;
+    border-color: #999 transparent;
+    border-width: 6px 6px 0 6px ;
+    margin-top: -3px;
+}
+
+.dropdownSelect .dropdown {
+    /* Size & position */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    /* Styles */
+    background: #eeeeee;
+    list-style: none;
+    font-weight: normal; /* Cancels previous font-weight: bold; */
+
+    /* Hiding */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dropdownSelect .dropdown li a {
+    display: block;
+    text-decoration: none;
+    color: #9e9e9e;
+    padding: 10px 20px;
+}
+
+/* Hover state */
+.dropdownSelect .dropdown li:hover a {
+    background: #f3f8f8;
+}
+
+/* Active state */
+.dropdownSelect.active .dropdown {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.dropdownSelect.active:after {
+    border-color: #444444 transparent;
+    border-width: 6px 6px 0 6px ;
+    margin-top: -3px;
+}
+
+.dropdownSelect.active {
+
+}
 /* RWD Part */
 /***************************************************************/
 @media only screen and (min-width:1280px) {
@@ -822,8 +1015,8 @@ a.card-favorite.selected:visited:before {
 }
 
 #search {
-	width: 350px;
-	margin-left: 50px;
+    width: 350px;
+    margin-left: 50px;
 }
 #search input {
     width: 310px;
