@@ -6,12 +6,13 @@ class Ad < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :city
+  has_many :favorites, :dependent => :destroy
 
   attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone, :email
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) }
+  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago).where(status: 2) } 
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
@@ -47,5 +48,6 @@ class Ad < ActiveRecord::Base
     else
       STATUS[:closed]
     end
-  end
+  end  
+  
 end

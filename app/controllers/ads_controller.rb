@@ -12,10 +12,8 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = AdCreation.new(current_user)
-    @ad.create params[:ad]
-
-    respond_with @ad.ad
+    @ad = AdCreation.new(current_user).create(params[:ad])
+    respond_with @ad
   end
 
   def edit

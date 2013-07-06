@@ -1,4 +1,19 @@
-<h2><%= @ad.title %><h2><br/><br/>
-<b><%= @ad.category.name %></b> <b><%= @ad.city.region.name %></b> jos <b><%= time_ago_in_words @ad.expires_at %></b>
+<br/>
+<h1><%= @ad.title %><h1><br/>
+<b><%= @ad.category.name %></b><br/>
+<b><%= @ad.city.region.name %>,<%= @ad.city.name %></b><br/>
+jos <b><%= time_ago_in_words @ad.expires_at %></b> dana <br/>
+<%= image_tag @ad.image.url(:medium) %><br/>
+<p>
+	<%= @ad.description %>
+</p>
+<% if ad_is_favorite(@ad.id) %>
+	<%= link_to "Spremi u favorite", toggle_path(@ad.id), remote: :true %>
+<% else %>
+	<%= link_to "Ukloni iz favorita", toggle_path(@ad.id), remote: :true  %>
+<% end %>
+
+
+
 
 
