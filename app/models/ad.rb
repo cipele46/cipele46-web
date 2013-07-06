@@ -6,4 +6,9 @@ class Ad < ActiveRecord::Base
   
   mount_uploader :image, ImageUploader
 
+  scope :active, lambda { where("created_at >= :date", :date => 1.month.ago) } 
+  scope :offers, where(type: 1)
+  scope :demands, where(type: 2)
+
+  
 end

@@ -1,5 +1,9 @@
 class HomeController < ApplicationController
+
   def index
-    @users = User.all
+    @demands = Ad.active.demands.count
+    @offers = Ad.active.offers.count
+    @categories = Category.order(:name)
+    @regions = Region.order(:name)
   end
 end
