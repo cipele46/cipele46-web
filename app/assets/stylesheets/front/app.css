@@ -1668,6 +1668,9 @@ span.form-label{
     padding:40px 80px;
     color:#777;
 }
+#nasaPrica h2.u-izradi {
+    margin-bottom: 1em;
+}
 #nasaPrica .page-container h2{
     font-size: 24px;
 }
