@@ -1,11 +1,11 @@
 <header class="page-header">
   <div class="page-header-inner-wrapper clearfix">
-    <a href="http://www.cipele46.org" class="logo" title="Cipele46">Cipele46</a>
+    <%= link_to "Cipele46", root_path, { class: 'logo', title: 'Cipele46' } %>
     <nav>
       <ul>
-          <li class="current"><a href="#oglasi">oglasi</a></li>
+          <li class="current"><%= link_to "oglasi", root_path %></li>
           <li><a href="#blog">blog</a></li>
-          <li><a href="#onama">o nama</a></li>
+          <li><%= link_to "o nama", page_path('o-nama') %></li>
       </ul>
     </nav>
     <div id="search">
@@ -20,17 +20,17 @@
         </li>
         <% unless current_user %>
         <li class="nav-user-not-logged">
-            <a href="#home">Prijavi se</a>
+          <%= link_to "Prijavi se", new_user_session_path %>
         </li>
         <% end -%>
         <% if current_user %>
         <li class="nav-user-settings">
-            <a href="#home"><%= current_user.name %></a>
+            <%= link_to current_user.name, edit_user_registration_path %>
             <div>
               <ul>
-                <li><a href="#">Postavke</a></li>
+                <li><%= link_to "Postavke", edit_user_registration_path %></li>
                 <li><a href="#">Moji oglasi</a></li>
-                <li><a href="#">Odjavi se</a></li>
+                <li><%= link_to "Odjavi se", destroy_user_session_path, { method: 'DELETE' } %></li>
               </ul>
             <div>
         </li>
