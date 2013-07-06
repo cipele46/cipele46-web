@@ -10,9 +10,7 @@
         <% @ads.each do |ad| %>
           <article class="card giving" data-details="<%= ad_path(ad) %>">
               <figure class="icon window-2">
-                <% if ad.image.url %>
-                  <%= image_tag ad.image.url(:small) %>
-                <% end -%>
+                <%= image_tag_for_ad ad, :version => :small %>
               </figure>
               <h2><%= ad.title %></h2>
               <p><%= ad.description %></p>

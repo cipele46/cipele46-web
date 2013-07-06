@@ -8,7 +8,7 @@ var app = (function($, window, document, undefined) {
 
     var _cardBoardInit = function() {
 
-        // $("article.card, article.card-details").on("click", "", function(event){
+        // $("article.card, article.card-details").on("click", function(event){
         //     event.preventDefault();
 
         //     var $eventTarget = $(event.target);
