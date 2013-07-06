@@ -14,6 +14,9 @@ class AdsController < ApplicationController
     @filter = Filter.new(session[:filters])
     @ads = @filter.perform
     
+    @selected_category_id = session[:filters]["category_id"]
+    @selected_region_id = session[:filters]["region_id"]
+
     respond_with @ads, :include => [ :city, :category, :region ]
   end
 

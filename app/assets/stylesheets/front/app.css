@@ -516,6 +516,10 @@ button {
 	text-align: center;
 }
 
+.sidebar-selected-item {
+  color: #f4715b;
+  font-weight: bold;
+}
 
 /* Board
 ***************************************************************/
