@@ -1015,11 +1015,9 @@ a.card-favorite.selected:visited {
     background: #fff;
     border-bottom: solid 2px rgba(0, 0, 0, 0.2);
     border-top: solid 6px #f4715b;
-
     margin: 10px 10px 24px 10px;
     padding: 20px;
 }
-
 
 body div.supply section,body div.supply .page-sidebar {
     border-top-color: #17c1c7 !important;
@@ -1029,14 +1027,18 @@ body div.supply .page-sidebar h3, body div.supply .sidebar-number,body div.suppl
     color: #17c1c7 !important;
 }
 
-body div.supply a.sidebar-button {
+body div.supply button.sidebar-button {
     background-color:#f4715b;
 }
 
-body div.demand a.sidebar-button {
+body div.demand button.sidebar-button {
     background-color:#17c1c7 !important;
 }
 
+.page-content-wrapper.inner-page .page-content-container {
+    background: #fff;
+-   margin: 10px;
+}
 
 .page-content-wrapper.inner-page .page-sidebar {
     background: #fff;
@@ -1082,9 +1084,19 @@ body div.demand a.sidebar-button {
     color: #333;
     font-size: 16px;
     height: 44px;
+    line-height: normal;
     margin: 5px 0 0;
     padding: 0 20px;
     width: 210px;
+}
+
+.input-container input[type="text"]:focus,
+.input-container input[type="email"]:focus,
+.input-container input[type="number"]:focus,
+.input-container input[type="tel"]:focus,
+.input-container input[type="date"]:focus,
+.input-container input[type="password"]:focus {
+    background-color: #ddd;
 }
 
 .input-container input ~ .note {
@@ -1148,8 +1160,24 @@ body div.demand a.sidebar-button {
 }
 /* ADD PAGE */
 /***************************************************************/
+#addPage .page-content-wrapper.inner-page .page-sidebar{
+    float:right;
+}
+#addPage .page-content{
+    float:left;
+    width:620px;
+}
+#addPage .page-content-wrapper.inner-page .page-content-container,
+.page-content-wrapper.inner-page .page-sidebar {
+    background: #fff;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    border-top: solid 6px #f4715b;
+
+}
 #addPage .page-sidebar{
     padding:20px;
+    width:250px;
+    margin-top:49px;
 }
 #addPage .page-sidebar .logo{
     display: block;
@@ -1160,7 +1188,12 @@ body div.demand a.sidebar-button {
     text-indent: -9999px;
     float: left;
 }
-
+#addPage .page-content-wrapper.inner-page .page-content-container {
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    background: #fff;
+    margin: 10px 0 20px 0;
+    padding: 30px 60px;
+}
 #addPage .page-sidebar p{
     line-height:121%;
     font-size:110%;
@@ -1193,14 +1226,23 @@ body div.demand a.sidebar-button {
 #addPage .page-content-container .radio{
     display:none;
 }
-#addPage .page-content-container label{
-    background:url("/assets/radio.png") no-repeat;
-    background-size: 10px 10px;
+#addPage .page-content-container #poklanjam, #trazim{
+    background:url("/assets/circle_empty.png") no-repeat;
+    background-size: 20px 20px;
     background-position: left center;
-    padding-left:20px;
+    color:#999;
+    padding-left:25px;
     cursor:pointer;
     font-weight: bold;
     font-size:16px;
+}
+#addPage .page-content-container #poklanjam.field-radio-label-checked{
+    color:#f4715b;
+    background:url("/assets/circle_red.png") no-repeat;
+}
+#addPage .page-content-container #trazim.field-radio-label-checked{
+    background:url("/assets/circle_blue.png") no-repeat;
+    color:#17c1c7;
 }
 #addPage .page-content-container #trazim{
     margin-left:50px;
@@ -1213,6 +1255,7 @@ body div.demand a.sidebar-button {
     margin-top:35px;
 }
 #addPage .page-content-container #tekst{
+    color:#999;
     border:none;
     width:100%;
     height:90px;
@@ -1221,12 +1264,117 @@ body div.demand a.sidebar-button {
     border-bottom:1px solid #dddddd;
 }
 #addPage .page-content-container .inputArea{
-    margin-top:35px;
+    margin-top:25px;
+    float:left;
 }
-#addPage .page-content-container .inputArea{
+#addPage .page-content-container .inputArea .dropdownSelect{
     width:240px;
     height:45px;
+    margin-bottom:25px;
 }
+#addPage .page-content-container .inputArea .left{
+    float:left;
+}
+#addPage .page-content-container .inputArea label{
+    color:#999;
+    margin-bottom:5px;
+    font-size: 14px;
+}
+#addPage .page-content-container .inputArea .right{
+    position:relative;
+    margin:0 0 0 20px;
+    width:240px;
+    float:right;
+}
+#addPage .page-content-container .inputArea .right .uploadingImg{
+    position:absolute;
+    top:20px;
+    width:240px;
+    height:220px;
+    overflow: hidden;
+    cursor:pointer;
+}
+#addPage .page-content-container .inputArea .right .uploadingImg.haveImg .bck{
+    z-index:10;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:url("/assets/pic_del.png"), black;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display:none;
+}
+#addPage .page-content-container .inputArea .right .uploadingImg.haveImg:hover .bck{
+   opacity: .8;
+    display:block;
+}
+#addPage .page-content-container .inputArea .right #uploadPhotoBtn{
+    margin: 0 0 6px 0;
+    padding:0;
+    border:0;
+    width:100%;
+    height:220px;
+    background: url("/assets/pic.png"), #eee;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+.bgwidth { width: 100%; }
+.bgheight { height: 100%; }
+/*CHANGES FPR TRAZIM VIEW*/
+/**********************************************************/
+#addPage .trazim .page-sidebar{
+    border-top: solid 6px #17c1c7;
+}
+#addPage .trazim .page-sidebar .addButton{
+    background: #17c1c7;
+}
+#addPage .page-content-wrapper.inner-page.trazim .page-content-container{
+    border-top: solid 6px #17c1c7;
+}
+
+#addPage .page-content-container .inputArea .input-container > * {
+    display: block;
+    width: 240px;
+}
+#addPage .page-content-container .inputArea .input-container input {
+    width:200px;
+}
+#addPage .page-content-container .inputArea .input-container p{
+    margin-top:5px;
+    color:#008c00;
+    font-size:10px;
+}
+#addPage .nav-user > li:first-child {
+    margin-right: 20px;
+}
+
+.input-container {
+    color: #999;
+    font-size: 12px;
+    margin: 20px 0 25px;
+}
+
+.input-container > * {
+    display: block;
+    width: 250px;
+}
+
+.input-container .title {
+    font-size: 14px;
+}
+
+.input-container input {
+    background: #eee;
+    border: 0;
+    color: #333;
+    font-size: 16px;
+    height: 44px;
+    padding: 0 20px;
+    width: 210px;
+}
+
 /* CUSTOM DROP DOWNS! */
 /***************************************************************/
 .dropdownSelect {
@@ -1267,7 +1415,8 @@ body div.demand a.sidebar-button {
     top: 100%;
     left: 0;
     right: 0;
-
+    z-index: 9999;
+    max-height:200px;
     /* Styles */
     background: #eeeeee;
     list-style: none;
@@ -1276,6 +1425,7 @@ body div.demand a.sidebar-button {
     /* Hiding */
     opacity: 0;
     pointer-events: none;
+    overflow-y: scroll;
 }
 
 .dropdownSelect .dropdown li a {
@@ -1554,6 +1704,15 @@ span.form-label{
 .settings .form-section-container .fieldset {
     display: table-cell;
     width: 50%;
+}
+#addPage .page-content{
+    margin-left:115px;
+}
+#addPage .page-content-wrapper.inner-page{
+    width:1050px;
+}
+#addPage .page-content-wrapper.inner-page .page-content-container {
+    padding: 30px 40px;
 }
 
 }
