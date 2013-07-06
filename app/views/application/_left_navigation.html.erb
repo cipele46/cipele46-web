@@ -14,15 +14,15 @@
             <a href="#">Vrsta oglasa</a>
             <ul>
                 <li class="current <%=(["supply", "demand"].include? @selected_type) ? '': 'sidebar-selected-item'%>">
-                  <%= link_to "Svi oglasi (#{(@demands + @supplies)})", ads_path(:type => :all) %>
+                  <%= link_to "Svi oglasi (#{(total_ads_count)})", ads_path(:type => :all) %>
                 </li>
 
                 <li class="giving <%=@selected_type == "supply" ? 'sidebar-selected-item': ''%>">
-                  <%= link_to "Ponuda (#@supplies)", ads_path(:type => :supply) %>
+                  <%= link_to "Ponuda (#{(supplies_count)})", ads_path(:type => :supply) %>
                 </li>
 
                 <li class="receiving <%=@selected_type == "demand" ? 'sidebar-selected-item': ''%>">
-                  <%= link_to "Potražnja (#@demands)", ads_path(:type => :demand)%>
+                  <%= link_to "Potražnja (#{(demands_count)})", ads_path(:type => :demand)%>
                 </li>
             </ul>
         </li>
