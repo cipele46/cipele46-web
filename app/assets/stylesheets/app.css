@@ -1,0 +1,853 @@
+/*  
+    Color definitions
+    page background:    #fff1d8
+    element border:     #ccc
+    orange:             #f4715b
+    receiving blue:     #17c1c7
+    giving red:         #f4715b
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&subset=latin,latin-ext);
+
+@font-face {
+    font-family: "Flaticons Solid";
+    src: url("../fonts/flaticons-solid.eot");
+    src: url("../fonts/flaticons-solid.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/flaticons-solid.woff") format("woff"),
+        url("../fonts/flaticons-solid.ttf") format("truetype"),
+        url("../fonts/flaticons-solid.svg#flaticons-solid") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Flaticons Stroke";
+    src: url("../fonts/flaticons-stroke.eot");
+    src: url("../fonts/flaticons-stroke.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/flaticons-stroke.woff") format("woff"),
+        url("../fonts/flaticons-stroke.ttf") format("truetype"),
+        url("../fonts/flaticons-stroke.svg#flaticons-stroke") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Some basic styles
+ ***************************************************************/
+html, body {
+    width: 100%;
+    -webkit-text-size-adjust: none;
+    background: #fff1d8;
+}
+
+body, * {
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-size: 62.5%;
+}
+
+input[type="search"],
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="date"],
+input[type="password"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+textarea,
+button {
+    -webkit-appearance: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.align-center {
+    text-align: center;
+}
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}
+
+.icon.solid:before,
+.icon.stroke:before {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased; 
+}
+.icon.solid:before {
+    font-family: "Flaticons Solid";
+}
+.icon.stroke:before {
+    font-family: "Flaticons Stroke";
+}
+
+/* Icons 
+***************************************************************/
+.icon.stroke.down:before { content: "\e5a5"; }
+
+.icon.stroke.location:before { content: "\e4f6"; }
+
+.icon.stroke.category:before { content: "\e3fc"; }
+
+.icon.stroke.time:before { content: "\e4ee"; }
+
+/* Layout
+***************************************************************/
+.page-header {
+    background: rgba(256, 256, 256, .9);
+    height: 80px; 
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+/* Home page */
+.page-content-wrapper,
+.page-header-inner-wrapper {  
+   width: 960px;
+   margin: 0 auto;
+   position: relative; 
+}
+.page-content-wrapper {  
+    padding-top: 90px;
+}
+.page-sidebar {
+    float: left;
+    width: 300px;
+    margin: 50px 10px 10px;
+}
+.page-content {
+    float: right;
+    width: 640px;
+}
+
+/* Inner page */
+.page-content-wrapper.inner-page {
+    width: 940px;
+}
+.page-content-wrapper.inner-page .page-content {
+    width: 600px;
+}
+.page-content-wrapper.inner-page .page-sidebar {
+   float: right;
+   width: 240px;
+   margin: 50px 10px 10px;
+}
+
+/* Page Header
+***************************************************************/
+.page-header .logo {
+    display: block;
+    width: 62px;
+    height: 80px;
+    background: url(../images/shoes46_logo.png) left center no-repeat;
+    text-indent: -9999px;
+    float: left;
+}
+
+.page-header nav {
+    float: left;
+    margin-left: 30px;
+}
+.page-header nav li {
+    display: block;
+    float: left;
+    margin: 0 5px;
+}
+.page-header nav li.current {
+    border-bottom: solid 6px #f4715b;
+}
+.page-header nav li a:link,
+.page-header nav li a:visited {
+    display: block;
+    height: 71px;
+    line-height: 74px;
+    padding: 0 10px;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.8em;
+    padding-top: 3px;
+    -webkit-transition: color .1s linear;  
+	-moz-transition: color .1s linear;  
+	-o-transition: color .1s linear;  
+	transition:  color .1s linear;
+}
+.page-header nav li a:hover,
+.page-header nav li a:active,
+.page-header nav li a:focus,
+.page-header nav li.current a:link,
+.page-header nav li.current a:visited {
+    color: #f4715b;
+}
+
+#search {
+	width: 230px;
+	height: 38px;
+	line-height: 38px;
+	background: #fff;
+	float: left;
+	margin-left: 30px;
+	border-bottom: solid 2px #f4715b;
+	margin-top: 20px;
+}
+#search input,
+#search button {
+	background: #fff;
+	height: 36px;
+	line-height: 36px;
+	color: #777;
+	border: none;
+	outline: none;
+	font-size: 1.8em;
+}
+#search input {
+    width: 170px;
+}
+#search button {
+	float: right;
+	width: 30px;
+	position: relative;
+	background: transparent;
+	margin-top: 2px;
+}
+#search button:after { 
+    display: block;
+    font-family: "Flaticons Stroke";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    content: "\e45a";
+    color: #f4715b; 
+    position: absolute;
+    left: 5px;
+    top: 8px;
+}
+
+.nav-user {
+    float: right;
+}
+.nav-user > li {
+    float: left;
+    position: relative;
+}
+.nav-user > li:first-child {
+    margin-right: 40px;
+}
+.nav-user-new-add a:link,
+.nav-user-new-add a:visited {
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.8em;
+    background: #f4715b;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 30px;
+    margin-top: 20px;
+}
+
+.nav-user-settings a:link,
+.nav-user-settings a:visited {
+    display: block;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.8em;
+    -webkit-transition: color .1s linear;  
+	-moz-transition: color .1s linear;  
+	-o-transition: color .1s linear;  
+	transition:  color .1s linear;
+}
+.nav-user-settings > a:after {
+    font-family: "Flaticons Stroke";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    content: "\e5a5";
+    color: #ccc;
+    display: block;
+    float: right;
+    font-size: 24px;
+    margin-left: 2px;
+    margin-top: 29px;
+    -webkit-transition: color .1s linear;  
+	-moz-transition: color .1s linear;  
+	-o-transition: color .1s linear;  
+	transition:  color .1s linear;
+}
+.nav-user-settings a:hover,
+.nav-user-settings a:active,
+.nav-user-settings a:focus,
+.nav-user-settings:hover > a:link,
+.nav-user-settings:hover > a:visited,
+.nav-user-settings:hover > a:after {
+    color: #f4715b;
+}
+.nav-user-settings > a {
+    height: 80px;
+    line-height: 80px;
+    position: relative;
+}
+.nav-user-settings > div {
+    display: none;
+    background-color: #fff;
+    border: solid 1px #ccc;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 70px;
+    right: -10px;
+}
+.nav-user-settings:hover > div {
+    display: block;
+}
+.nav-user-settings ul li {
+    display: block;
+    border-bottom: solid 1px #ccc;
+}
+.nav-user-settings ul li:last-child {
+    border: none;
+}
+.nav-user-settings ul li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+.nav-user-settings ul:before {
+    display: block;
+    width: 0;
+    height: 0;
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: 40px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ccc;
+}
+
+/* Board 
+***************************************************************/
+/* Board navigation */
+.cards-board-filter {
+    
+}
+.cards-board-filter li {
+    margin-bottom: 10px;
+}
+.cards-board-filter > ul > li {
+    margin-bottom: 20px;
+}
+.cards-board-filter > ul > li ul {
+    margin-top: 10px;
+    margin-left: 10px;
+    display: none;
+}
+.cards-board-filter > ul > li.expanded ul {
+    display: block;
+}
+.cards-board-filter a:link,
+.cards-board-filter a:visited {
+    display: block;
+    font-size: 1.6em;
+    color: #444;
+    position: relative;
+    -webkit-transition: color .1s linear;  
+	-moz-transition: color .1s linear;  
+	-o-transition: color .1s linear;  
+	transition:  color .1s linear;
+}
+.cards-board-filter a:hover,
+.cards-board-filter a:active,
+.cards-board-filter a:focus,
+.cards-board-filter li.current a:link,
+.cards-board-filter li.current a:visited {
+    color: #f4715b;
+}
+
+.cards-board-filter > ul > li > a:link,
+.cards-board-filter > ul > li > a:visited {
+    text-transform: uppercase;
+    color: #212121;
+    font-size: 2em;
+}
+.cards-board-filter > ul > li > a:hover,
+.cards-board-filter > ul > li > a:active,
+.cards-board-filter > ul > li > a:focus {
+    color: #000;
+}
+.cards-board-filter > ul > li > a:after {
+    font-family: "Flaticons Stroke";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 15px;
+    content: "\e5a5";
+    color: #ccc;
+    font-size: 20px;
+    margin-left: 2px;
+    -webkit-transition: color .1s linear;  
+	-moz-transition: color .1s linear;  
+	-o-transition: color .1s linear;  
+	transition:  color .1s linear;
+}
+.cards-board-filter > ul > li.expanded > a:after {
+    content: "\e5a4";
+}
+.cards-board-filter > ul > li:hover > a:after {
+    color: #212121;
+}
+
+.cards-board-filter li.giving a:after,
+.cards-board-filter li.receiving a:after {
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    left: -18px;
+    top: 6px;
+    content: " ";
+    -moz-border-radius: 50%;
+  	-webkit-border-radius: 50%;
+  	border-radius: 50%;
+}
+.cards-board-filter li.giving a:after {
+    background: #f4715b;         
+}
+.cards-board-filter li.receiving a:after {
+    background: #17c1c7;
+}
+
+/* Board header */
+.page-content-header {
+    margin: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.4em;
+    color: #444;
+}
+.breadcrumbs,
+.breadcrumbs li {
+    float: left; 
+}
+.breadcrumbs li > a:after,
+.breadcrumbs li > span:after {
+    content: "/";
+    color: #444;
+    padding: 0 3px;
+}
+.breadcrumbs li:last-child > a:after,
+.breadcrumbs li:last-child > span:after {
+    content: "";
+}
+.breadcrumbs a:link,
+.breadcrumbs a:visited {
+    color: #f4715b;
+}
+
+.cards-counter {
+    float: right; 
+}
+.cards-counter strong {
+    font-weight: bold;
+    color: #f4715b; 
+}
+
+/* Board footer */
+.page-content-footer {
+    margin: 0 10px;
+}
+
+.cards-pager {
+    margin: 20px auto;
+    font-size: 1.6em;
+    float: left;
+}
+.cards-pager li {
+    float: left;
+    margin: 0 5px;
+}
+.cards-pager li:first-child {
+    margin-left: 0;
+}
+.cards-pager li a:link,
+.cards-pager li a:visited,
+.cards-pager li span {
+    display: block;
+    border: solid 1px #f4715b;
+    padding: 10px;
+    color: #f4715b;
+    -webkit-transition: all .1s linear;  
+	-moz-transition: all .1s linear;  
+	-o-transition: all .1s linear;  
+	transition:  all .1s linear;
+}
+.cards-pager li span {
+    border: solid 1px transparent;
+}
+.cards-pager li:first-child a:link,
+.cards-pager li:first-child a:visited,
+.cards-pager li:last-child a:link,
+.cards-pager li:last-child a:visited,
+.cards-pager li a:hover,
+.cards-pager li a:active,
+.cards-pager li a:focus,
+.cards-pager li.current span {
+    border: solid 1px #f4715b;
+    background: #f4715b;
+    color: #fff;
+}
+
+/* Board content */
+.card {
+    width: 260px;
+    background: #fff;
+    margin: 10px;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    border-top: solid 6px transparent;
+    padding: 20px;
+    float: left;
+    cursor: pointer;
+}
+.card figure {
+    width: 260px;
+    height: 180px;
+    line-height: 180px;
+    text-align: center;
+    overflow: hidden;
+    background: #eee;
+    font-size: 1.8em;
+    margin-bottom: 10px;
+}
+.card figure img {
+    width: 260px;
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    -o-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.card:hover figure img {
+    -webkit-transform: scale(1.05); 
+    -moz-transform: scale(1.05); 
+    -ms-transform: scale(1.05); 
+    -o-transform: scale(1.05); 
+    transform: scale(1.05); 
+}
+.card h2 {
+    font-weight: bold;
+    color: #212121;
+    font-size: 1.8em;
+}
+.card h2 a:link,
+.card h2 a:visited {
+    color: #212121;
+    -webkit-transition: all .1s linear;  
+    -moz-transition: all .1s linear;  
+	-o-transition: all .1s linear;  
+	transition:  all .1s linear;
+}
+.card p {
+    font-size: 1.4em;
+    color: #444;
+    margin-top: 10px;
+}
+.card footer {
+    border-top: solid 1px #ccc;
+    -webkit-transition: all .1s linear;  
+	-moz-transition: all .1s linear;  
+	-o-transition: all .1s linear;  
+	transition:  all .1s linear;
+	margin-top: 10px;
+	padding-top: 10px;
+	font-size: 1.2em;
+	color: #777;
+	position: relative;
+	z-index: 5;
+}
+.card footer .card-place {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.card.giving {
+    border-top-color: #17c1c7;
+}
+.card.giving:hover h2,
+.card.giving:hover h2 a:link,
+.card.giving:hover h2 a:visited,
+.card.giving:hover footer {
+    color: #17c1c7;
+}
+.card.giving:hover footer {
+    border-color: #17c1c7;
+}
+
+.card.receiving {
+    border-top-color: #f4715b
+}
+.card.receiving:hover h2,
+.card.receiving:hover h2 a:link,
+.card.receiving:hover h2 a:visited,
+.card.receiving:hover footer {
+    color: #f4715b;
+}
+.card.receiving:hover footer {
+    border-color: #f4715b
+} 
+
+.card-place,
+.card-category,
+.card-time {
+    line-height: 26px;
+    margin-right: 20px;
+}
+.card-place:before,
+.card-category:before,
+.card-time:before {
+    padding-right: 3px;
+}
+
+a.card-favorite:link,
+a.card-favorite:visited {
+    display: block;
+    position: absolute;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: right;
+    top: 15px;
+    right: 0;
+    padding-top: 10px;
+}
+a.card-favorite:link:before,
+a.card-favorite:visited:before {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Flaticons Stroke";
+    content: "\e49d";
+    font-size: 20px;
+    color: #ccc;
+} 
+a.card-favorite:hover:before,
+a.card-favorite:active:before,
+a.card-favorite:focus:before {
+    color: #ffd33d;
+}
+a.card-favorite.selected:link:before,
+a.card-favorite.selected:visited:before {
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Flaticons Solid";
+    content: "\e0b5";
+    font-size: 20px;
+    color: #ffd33d;
+} 
+  
+/* Isotope */
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* Card details */
+.card-details {
+    margin: 0 30px;
+}
+.card-details figure {
+    width: 480px;
+    height: 300px;
+    text-align: center;
+    overflow: hidden;
+    background: #eee;
+    margin-bottom: 20px;
+}
+.card-details figure img {
+    width: 480px;
+}
+.card-details h2 {
+    font-weight: bold;
+    color: #212121;
+    font-size: 2em;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px #ccc;
+}
+.card-details p {
+    font-size: 1.6em;
+    color: #444;
+    margin-top: 10px;
+} 
+.card-details header {
+    padding-bottom: 10px;
+    border-bottom: solid 1px #ccc;
+    margin-bottom: 20px;
+    font-size: 1.4em;
+	color: #777;
+}
+
+/* Inner pages */
+/**************************************************************/
+.page-content-wrapper.inner-page .page-content-container,
+.page-content-wrapper.inner-page .page-sidebar {
+   background: #fff;
+   border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+   border-top: solid 6px #f4715b;
+   padding: 20px;
+}
+
+.page-content-wrapper.inner-page .page-content-container {
+   background: #fff;
+   margin: 10px;
+}
+
+
+/* Forms */
+/**************************************************************/
+/* TODO */
+
+/* Content */
+/***************************************************************/
+
+/* Article */
+.article {
+    padding: 0 10px;
+}
+.article p {
+	margin-bottom: 10px;
+}
+.article h1,
+.article h2,
+.article h3,
+.article h4 {
+	color: #e82490;
+}
+.article h1 {
+	font-size: 18px;
+}
+.article h2 {
+	font-size: 16px;
+}
+.article h3,
+.article h4 {
+	font-size: 14px;
+}
+.article a:link,
+.article a:visited {
+	color: #e82490;
+	text-decoration: underline;
+}
+
+/* RWD Part */
+/***************************************************************/
+@media only screen and (min-width:1280px) {
+
+/* Homepage */
+/* Layout */
+.page-content-wrapper,
+.page-header-inner-wrapper {  
+   width: 1280px;
+}
+
+/* Header */    
+.page-header nav {
+    margin-left: 50px;
+}
+
+#search {
+	width: 350px;
+	margin-left: 50px;
+}
+#search input {
+    width: 310px;
+}
+
+/* Content */
+.page-content {
+    width: 960px;
+}
+
+.page-header .logo {
+    width: 175px;
+}
+
+/* Inner page */
+.page-content-wrapper.inner-page {
+    width: 940px;
+}
+.page-content-wrapper.inner-page .page-content {
+    width: 600px;
+}
+.page-content-wrapper.inner-page .page-sidebar {
+   width: 240px;
+}
+
+
+}
