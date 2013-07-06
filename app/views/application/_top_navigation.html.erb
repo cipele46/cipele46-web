@@ -8,27 +8,33 @@
           <li><a href="#onama">o nama</a></li>
       </ul>
     </nav>
-  <div id="search">
-      <form>
-          <input id="q" name="q" type="text" title="search" placeholder="pretraži"/><button id="search-button" type="submit" title="Search"></button>
-      </form>
-  </div>
-  <% if current_user %>
-  <ul class="nav-user">
-      <li class="nav-user-new-add"><a href="add.html">objavi oglas</a></li>
-      <li class="nav-user-settings">
-          <a href="#home"><%= current_user.name %></a>
-          <div>
-            <ul>
-              <li><a href="#">Postavke</a></li>
-              <li><a href="#">Moji oglasi</a></li>
-							<% if user_signed_in? %>
-              <li><%= link_to 'Odjavi se', destroy_user_session_path, :method=>'delete' %></li>
-							<% end %>
-            </ul>
-          <div>
-      </li>
-  </ul>
-  <% end -%>
+    <div id="search">
+        <form>
+            <input id="q" name="q" type="text" title="search" placeholder="pretraži"/><button id="search-button" type="submit" title="Search"></button>
+        </form>
+    </div>
+    <ul class="nav-user">
+        <li class="nav-user-new-add">
+          <% unless current_user %><%= link_to "Objavi oglas", new_user_session_path %><% end -%>
+          <% if current_user %><%= link_to "Objavi oglas", new_ad_path %><% end -%>
+        </li>
+        <% unless current_user %>
+        <li class="nav-user-not-logged">
+            <a href="#home">Prijavi se</a>
+        </li>
+        <% end -%>
+        <% if current_user %>
+        <li class="nav-user-settings">
+            <a href="#home"><%= current_user.name %></a>
+            <div>
+              <ul>
+                <li><a href="#">Postavke</a></li>
+                <li><a href="#">Moji oglasi</a></li>
+                <li><a href="#">Odjavi se</a></li>
+              </ul>
+            <div>
+        </li>
+        <% end -%>
+    </ul>
   </div>
 </header>

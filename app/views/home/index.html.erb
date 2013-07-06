@@ -6,7 +6,7 @@
     </header>
 
     <section class="cards-board clearfix">
-        
+
         <% @ads.each do |ad| %>
           <article class="card giving" data-details="<%= ad_path(ad) %>">
               <figure class="icon window-2">
@@ -20,7 +20,7 @@
                   <span class="card-place icon stroke location"><%= ad.city.region.name %></span>
                   <span class="card-category icon stroke category"><%= ad.category.name %></span>
                   <span class="card-time icon stroke time"><%= time_ago_in_words ad.expires_at %></span>
-                  <a href="#" class="card-favorite selected" title="Makni iz favorita" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
+                  <% if current_user %><a href="#" class="card-favorite selected" title="Makni iz favorita" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a><% end -%>
               </footer>
           </article>
         <% end -%>
