@@ -12,9 +12,8 @@ Cipele46Web::Application.routes.draw do
   end
   get 'home' => 'home#index'
   devise_for :users
-
   resources :ads, :only => [:create, :edit, :new, :show, :update]
-  resources :users
+  resources :users, :only => [:show]
   resources :regions, :only => [:index]
   resources :categories, :only => [:index]
   
