@@ -1,8 +1,4 @@
 class HomeController < ApplicationController
-
-  #TODO - move to config file
-  ADS_PER_PAGE = 15
-
   def index
     @demands = Ad.active.demands.count
     @supplies = Ad.active.supplies.count
@@ -11,5 +7,4 @@ class HomeController < ApplicationController
     @ads = Ad.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
     @total_ads_count = Ad.active.count
   end
-
 end
