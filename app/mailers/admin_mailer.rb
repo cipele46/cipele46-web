@@ -1,5 +1,5 @@
 class AdminMailer < ActionMailer::Base
-  default from: "from@example.com", to: "vladocingel@gmail.com"
+  default from: "from@example.com", to: "admin@cipele46.org"
 
   def new_ad(ad)
     @ad = ad

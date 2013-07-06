@@ -7,6 +7,9 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+group :development do
+  gem "letter_opener"
+end
 gem 'thin'
 gem 'jquery-rails'
 gem "haml-rails", ">= 0.4"
