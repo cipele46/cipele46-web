@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706103100) do
+ActiveRecord::Schema.define(:version => 20130706125349) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(:version => 20130706103100) do
   add_index "ads", ["category_id"], :name => "index_ads_on_category_id"
   add_index "ads", ["city_id"], :name => "index_ads_on_city_id"
   add_index "ads", ["user_id"], :name => "index_ads_on_user_id"
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"

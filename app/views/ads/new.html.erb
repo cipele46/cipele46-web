@@ -1,6 +1,9 @@
 <h2>Dodaj oglas</h2>
 
 <%= simple_form_for @ad do |f| %>
+  <%# NOTE: It is not possible to edit ad type %>
+  <%= f.input :ad_type, :as => :radio_buttons, :collection => ad_types_for_select %>
+
   <%= render 'ads/form', :f => f %>
 
   <p>
