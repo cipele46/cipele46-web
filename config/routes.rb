@@ -25,4 +25,10 @@ Cipele46Web::Application.routes.draw do
   match "blog"      => "blog#index", as: :blogs
   match "blog/:id"  => "blog#show", as: :blog
 
+  match 'auth/facebook/callback'        => 'social#facebook', :as => :facebook
+  match 'auth/failure'                  => 'social#failure',  :as => :social_failure
+  #match 'auth/twitter/callback'         => 'social#twitter',  :as => :twitter
+  #match 'auth/google_oauth2/callback'   => 'social#google',   :as => :google
+  #match 'auth/linkedin/callback'        => 'social#linkedin', :as => :linkedin  
+
 end
