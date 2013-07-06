@@ -5,7 +5,7 @@ class Ad < ActiveRecord::Base
   belongs_to :category
   belongs_to :user
   belongs_to :city
-  attr_accessible :description, :status, :title, :type, :category_id, :user_id, :city_id, :image, :phone, :email
+  attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone, :email
 
   mount_uploader :image, ImageUploader
 
@@ -18,5 +18,5 @@ class Ad < ActiveRecord::Base
   validates :description, :presence => true
   validates :phone, :presence => true
   validates :title, :presence => true
-  validates :type, :presence => true
+  validates :ad_type, :presence => true
 end
