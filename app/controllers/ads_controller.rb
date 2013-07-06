@@ -29,7 +29,7 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = AdCreation.new(current_user).create(params[:ad])
+    @ad = AdCreation.new(current_user).create(params[:oglas])
     respond_with @ad
   end
 
@@ -39,22 +39,22 @@ class AdsController < ApplicationController
 
   def update
     @ad = current_user.ads.find(params[:id])
-    @ad.update_attributes params[:ad]
+    @ad.update_attributes params[:oglas]
 
     respond_with @ad
   end
-  
+
   def destroy
     @ad = current_user.ads.find(params[:id])
     @ad.destroy
-    
+
     redirect_to root_url, :notice => "Oglas obrisan"
   end
-  
+
   def dispatch_email
     user_info = params[:user_info]
     ad = Ad.find(params[:id])
-    
+
     if UserMailer.send_email(ad,user_info).deliver
       flash[:notice] = "Sent!"
     else
