@@ -28,6 +28,10 @@ module Cipele46Web
       g.view_specs false
       g.helper_specs false
     end
+    
+    config.to_prepare do
+      DeviseController.respond_to :html, :json
+    end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
