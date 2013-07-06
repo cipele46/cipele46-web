@@ -30,3 +30,4 @@ gem 'foreman'
 gem "carrierwave"
 gem "activeadmin"
 gem "mini_magick"
+gem "high_voltage"

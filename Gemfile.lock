@@ -113,6 +113,7 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     has_scope (0.5.1)
+    high_voltage (1.2.3)
     hike (1.2.3)
     hpricot (0.8.6)
     html2haml (1.0.1)
@@ -251,6 +252,7 @@ DEPENDENCIES
   figaro (>= 0.6.3)
   foreman
   haml-rails (>= 0.4)
+  high_voltage
   html2haml (>= 1.0.1)
   hub (>= 1.10.2)
   jquery-rails
