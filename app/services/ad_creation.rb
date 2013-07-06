@@ -8,7 +8,16 @@ class AdCreation
   def create(params)
     @ad = user.ads.new(params)
     @ad.set_status
-    @ad.save
+    if @ad.save
+      notify_admin
+    end
+    @ad
+  end
+
+  private
+
+  def notify_admin
+    AdminMailer.new_ad(ad).deliver
   end
 
 end

@@ -17,4 +17,7 @@ Cipele46Web::Application.routes.draw do
   resources :users
   resources :regions, :only => [:index]
   resources :categories, :only => [:index]
+  
+  match "favorites/:id" => "favorites#toggle", as: :toggle
+
 end
