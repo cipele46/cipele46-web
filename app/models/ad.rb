@@ -1,7 +1,6 @@
-# encoding: UTF-8
-
 class Ad < ActiveRecord::Base
-  TYPES = { "Poklanjam" => 1, "Tražim" => 2 }
+  TYPES = { :supply => 1, :demand => 2 }
+  STATUS = { :pending => 1, :active => 2, :closed => 3 }
 
   belongs_to :category
   belongs_to :user
@@ -14,5 +13,4 @@ class Ad < ActiveRecord::Base
   scope :offers, where(type: 1)
   scope :demands, where(type: 2)
 
-  
 end
