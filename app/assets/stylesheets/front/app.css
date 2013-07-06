@@ -11,22 +11,22 @@
 
 @font-face {
     font-family: "Flaticons Solid";
-    src: url("/assets/fonts/flaticons-solid.eot");
-    src: url("/assets/fonts/flaticons-solid.eot?#iefix") format("embedded-opentype"),
-        url("/assets/fonts/flaticons-solid.woff") format("woff"),
-        url("/assets/fonts/flaticons-solid.ttf") format("truetype"),
-        url("/assets/fonts/flaticons-solid.svg#flaticons-solid") format("svg");
+    src: url("/assets/flaticons-solid.eot");
+    src: url("/assets/flaticons-solid.eot?#iefix") format("embedded-opentype"),
+        url("/assets/flaticons-solid.woff") format("woff"),
+        url("/assets/flaticons-solid.ttf") format("truetype"),
+        url("/assets/flaticons-solid.svg#flaticons-solid") format("svg");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Flaticons Stroke";
-    src: url("/assets/fonts/flaticons-stroke.eot");
-    src: url("/assets/fonts/flaticons-stroke.eot?#iefix") format("embedded-opentype"),
-        url("/assets/fonts/flaticons-stroke.woff") format("woff"),
-        url("/assets/fonts/flaticons-stroke.ttf") format("truetype"),
-        url("/assets/fonts/flaticons-stroke.svg#flaticons-stroke") format("svg");
+    src: url("/assets/flaticons-stroke.eot");
+    src: url("/assets/flaticons-stroke.eot?#iefix") format("embedded-opentype"),
+        url("/assets/flaticons-stroke.woff") format("woff"),
+        url("/assets/flaticons-stroke.ttf") format("truetype"),
+        url("/assets/flaticons-stroke.svg#flaticons-stroke") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -157,7 +157,7 @@ button {
     display: block;
     width: 62px;
     height: 80px;
-    background: url(../images/shoes46_logo.png) left center no-repeat;
+    background: url(/assets/shoes46_logo.png) left center no-repeat;
     text-indent: -9999px;
     float: left;
 }
