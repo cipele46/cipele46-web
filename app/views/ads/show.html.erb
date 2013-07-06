@@ -3,24 +3,24 @@
     <% unless is_own_ad @ad %>
     <div class="page-sidebar">
       <h3>Kontakt</h3>
-      <p class="sidebar-number">099 232 456</p>
-      <form>
-        <p class="sidebar-input-description">Poruka</p>
-        <textarea rows="8" name="sidebar-texarea" placeholder="Upiši poruku"></textarea>
-        <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
-        <input id="q" name="q" type="email" title="email" placeholder="Upiši email"/>
-        <a href="#" class="sidebar-button" type="submit" title="Pošalji">Pošalji upit</a>
-      </form>
+      <p class="sidebar-number"><%= @ad.phone %></p>
+		<%= form_tag dispatch_email_path, method: :post do %>
+		    <p class="sidebar-input-description">Poruka</p>
+			<%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku" %>
+	        <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
+		  	<%= text_field_tag "user_info[email]", "", placeholder: "Upiši email" %><br />
+		  	<%= submit_tag "Pošalji", :class => 'sidebar-button' %>
+		<% end %>
     </div>
     <% else %>
     <div class="page-sidebar">
       <h3>Kontakt</h3>
-      <p class="sidebar-number">099 232 456</p>
-      <p class="sidebar-email">ivan@cipelic.com</p>
-      <a style="margin-top:44px;" href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Uredi oglas</a>
-      <a href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Zatvori oglas</a>
-      <p class="sidebar-button-description">Zatvoren oglas je rješen i ne vidi se u kategorijama ili tražilici</p>
-      <a style="margin-top:34px;" href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Obriši oglas</a>
+	      <p class="sidebar-number"><%= @ad.phone %></p>
+	      <p class="sidebar-email"><%= @ad.email %></p>
+		    <%= link_to "Uredi oglas", edit_ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:44px;"  %>
+	      <a href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Zatvori oglas</a>
+	      <p class="sidebar-button-description">Zatvoren oglas je rješen i ne vidi se u kategorijama ili tražilici</p>
+    		<%= link_to "Obriši oglas", ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:34px;", :confirm => "Sigurno želite obrisati ovaj oglas?", :method=>:delete %>
     </div>
     <% end %>
   </aside>
@@ -30,8 +30,8 @@
       <article class="card-details">
         <header>
           <h2><%= @ad.title %></h2>
-          <span class="card-place icon stroke location"><%= @ad.city.region.name %>, <%= @ad.city.name %></span>
-          <span class="card-category icon stroke category"><%= @ad.category.name %></span>
+		      <span class="card-place icon stroke location"><%= link_to "#{@ad.city.region.name}", ads_path(:city_id => 0, :category_id => 0,:region_id => @ad.city.region.id) %>, <%= link_to "#{@ad.city.name}", ads_path(:city_id => @ad.city.id, :category_id => 0, :region_id => 0) %></span>
+          <span class="card-category icon stroke category"><%= link_to "#{@ad.category.name}", ads_path(:category_id => @ad.category.id, :region_id => 0, :city_id => 0) %></span>
           <span class="card-time icon stroke time"><%= time_ago_in_words @ad.expires_at %></span>
           <% if current_user %>
             <%= link_to "&#xE0B5;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected' %>
