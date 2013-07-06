@@ -1,6 +1,8 @@
 require "ostruct"
 
 class Filter
+  attr_accessor :params
+
   def initialize(params)
     @params = OpenStruct.new(params.symbolize_keys)
   end
@@ -25,11 +27,9 @@ class Filter
 
   def session
     if no_filters?
-      self.params = {}
+      {}
     else
-      self.params.to_hash || {}
+      self.params.marshal_dump || {}
     end
   end
-
-  attr_accessor :params
 end
