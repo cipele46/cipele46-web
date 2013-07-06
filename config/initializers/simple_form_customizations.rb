@@ -41,5 +41,17 @@ SimpleForm.setup do |config|
   # Check the Bootstrap docs (http://twitter.github.com/bootstrap)
   # to learn about the different styles for forms and inputs,
   # buttons and other elements.
-  config.default_wrapper = :bootstrap
+
+  config.wrappers :cipele46, :tag => 'div', :class => "input-container" do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.use :input, :required_class => 'required'
+    b.use :hint, :wrap_with => { :tag => 'label', :class => 'note' }
+    b.use :error, :wrap_with => { :tag => 'label', :class => 'error' }
+  end
+
+  config.label_class = 'title'
+
+  config.default_wrapper = :cipele46
 end
