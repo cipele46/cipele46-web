@@ -8,18 +8,18 @@ var app = (function($, window, document, undefined) {
 
     var _cardBoardInit = function() {
 
-        $("article.card, article.card-details").on("click", function(event){
-            event.preventDefault();
+        // $("article.card, article.card-details").on("click", "", function(event){
+        //     event.preventDefault();
 
-            var $eventTarget = $(event.target);
+        //     var $eventTarget = $(event.target);
 
-            if($eventTarget.is("a.card-favorite")) {
-                handleCardFavorites($(this), $eventTarget);
-            }
-            else {
-               window.location = $(this).data().details;
-            }
-        });
+        //     if($eventTarget.is("a.card-favorite")) {
+        //         handleCardFavorites($(this), $eventTarget);
+        //     }
+        //     else {
+        //        window.location = $(this).data().details;
+        //     }
+        // });
 
         $("#cards-board-filter-nav > li > a").on("click", function(event){
             event.preventDefault();
