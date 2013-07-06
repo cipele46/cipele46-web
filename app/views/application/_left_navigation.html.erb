@@ -13,9 +13,17 @@
         <li class="expanded">
             <a href="#">Vrsta oglasa</a>
             <ul>
-                <li class="current"><%= link_to "Svi oglasi (#{(@demands + @supplies)})", ads_path(:type => :all) %></li>
-                <li class="giving"><%= link_to "Ponuda (#@supplies)", ads_path(:type => :supply) %></li>
-                <li class="receiving"><%= link_to "Potražnja (#@demands)", ads_path(:type => :demand)%></li>
+                <li class="current <%=(["supply", "demand"].include? @selected_type) ? '': 'sidebar-selected-item'%>">
+                  <%= link_to "Svi oglasi (#{(@demands + @supplies)})", ads_path(:type => :all) %>
+                </li>
+
+                <li class="giving <%=@selected_type == "supply" ? 'sidebar-selected-item': ''%>">
+                  <%= link_to "Ponuda (#@supplies)", ads_path(:type => :supply) %>
+                </li>
+
+                <li class="receiving <%=@selected_type == "demand" ? 'sidebar-selected-item': ''%>">
+                  <%= link_to "Potražnja (#@demands)", ads_path(:type => :demand)%>
+                </li>
             </ul>
         </li>
         <li class="expanded">
