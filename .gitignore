@@ -33,6 +33,7 @@ db/*.sqlite3
 /coverage/
 /db/*.javadb/
 /db/*.sqlite3
+/db/*.db
 /doc/api/
 /doc/app/
 /doc/features.html
