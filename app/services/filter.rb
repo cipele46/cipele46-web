@@ -1,5 +1,5 @@
 class Filter
-  attr_reader :params
+
   def initialize(params, ads)
     @params = params
     @ads   =  ads
@@ -20,4 +20,7 @@ class Filter
     hash[:region_id]   = params[:region_id] if params[:region_id]
     hash
   end
+
+  private
+    attr_reader :params
 end
