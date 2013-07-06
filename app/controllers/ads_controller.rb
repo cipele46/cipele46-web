@@ -7,10 +7,11 @@ class AdsController < ApplicationController
     @regions = Region.order(:name)
     @total_ads_count = Ad.active.count
 
-    session[:filters].merge!(params)
 
-    @filter = Filter.new(session[:filters])
-    @ads = @filter.perform
+    @filter = Filter.new(session[:filters].merge(params))
+    @ads    = @filter.perform
+
+    session[:filters] = @filter.session
 
     @selected_category_id = session[:filters]["category_id"]
     @selected_region_id = session[:filters]["region_id"]
