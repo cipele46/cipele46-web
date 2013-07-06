@@ -1,2 +1,4 @@
 <h2><%= @ad.title %><h2><br/><br/>
-<b><%= @ad.category.name %></b> <b><%= @ad.city.region.name %></b> <b><% due_date_formatted(@ad) %></b>
+<b><%= @ad.category.name %></b> <b><%= @ad.city.region.name %></b> jos <b><%= time_ago_in_words @ad.expires_at %></b> dana
+
+

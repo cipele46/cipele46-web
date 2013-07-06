@@ -1,4 +1,5 @@
 class Ad < ActiveRecord::Base
+  VALID_FOR = 30 # in days
   TYPES = { :supply => 1, :demand => 2 }
   STATUS = { :pending => 1, :active => 2, :closed => 3 }
 
@@ -21,9 +22,11 @@ class Ad < ActiveRecord::Base
   validates :phone, :presence => true
   validates :title, :presence => true
   validates :type, :presence => true
+  
+  def expires_at
+    created_at + VALID_FOR.days 
+  end
+  
 end
 
-def due_date_formatted(ad)
-(Time.zone.now - ad.created_at).to_i / 1.day
- # time_ago_in_words @ad.created_at
-end
+
