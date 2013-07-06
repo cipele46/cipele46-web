@@ -5,8 +5,10 @@ Cipele46Web::Application.routes.draw do
     root :to => 'home#index'
   end
   root :to => "home#index"
+  get 'home' => 'home#index'
   devise_for :users
   ActiveAdmin.routes(self)
-  resources :ads, :only => [:create, :edit, :show, :update]
+  resources :ads, :only => [:create, :edit, :new, :show, :update]
   resources :users
+  resources :regions, :only => [:index]
 end
