@@ -1,10 +1,19 @@
 class AdsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show]
+  before_filter :authenticate_user!, :except => [:show, :index]
   respond_to :html, :json
+
+  def index
+    @demands = Ad.active.demands.count
+    @supplies = Ad.active.supplies.count
+    @categories = Category.order(:name)
+    @regions = Region.order(:name)
+    @total_ads_count = Ad.active.count
+
+    @ads = Filter.new(params, @ads).perform
+  end
 
   def show
     @ad = Ad.find(params[:id])
-
   end
 
   def new
