@@ -1,18 +1,5 @@
 <%= render 'application/left_navigation' %>
 
-<<<<<<< HEAD
-<div style="margin: 20px 0 0 250px; padding: 10px">
-  <%= paginate @ads  %>
-  <% @ads.each do |ad| %>
-    <div style="width: 200px; height: 200px; border: 1px dashed #ccc; float: left; margin: 5px">
-      <h3><%= ad.title %></h3>
-      <% if ad.image.url %>
-        <%= image_tag ad.image.url(:small) %>
-      <% end -%>
-    </div>
-  <% end -%>
-</div>
-=======
 <div class="page-content">
     <header class="page-content-header clearfix">
         <ul class="breadcrumbs clearfix">
@@ -23,88 +10,28 @@
     </header>
 
     <section class="cards-board clearfix">
-        <article class="card giving" data-details="card_detail.html">
-            <figure class="icon window-2"><img src="assets/data/images/card_image_2.jpg" alt="card_image_2" width="260"></figure>
-            <h2><a href="card_detail.html">Poklanjam starinski namještaj kauč, fotelju i komodu</a></h2>
-            <p>Poklanjam očuvani starinski namještaj radi preseljenja. Mogućnost preuzimanja u komadu ili pojedinačno. Dostava nije ...</p>
-            <footer>
-                <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
-                <span class="card-category icon stroke category">Namještaj</span>
-                <span class="card-time icon stroke time">21 dan</span>
-                <a href="#" class="card-favorite selected" title="Makni iz favorita" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
-            </footer>
-        </article>
+        
+        <% @ads.each do |ad| %>
+          <article class="card giving" data-details="card_detail.html">
+              <figure class="icon window-2">
+                <% if ad.image.url %>
+                  <%= image_tag ad.image.url(:small) %>
+                <% end -%>
+              </figure>
+              <h2><a href="card_detail.html"><%= ad.title %></a></h2>
+              <p><%= ad.description %></p>
+              <footer>
+                  <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
+                  <span class="card-category icon stroke category">Namještaj</span>
+                  <span class="card-time icon stroke time">21 dan</span>
+                  <a href="#" class="card-favorite selected" title="Makni iz favorita" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
+              </footer>
+          </article>
+        <% end -%>
 
-        <article class="card receiving" data-details="card_detail.html">
-            <figure class="icon window-2"><img src="assets/data/images/card_image_1.jpg" alt="card_image_1" width="260"></figure>
-            <h2><a href="card_detail.html">Poklanjam perilicu</a></h2>
-            <p>Poklanjam izraubanu vešmašinu za veš!</p>
-            <footer>
-                <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
-                <span class="card-category icon stroke category">Namještaj</span>
-                <span class="card-time icon stroke time">21 dan</span>
-                <a href="#" class="card-favorite" title="Dodaj u favorite" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
-            </footer>
-        </article>
-
-        <article class="card giving" data-details="card_detail.html">
-            <h2><a href="card_detail.html">Poklanjam starinski namještaj kauč, fotelju i komodu</a></h2>
-            <footer>
-                <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
-                <span class="card-category icon stroke category">Namještaj</span>
-                <span class="card-time icon stroke time">21 dan</span>
-                <a href="#" class="card-favorite selected" title="Makni iz favorita" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
-            </footer>
-        </article>
-
-        <article class="card giving" data-details="card_detail.html">
-            <figure class="icon window-2"><img src="assets/data/images/card_image_1.jpg" alt="card_image_1" width="260"></figure>
-            <h2><a href="card_detail.html">Poklanjam perilicu</a></h2>
-            <p>Poklanjam izraubanu vešmašinu za veš!</p>
-            <footer>
-                <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
-                <span class="card-category icon stroke category">Namještaj</span>
-                <span class="card-time icon stroke time">21 dan</span>
-                <a href="#" class="card-favorite" title="Dodaj u favorite" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
-            </footer>
-        </article>
-
-        <article class="card receiving" data-details="card_detail.html">
-            <h2><a href="card_detail.html">Htio bih novu kosilicu!</a></h2>
-            <p>Ako ima netko, treba mi za vikendicu trofazna kosilica za travu!?<br>Hitno!</p>
-            <footer>
-                <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
-                <span class="card-category icon stroke category">Namještaj</span>
-                <span class="card-time icon stroke time">21 dan</span>
-                <a href="#" class="card-favorite" title="Dodaj u favorite" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
-            </footer>
-        </article>
-
-        <article class="card giving" data-details="card_detail.html">
-            <figure class="icon window-2"><img src="assets/data/images/card_image_1.jpg" alt="card_image_1" width="260"></figure>
-            <h2><a href="card_detail.html">Poklanjam perilicu</a></h2>
-            <p>Poklanjam izraubanu vešmašinu za veš!</p>
-            <footer>
-                <span class="card-place icon stroke location">Koprivničko-križevačka županija</span>
-                <span class="card-category icon stroke category">Namještaj</span>
-                <span class="card-time icon stroke time">21 dan</span>
-                <a href="#" class="card-favorite" title="Dodaj u favorite" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
-            </footer>
-        </article>
     </section>
 
     <footer class="page-content-footer clearfix">
-        <ol class="cards-pager clearfix">
-            <li><a href="#">prethodna</a></li>
-            <li><a href="#">12</a></li>
-            <li class="current"><span>13</span></li>
-            <li><a href="#">14</a></li>
-            <li><span>...</span></li>
-            <li><a href="#">20</a></li>
-            <li><a href="#">21</a></li>
-            <li><a href="#">22</a></li>
-            <li><a href="#">slijedeća</a></li>
-        </ol>
+        <%= paginate @ads  %>
     </footer>
 </div>
->>>>>>> ad7267ef77c2e3eddd63ccf5b2cc3c5291538ccc
