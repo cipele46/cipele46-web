@@ -7,10 +7,12 @@ jos <b><%= time_ago_in_words @ad.expires_at %></b> dana <br/>
 <p>
 	<%= @ad.description %>
 </p>
-<% if ad_is_favorite(@ad.id) %>
-	<%= link_to "Spremi u favorite", toggle_path(@ad.id), remote: :true %>
-<% else %>
-	<%= link_to "Ukloni iz favorita", toggle_path(@ad.id), remote: :true  %>
+<% if current_user %>
+  <% if ad_is_favorite(@ad.id) %>
+  	<%= link_to "Spremi u favorite", toggle_path(@ad.id), remote: :true %>
+  <% else %>
+  	<%= link_to "Ukloni iz favorita", toggle_path(@ad.id), remote: :true  %>
+  <% end %>
 <% end %>
 
 
