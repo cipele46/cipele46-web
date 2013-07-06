@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   #TODO - move to config file
-  ADS_PER_PAGE = 1
+  ADS_PER_PAGE = 15
 
   def index
     @demands = Ad.active.demands.count
