@@ -4,8 +4,8 @@
     <nav>
       <ul>
           <li class="current"><%= link_to "oglasi", root_path %></li>
-          <li><%= link_to "Blog", blogs_path %></li>
-          <li><%= link_to "o nama", page_path('o-nama') %></li>
+          <li class="hidden"><%= link_to "Blog", blogs_path %></li>
+          <li><%= link_to "naša priča", page_path('nasa-prica') %></li>
       </ul>
     </nav>
     <div id="search">
@@ -15,11 +15,12 @@
     </div>
     <ul class="nav-user">
         <li class="nav-user-new-add">
-          <% unless current_user %><%= link_to "Objavi oglas", new_user_session_path %><% end -%>
-          <% if current_user %><%= link_to "Objavi oglas", new_ad_path %><% end -%>
+          <%= link_to "Objavi oglas", page_path('u-izradi') %>
+          <% unless current_user %><%= link_to "Objavi oglas", new_user_session_path, :class => 'hidden' %><% end -%>
+          <% if current_user %><%= link_to "Objavi oglas", new_ad_path, :class => 'hidden' %><% end -%>
         </li>
         <% unless current_user %>
-        <li class="nav-user-not-logged">
+        <li class="nav-user-not-logged hidden">
           <%= link_to "Prijavi se", new_user_session_path %>
         </li>
         <% end -%>

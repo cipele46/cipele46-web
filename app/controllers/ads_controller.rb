@@ -7,14 +7,15 @@ class AdsController < ApplicationController
     @regions = Region.order(:name)
     @total_ads_count = Ad.active.count
 
-    session[:filters].merge!(params)
 
-    @filter = Filter.new(session[:filters])
-    @ads = @filter.perform
+    @filter = Filter.new(session[:filters].merge(params))
+    @ads    = @filter.perform
 
-    @selected_category_id = session[:filters]["category_id"]
-    @selected_region_id = session[:filters]["region_id"]
-    @selected_type = session[:filters]["type"]
+    session[:filters] = @filter.session
+
+    @selected_category_id = session[:filters][:category_id]
+    @selected_region_id   = session[:filters][:region_id]
+    @selected_type        = session[:filters][:type]
 
     respond_with @ads, :include => [ :city, :category, :region ]
   end
@@ -28,7 +29,7 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = AdCreation.new(current_user).create(params[:ad])
+    @ad = AdCreation.new(current_user).create(params[:oglas])
     respond_with @ad
   end
 
@@ -38,8 +39,27 @@ class AdsController < ApplicationController
 
   def update
     @ad = current_user.ads.find(params[:id])
-    @ad.update_attributes params[:ad]
+    @ad.update_attributes params[:oglas]
 
     respond_with @ad
+  end
+
+  def destroy
+    @ad = current_user.ads.find(params[:id])
+    @ad.destroy
+
+    redirect_to root_url, :notice => "Oglas obrisan"
+  end
+
+  def dispatch_email
+    user_info = params[:user_info]
+    ad = Ad.find(params[:id])
+
+    if UserMailer.send_email(ad,user_info).deliver
+      flash[:notice] = "Sent!"
+    else
+      flash[:error] = "Could't send you message."
+    end
+    redirect_to ad_path(ad)
   end
 end

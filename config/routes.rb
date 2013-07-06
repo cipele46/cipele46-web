@@ -11,12 +11,14 @@ Cipele46Web::Application.routes.draw do
   get 'home' => 'ads#index'
   devise_for :users
 
-  resources :ads, :only => [:index, :create, :edit, :new, :show, :update]
+  resources :ads
   resources :users
   resources :regions, :only => [:index]
   resources :categories, :only => [:index, :show]
 
   match "favorites/:id" => "favorites#toggle", as: :toggle
+  
+  match "dispatch_email/:id", to: "ads#dispatch_email",  as: "dispatch_email", method: :post
 
   match "blog"      => "blog#index", as: :blogs
   match "blog/:id"  => "blog#show", as: :blog
