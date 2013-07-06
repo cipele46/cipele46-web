@@ -1,4 +1,6 @@
 Cipele46Web::Application.routes.draw do
+  
+
   get "categories/index"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -13,11 +15,14 @@ Cipele46Web::Application.routes.draw do
   get 'home' => 'home#index'
   devise_for :users
 
-  resources :ads, :only => [:create, :edit, :new, :show, :update]
+  resources :ads, :only => [:index, :create, :edit, :new, :show, :update]
   resources :users
   resources :regions, :only => [:index]
-  resources :categories, :only => [:index]
+  resources :categories, :only => [:index, :show]
   
   match "favorites/:id" => "favorites#toggle", as: :toggle
+
+  match "blog"      => "blog#index", as: :blogs
+  match "blog/:id"  => "blog#show", as: :blog
 
 end

@@ -1,12 +1,9 @@
 class RegionsController < ApplicationController
+  respond_to :json
+
   def index
-    @regions = Region.find(:all, :include => :cities, :order => :name)
-     
-    respond_to do |format|
-      format.json do 
-        render :json => @regions.to_json(:include => :cities, :order => :name)
-      end
-    end
+    @regions = Region.order(:name).includes(:cities)
+    respond_with @regions, :include => :cities
   end
 
 end
