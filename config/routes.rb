@@ -1,4 +1,6 @@
 Cipele46Web::Application.routes.draw do
+  get "categories/index"
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   authenticated :user do
@@ -11,4 +13,5 @@ Cipele46Web::Application.routes.draw do
   resources :ads, :only => [:create, :edit, :new, :show, :update]
   resources :users
   resources :regions, :only => [:index]
+  resources :categories, :only => [:index]
 end

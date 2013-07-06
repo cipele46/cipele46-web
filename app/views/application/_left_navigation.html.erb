@@ -1,29 +1,38 @@
-<div style="width: 200px; border: 1px solid blue; float: left; margin: 20px; padding: 5px">
-  <strong>LEFT NAVIGATION</strong>
-  <hr>
-  
-  <strong>Vrsta oglasa</strong>
-  <ul>
-    <li>Svi oglasi (<%= @offers + @demands %>)</li>
-    <li>Ponuda (<%= @offers %>)</li>
-    <li>Potražnja (<%= @demands %>)</li>
-  </ul>
-  <hr>
+<aside class="page-sidebar">
+    <nav class="cards-board-filter">
+        <ul id="cards-board-filter-nav">
+            <li class="expanded">
+                <a href="#">Moj kutak</a>
+                <ul>
+                    <li><a href="#">Moji oglasi (3)</a></li>
+                    <li><a href="#">Moji favoriti (123)</a></li>
+                </ul>
+            </li>
+            <li class="expanded">
+                <a href="#">Vrsta oglasa</a>
+                <ul>
+                    <li class="current"><a href="#">Svi oglasi (<%= @demands + @supplies %>)</a></li>
+                    <li class="giving"><a href="#">Ponuda (<%= @supplies %>)</a></li>
+                    <li class="receiving"><a href="#">Potražnja (<%= @demands %>)</a></li>
 
-  <strong>Kategorije</strong>
-  <ul>
-    <% @categories.each do |category| %>
-      <li><%= category.name %></li>
-    <% end -%>    
-  </ul>
-  <hr>
-
-  <strong>Županije</strong>
-  <ul>
-    <% @regions.each do |region| %>
-      <li><%= region.name %></li>
-    <% end -%>
-  </ul>
-  <hr>
-
-</div>
+                </ul>
+            </li>
+            <li class="expanded">
+                <a href="#">Kategorije</a>
+                <ul>
+                    <% @categories.each do |category| %>
+                      <li><a href="#"><%= category.name %> (<%= ads_in_category(category) %>)</a></li>
+                    <% end -%>
+                </ul>
+            </li>
+            <li class="expanded">
+                <a href="#">Županije</a>
+                <ul>
+                    <% @regions.each do |region| %>
+                      <li><a href="#"><%= region.name %> (<%= ads_in_region(region) %>)</a></li>
+                    <% end -%>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>
