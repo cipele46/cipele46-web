@@ -9,8 +9,8 @@
       </ul>
     </nav>
     <div id="search">
-        <form>
-            <input id="q" name="q" type="text" title="search" placeholder="pretraži"/><button id="search-button" type="submit" title="Search"></button>
+        <form action="/ads">
+            <input id="q" name="q" type="text" value="<%= params[:q] %>" title="search" placeholder="pretraži"/><button id="search-button" type="submit" title="Search"></button>
         </form>
     </div>
     <ul class="nav-user">
