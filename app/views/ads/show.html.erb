@@ -1,7 +1,7 @@
-<div class="page-content-wrapper inner-page giving clearfix">
+<div class="page-content-wrapper inner-page giving clearfix <%= ad_type_decode @ad.ad_type %>">
   <aside class="sidebar-wrapper">
     <% unless is_own_ad @ad %>
-    <div class="page-sidebar <%= ad_type_decode @ad.ad_type %>">
+    <div class="page-sidebar">
       <h3>Kontakt</h3>
       <p class="sidebar-number">099 232 456</p>
       <form>
@@ -13,7 +13,7 @@
       </form>
     </div>
     <% else %>
-    <div class="page-sidebar <%= ad_type_decode @ad.ad_type %>">
+    <div class="page-sidebar">
       <h3>Kontakt</h3>
       <p class="sidebar-number">099 232 456</p>
       <p class="sidebar-email">ivan@cipelic.com</p>
@@ -26,7 +26,7 @@
   </aside>
   <div class="page-content">
     <%= render 'application/breadcrumbs' %>
-    <section class="page-content-container clearfix <%= ad_type_decode @ad.ad_type %>">
+    <section class="page-content-container clearfix">
       <article class="card-details">
         <header>
           <h2><%= @ad.title %></h2>

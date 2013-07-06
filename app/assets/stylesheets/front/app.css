@@ -79,6 +79,10 @@ button {
     display: none;
 }
 
+.visibility-hidden {
+    visibility: hidden;
+}
+
 .line-through {
     text-decoration: line-through;
 }
@@ -162,6 +166,17 @@ button {
    margin: 50px 10px 10px;
 }
 
+/* Inner page without aside */
+.page-content-wrapper.inner-page-single {
+    width: 940px;
+}
+
+.page-content-wrapper.inner-page-single .page-content {
+    float: none;
+    margin: 0 auto;
+}
+
+
 /* Page Header
 ***************************************************************/
 .page-header .logo {
@@ -196,9 +211,9 @@ button {
     font-size: 1.8em;
     padding-top: 3px;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .page-header nav li a:hover,
 .page-header nav li a:active,
@@ -209,34 +224,34 @@ button {
 }
 
 #search {
-	width: 230px;
-	height: 38px;
-	line-height: 38px;
-	background: #fff;
-	float: left;
-	margin-left: 30px;
-	border-bottom: solid 2px #f4715b;
-	margin-top: 20px;
+    width: 230px;
+    height: 38px;
+    line-height: 38px;
+    background: #fff;
+    float: left;
+    margin-left: 30px;
+    border-bottom: solid 2px #f4715b;
+    margin-top: 20px;
 }
 #search input,
 #search button {
-	background: #fff;
-	height: 36px;
-	line-height: 36px;
-	color: #777;
-	border: none;
-	outline: none;
-	font-size: 1.8em;
+    background: #fff;
+    height: 36px;
+    line-height: 36px;
+    color: #777;
+    border: none;
+    outline: none;
+    font-size: 1.8em;
 }
 #search input {
     width: 170px;
 }
 #search button {
-	float: right;
-	width: 30px;
-	position: relative;
-	background: transparent;
-	margin-top: 2px;
+    float: right;
+    width: 30px;
+    position: relative;
+    background: transparent;
+    margin-top: 2px;
 }
 #search button:after {
     display: block;
@@ -286,9 +301,9 @@ button {
     font-weight: bold;
     font-size: 1.8em;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .nav-user-settings > a:after {
     font-family: "Flaticons Stroke";
@@ -304,9 +319,9 @@ button {
     margin-left: 2px;
     margin-top: 29px;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .nav-user-not-logged > a:after {
     font-family: "Flaticons Stroke";
@@ -388,21 +403,17 @@ button {
 
 /* Sidebar */
 
-.sidebar-wrapper{
-	
-}
-
 .page-sidebar h3 {
-	font-size:24px;
-	font-weight: bold;
-	color: #f4715b;
-	margin-top:8px;
+    font-size:24px;
+    font-weight: bold;
+    color: #f4715b;
+    margin-top:8px;
 }
 .page-sidebar .sidebar-number {
-	color:#777777;
-	font-size: 18px;
-	font-weight: bold;
-	margin-top:26px;
+    color:#777777;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:26px;
 }
 
 .page-sidebar .sidebar-number:before {
@@ -418,13 +429,15 @@ button {
     color: #f4715b;
     left: 5px;
     top: 8px;
-	margin-right:20px;
+    margin-right:20px;
 }
+
+
 .page-sidebar .sidebar-email {
-	color:#777777;
-	font-size: 18px;
-	font-weight: bold;
-	margin-top: 18px;
+    color:#777777;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 18px;
 }
 .page-sidebar .sidebar-email:before {
     display: inline-block;
@@ -439,87 +452,99 @@ button {
     color: #f4715b;
     left: 5px;
     top: 8px;
-	margin-right:20px;
+    margin-right:20px;
 }
 
 .page-sidebar .sidebar-input-description {
-	font-size:12px;
-	color:#777777;
-	font-weight: normal;
-	margin-top: 36px;
-	margin-bottom: 2px;
+    font-size:12px;
+    color:#777777;
+    font-weight: normal;
+    margin-top: 36px;
+    margin-bottom: 2px;
+    display: block;
 }
 .page-sidebar .sidebar-button-description {
-	font-size:12px;
-	color:#777777;
-	font-weight: normal;
-	margin-top: 6px;
-	margin-bottom: 2px;
-	text-align: center;
-	line-height: 16px;
+    font-size:12px;
+    color:#777777;
+    font-weight: normal;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    text-align: center;
+    line-height: 16px;
+    display: block;
 }
 .page-sidebar .sidebar-input-description-email {
-	font-size:12px;
-	color:#777777;
-	font-weight: normal;
-	margin-top: 10px;
-	margin-bottom: 4px;
+    font-size:12px;
+    color:#777777;
+    font-weight: normal;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    display: block;
 }
 .page-sidebar textarea {
-	background: #fff;
-	line-height: 24px;
-	color: #777;
-	border: 1px solid #cccccc;
-	outline: none;
-	font-size: 1.7em;
-	padding:10px;
-	width: 220px;
+    background: #fff;
+    line-height: 24px;
+    color: #777;
+    border: 1px solid #cccccc;
+    outline: none;
+    font-size: 1.7em;
+    padding:10px;
+    width: 220px;
 }
 
 .page-sidebar input {
-	background: #fff;
-	height: 36px;
-	line-height: 36px;
-	color: #777;
-	border: 1px solid #cccccc;
-	outline: none;
-	font-size: 1.7em;
-	padding-left:10px;
-	width: 230px;
-	margin-top:0px;
+    background: #fff;
+    height: 36px;
+    line-height: 36px;
+    color: #777;
+    border: 1px solid #cccccc;
+    outline: none;
+    font-size: 1.7em;
+    padding-left:10px;
+    width: 230px;
+    margin-top:0px;
 }
 
 .page-sidebar a.sidebar-button:link{
-	display: block;
-	color: #fff;
-	font-weight: bold;
-	font-size: 2em;
-	background: #f4715b;
-	height: 48px;
-	line-height: 48px;
-	padding: 0 30px;
-	margin-top: 20px;
-	border: 0px;
-	text-align: center;
-}
-.page-sidebar a.sidebar-button-gray:link{
-	display: block;
-	color: #fff;
-	font-weight: bold;
-	font-size: 2em;
-	background: #999999;
-	height: 52px;
-	line-height: 52px;
-	padding: 0 30px;
-	margin-top: 20px;
-	border: 0px;
-	text-align: center;
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 2em;
+    background: #f4715b;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 30px;
+    margin-top: 20px;
+    border: 0px;
+    text-align: center;
 }
 
-.sidebar-selected-item {
-  color: #f4715b;
-  font-weight: bold;
+.page-sidebar a.sidebar-button-gray:link{
+    display: block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 2em;
+    background: #999999;
+    height: 52px;
+    line-height: 52px;
+    padding: 0 30px;
+    margin-top: 20px;
+    border: 0px;
+    text-align: center;
 }
+
+.page-sidebar ul.sidebar-blog-arhiva li a:link {
+    color:#777777;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top:18px;
+    display: block;
+}
+
+.page-sidebar ul.sidebar-blog-arhiva {
+    margin-bottom:34px;
+}
+
 
 /* Board
 ***************************************************************/
@@ -552,9 +577,9 @@ button {
     color: #444;
     position: relative;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .cards-board-filter a:hover,
 .cards-board-filter a:active,
@@ -586,9 +611,9 @@ button {
     font-size: 20px;
     margin-left: 2px;
     -webkit-transition: color .1s linear;
-	-moz-transition: color .1s linear;
-	-o-transition: color .1s linear;
-	transition:  color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
 }
 .cards-board-filter > ul > li.expanded > a:after {
     content: "\e5a4";
@@ -607,8 +632,8 @@ button {
     top: 6px;
     content: " ";
     -moz-border-radius: 50%;
-  	-webkit-border-radius: 50%;
-  	border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 }
 .cards-board-filter li.giving a:after {
     background: #f4715b;
@@ -677,9 +702,9 @@ button {
     padding: 10px;
     color: #f4715b;
     -webkit-transition: all .1s linear;
-	-moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition:  all .1s linear;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition:  all .1s linear;
 }
 .cards-pager li span {
     border: solid 1px transparent;
@@ -742,8 +767,8 @@ button {
     color: #212121;
     -webkit-transition: all .1s linear;
     -moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition:  all .1s linear;
+    -o-transition: all .1s linear;
+    transition:  all .1s linear;
 }
 .card p {
     font-size: 1.4em;
@@ -753,15 +778,15 @@ button {
 .card footer {
     border-top: solid 1px #ccc;
     -webkit-transition: all .1s linear;
-	-moz-transition: all .1s linear;
-	-o-transition: all .1s linear;
-	transition:  all .1s linear;
-	margin-top: 10px;
-	padding-top: 10px;
-	font-size: 1.2em;
-	color: #777;
-	position: relative;
-	z-index: 5;
+    -moz-transition: all .1s linear;
+    -o-transition: all .1s linear;
+    transition:  all .1s linear;
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 1.2em;
+    color: #777;
+    position: relative;
+    z-index: 5;
 }
 .card footer .card-place {
     display: block;
@@ -912,6 +937,7 @@ a.card-favorite.selected:visited {
     padding-bottom: 10px;
     margin-bottom: 10px;
     border-bottom: solid 1px #ccc;
+    padding-top: 4px;
 }
 .card-details p {
     font-size: 1.6em;
@@ -923,12 +949,58 @@ a.card-favorite.selected:visited {
     border-bottom: solid 1px #ccc;
     margin-bottom: 20px;
     font-size: 1.4em;
-	color: #777;
+    color: #777;
+}
+
+/* User settings
+***************************************************************/
+.settings .form-section-container {
+    width: 100%;
+}
+
+.settings .form-section-container .fieldset {
+    margin: 20px auto 50px;
+    padding: 0 100px;
+    width: 250px;
+}
+
+.settings input[type=submit] {
+    background-color: #f4715b;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-weight: bold;
+    margin: 30px auto 0;
+    width: 250px;
+}
+
+.card-details .pull-right {
+    float:right;
+}
+
+.card-details .link-vise {
+    font-size:22px;
+    font-weight: bold;
+    color: #f4715b;
+    margin-top:12px;
+    display: block;
+}
+
+.card-details .page-blog-h2 {
+    padding-bottom:20px;
+    padding-top:4px;
+}
+
+.card-details .card-text {
+    line-height: 24px;
+    color: #777;
+    font-size: 1.7em;
 }
 
 /* Inner pages */
 /**************************************************************/
-.page-content-wrapper.inner-page .page-content-container {
+.page-content-wrapper.inner-page .page-content-container,
+.page-content-wrapper.inner-page-single .page-content-container {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -936,15 +1008,33 @@ a.card-favorite.selected:visited {
     border-bottom: solid 2px rgba(0, 0, 0, 0.2);
     border-top: solid 6px #f4715b;
 
-    margin: 10px;
+    margin: 10px 10px 24px 10px;
     padding: 20px;
 }
 
+
+body div.supply section,body div.supply .page-sidebar {
+    border-top-color: #17c1c7 !important;
+}
+
+body div.supply .page-sidebar h3, body div.supply .sidebar-number,body div.supply .sidebar-number:before,body div.supply .sidebar-email:before{
+    color: #17c1c7 !important;
+}
+
+body div.supply a.sidebar-button {
+    background-color:#f4715b;
+}
+
+body div.demand a.sidebar-button {
+    background-color:#17c1c7 !important;
+}
+
+
 .page-content-wrapper.inner-page .page-sidebar {
-	background: #fff;
-	border-bottom: solid 2px rgba(0, 0, 0, 0.2);
-	border-top: solid 6px #f4715b;
-	padding: 20px;
+    background: #fff;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    border-top: solid 6px #f4715b;
+    padding: 20px;
 
 }
 
@@ -952,7 +1042,70 @@ a.card-favorite.selected:visited {
 
 /* Forms */
 /**************************************************************/
-/* TODO */
+.form-heading {
+    color: #f4715b;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.input-container {
+    color: #999;
+    font-size: 12px;
+    margin: 20px 0 25px;
+}
+
+.input-container > * {
+    display: block;
+    width: 250px;
+}
+
+.input-container .title {
+    font-size: 14px;
+}
+
+.input-container input[type="text"],
+.input-container input[type="email"],
+.input-container input[type="number"],
+.input-container input[type="tel"],
+.input-container input[type="date"],
+.input-container input[type="password"] {
+    background: #eee;
+    border: 0;
+    color: #333;
+    font-size: 16px;
+    height: 44px;
+    margin: 5px 0 0;
+    padding: 0 20px;
+    width: 210px;
+}
+
+.input-container input ~ .note {
+    opacity: 0;
+    position: absolute;
+    color: #3FA83F;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-transition: opacity 0.1s ease-in-out;
+       -moz-transition: opacity 0.1s ease-in-out;
+        -ms-transition: opacity 0.1s ease-in-out;
+         -o-transition: opacity 0.1s ease-in-out;
+            transition: opacity 0.1s ease-in-out;
+}
+
+.input-container input:focus ~ .note {
+    opacity: 1;
+}
+
+.input-container label.error {
+    color: #ff2929;
+    position: absolute;
+}
+
+.input-container input.error ~ label.error ~ .note {
+    margin-top: 12px;
+}
+
 
 /* Content */
 /***************************************************************/
@@ -962,28 +1115,28 @@ a.card-favorite.selected:visited {
     padding: 0 10px;
 }
 .article p {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .article h1,
 .article h2,
 .article h3,
 .article h4 {
-	color: #e82490;
+    color: #e82490;
 }
 .article h1 {
-	font-size: 18px;
+    font-size: 18px;
 }
 .article h2 {
-	font-size: 16px;
+    font-size: 16px;
 }
 .article h3,
 .article h4 {
-	font-size: 14px;
+    font-size: 14px;
 }
 .article a:link,
 .article a:visited {
-	color: #e82490;
-	text-decoration: underline;
+    color: #e82490;
+    text-decoration: underline;
 }
 /* ADD PAGE */
 /***************************************************************/
@@ -1144,10 +1297,48 @@ a.card-favorite.selected:visited {
 .dropdownSelect.active {
 
 }
-
+.single-col-container{
+    width: 250px;
+    margin: 0 auto;
+}
+.single-col-container input{
+    margin: 30px 0;
+}
+.red{
+    background-color: #f4715b !important;
+}
 /* Login
 ***************************************************************/
-
+.login-form-container input,
+.button{
+    width: 180px;
+    height: 44px;
+    border: none;
+    font-size: 1.8em;
+    line-height: 44px;
+    position: relative;
+    background-color: #eee;
+    padding: 0 30px;
+    color: #fff;
+}
+input[type=submit].button{
+    width: 250px;
+}
+input[type=email],
+input[type=password],
+input[type=text]{
+    color: #333;
+}
+.login-form-container input:focus{
+    background-color: #ddd;
+}
+.button:hover{
+    opacity: 0.7;
+}
+.login-form-container a,
+.login-footer a{
+    color: inherit;
+}
 .login-col-container{
     width: 50%;
     float: left;
@@ -1185,25 +1376,23 @@ a.card-favorite.selected:visited {
     left: 4px;
 }
 .login-col-content{
-    width: 240px;
+    width: 250px;
     height: 100%;
     margin: 0 auto;
 }
-.login-col-content span{
+span.form-label{
     width: 100%;
     display: inline-block;
-    margin-top: 13px;
+    color: #777;
+    font-size: 1.2em;
+    margin: 13px 0 5px;
 }
-.login-form-container input,
-.login-form-container .social-item{
-    width: 80%;
-    height: 44px;
-    border: none;
-    font-size: 1.8em;
-    line-height: 44px;
-    position: relative;
-    background-color: #eee;
-    padding: 0 10%;
+.forgot-password{
+    margin: 5px 0 15px !important;
+}
+
+.social-item:hover{
+    opacity: 0.7;
 }
 .login-form-container .social-item{
     text-align: center;
@@ -1215,6 +1404,7 @@ a.card-favorite.selected:visited {
     color: #fff;
     font-weight: bold;
     width: 100%;
+    cursor: pointer;
 }
 .login-form-container .social-item{
     margin-top: 20px;
@@ -1223,6 +1413,17 @@ a.card-favorite.selected:visited {
 .login-form-container .form-heading{
     margin-left: 100px;
     padding: 0;
+}
+.login-footer{
+    text-align: center;
+    margin-top: 60px;
+}
+.login-footer span{
+    display: inline-block;
+    font-size: 1.4em;
+    height: 22px;
+    border-bottom: solid 2px rgba(0, 0, 0, 0.2);
+    color: #777;
 }
 /*--------------------------------
     ICONS
@@ -1242,13 +1443,13 @@ a.card-favorite.selected:visited {
     font-style: normal;
     font-weight: normal;
     line-height: 44px;
-    content: "\e7d0";
+    content: "\e7f7";
     color: #fff;
     display: block;
     float: right;
     font-size: 24px;
     position: absolute;
-    left: 4px;
+    left: 11px;
     top: 0;
 }
 .social-item.twitter:after {
@@ -1305,8 +1506,8 @@ a.card-favorite.selected:visited {
 }
 
 #search {
-	width: 350px;
-	margin-left: 50px;
+    width: 350px;
+    margin-left: 50px;
 }
 #search input {
     width: 310px;
@@ -1332,5 +1533,19 @@ a.card-favorite.selected:visited {
    width: 240px;
 }
 
+/* User settings
+***************************************************************/
+.settings form {
+    margin: 20px 0;
+}
+
+.settings .form-section-container {
+    display: table;
+}
+
+.settings .form-section-container .fieldset {
+    display: table-cell;
+    width: 50%;
+}
 
 }
