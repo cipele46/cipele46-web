@@ -7,6 +7,6 @@ Cipele46Web::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   ActiveAdmin.routes(self)
-  resources :ads, :only => [:create, :edit, :show, :update]
+  resources :ads, :only => [:create, :edit, :new, :show, :update]
   resources :users
 end
