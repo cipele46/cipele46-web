@@ -21,7 +21,9 @@
                     <ul>
                         <li><a href="#">Postavke</a></li>
                         <li><a href="#">Moji oglasi</a></li>
-                        <li><a href="#">Odjavi se</a></li>
+												<% if user_signed_in? %>
+                        <li><%= link_to 'Odjavi se', destroy_user_session_path, :method=>'delete' %></li>
+												<% end %>
                     </ul>
                 <div>
             </li>
