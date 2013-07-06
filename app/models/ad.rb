@@ -16,7 +16,6 @@ class Ad < ActiveRecord::Base
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
-
   validates :category_id, :presence => true
   validates :city_id, :presence => true
   validates :description, :presence => true
@@ -49,5 +48,5 @@ class Ad < ActiveRecord::Base
       STATUS[:closed]
     end
   end  
-  
+    
 end

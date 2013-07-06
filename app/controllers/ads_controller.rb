@@ -11,15 +11,19 @@ class AdsController < ApplicationController
     @total_ads_count = Ad.active.count
     # end import
 
-    @ads = Ad.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-
-    if category = Category.find(params[:category_id]) rescue false
-      @ads = category.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
+    @ads = Ad.page(params[:page]).per(ADS_PER_PAGE)
+    
+    if params[:query]
+      @ads = @ads.joins(:category).joins(city: [:region]).select("ads.*, categories.name as category, cities.name as city, regions.name as region")
+    elsif params[:region_id] 
+      @ads = @ads.joins(:city)
     end
-
-    if region = Region.find(params[:region_id]) rescue false
-      @ads = region.ads.active.order("id desc").page(params[:stranica]).per(ADS_PER_PAGE)
-    end
+    
+    @ads = @ads.where(:category_id => params[:category_id]) if params[:category_id]    
+    @ads = @ads.where("cities.region_id" => params[:region_id]) if params[:region_id]
+    @ads = @ads.where("title like ? OR description like ? OR city like ? or region like ?", params[:query], params[:query], params[:query], params[:query]) if params[:query]
+        
+    respond_with @ads
   end
 
   def show
