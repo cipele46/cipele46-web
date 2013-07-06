@@ -1,14 +1,14 @@
 var app = (function($, window, document, undefined) {
-	var $window = $(window),
-		$document = $(document);
+    var $window = $(window),
+        $document = $(document);
 
-	var _pageInit = function() {
+    var _pageInit = function() {
          _cardBoardInit();
-	};
+    };
 
-	var _cardBoardInit = function() {
+    var _cardBoardInit = function() {
 
-        $("article.card").on("click", function(event){
+        $("article.card, article.card-details").on("click", function(event){
             event.preventDefault();
 
             var $eventTarget = $(event.target);
@@ -42,15 +42,67 @@ var app = (function($, window, document, undefined) {
         function handleCardFavorites(card, favIcon){
             var $card = card,
                 $favIcon = favIcon;
+            var unselected_html = '&#xE49D;'
+            var selected_html = '&#xE0B5;'
 
-            $favIcon.toggleClass("selected");
+            if ($favIcon.is(":animated") || $favIcon.data().busy)
+                return;
 
-            $favIcon.prop("title", ($favIcon.is(".selected")) ? $favIcon.data().remove : $favIcon.data().add);
-            // TODO: Card Favorites Functionality
+            var selected = !$favIcon.is(".selected");
+            $favIcon.data().busy = true;
+
+            var anim_down = function(elem) {
+                return elem.animate({ scale: 0.6 },{
+                        duration: 250,
+                        done: function() {
+                            if (elem.data().busy)  anim_up(elem);
+                            else anim_end(elem);
+
+                }});
+            }
+
+            var anim_up = function(elem) {
+                return elem.animate({ scale: 0.8 },{
+                        duration: 250,
+                        done: function() { anim_down(elem);
+                }});
+            }
+
+            var anim_end = function(elem) {
+                if (selected) {
+                    elem.addClass("selected");
+                    elem.html(selected_html);
+                } else {
+                    elem.removeClass("selected");
+                    elem.html(unselected_html);
+                }
+                return elem.animate({ scale: 1 },{ duration: 250 });
+            }
+
+            anim_down($favIcon);
+
+            $favIcon.prop("title", selected ? $favIcon.data().remove : $favIcon.data().add);
+            $.ajax({
+                url: 'http://127.0.0.1:8080/set_fav.js',
+                data: {
+                        selected: $favIcon.is(".selected"),
+                        card: $favIcon.data().card
+                },
+                dataType: 'json',
+                jsonp: 'callback',
+                jsonpCallback: 'jsonpCallback',
+                success: function(){
+                    $favIcon.data().busy = false;
+                },
+                error: function(){
+                    selected = !selected;
+                    $favIcon.data().busy = false;
+                }
+            });
         }
-	};
+    };
 
-	var _formInit = function() {
+    var _formInit = function() {
         jQuery.extend(jQuery.validator.messages, {
             required: "Obavezno polje",
             email: "Molimo unesite ispravnu e-mail adresu"
@@ -62,7 +114,7 @@ var app = (function($, window, document, undefined) {
                 $("label.error").attr("title", function() {return $(this).text();});
             }
         });
-	};
+    };
     var dropDown = function(el) {
         var obj = this;
         this.dd = el;
@@ -84,8 +136,8 @@ var app = (function($, window, document, undefined) {
 
         });
     };
-	return {
-		init: _pageInit,
+    return {
+        init: _pageInit,
         dropDown: dropDown
-	};
+    };
 })(jQuery, this, this.document);

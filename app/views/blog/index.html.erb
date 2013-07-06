@@ -6,5 +6,7 @@
   <% end %>
 
   <p><%= post.content.truncate(300) %></p>
+
+  <h2><%= link_to "Više", blog_path(post) %></h2>
   <hr>
 <% end %>
