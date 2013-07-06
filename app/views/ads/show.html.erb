@@ -1,19 +1,7 @@
 <div class="page-content-wrapper inner-page giving clearfix">
   <aside class="sidebar-wrapper">
-<% if current_user && current_user.id == @ad.user.id %>
-	 <div class="page-sidebar">
-      <h3>Kontakt</h3>
-      <p class="sidebar-number"><%= @ad.phone %></p>
-      <p class="sidebar-email"><%= @ad.email %></p>
-      <!-- <a style="margin-top:44px;" href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Uredi oglas</a> -->
-	 <%= link_to "Uredi oglas", edit_ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:44px;"  %>
-      <a href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Zatvori oglas</a>
-      <p class="sidebar-button-description">Zatvoren oglas je rješen i ne vidi se u kategorijama ili tražilici</p>
-      <!-- <a style="margin-top:34px;" href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Obriši oglas</a> -->
-	<%= link_to "Obriši oglas", ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:34px;", :confirm => "Sigurno želite obrisati ovaj oglas?", :method=>:delete %>
-    </div> 
-<% else %>
-    <div class="page-sidebar">
+    <% unless is_own_ad @ad %>
+    <div class="page-sidebar <%= ad_type_decode @ad.ad_type %>">
       <h3>Kontakt</h3>
       <p class="sidebar-number"><%= @ad.phone %></p>
 		<%= form_tag dispatch_email_path, method: :post do %>
@@ -21,31 +9,33 @@
 			<%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku" %>
 	        <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
 		  	<%= text_field_tag "user_info[email]", "", placeholder: "Upiši email" %><br />
-		  	<%= submit_tag "Pošalji", :class => 'sidebar-button' %> 
-		<% end %>   
+		  	<%= submit_tag "Pošalji", :class => 'sidebar-button' %>
+		<% end %> 
     </div>
-<% end %>
+    <% else %>
+    <div class="page-sidebar <%= ad_type_decode @ad.ad_type %>">
+	      <h3>Kontakt</h3>
+	      <p class="sidebar-number"><%= @ad.phone %></p>
+	      <p class="sidebar-email"><%= @ad.email %></p>
+		 <%= link_to "Uredi oglas", edit_ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:44px;"  %>
+	      <a href="#" class="sidebar-button-gray" type="submit" title="Pošalji">Zatvori oglas</a>
+	      <p class="sidebar-button-description">Zatvoren oglas je rješen i ne vidi se u kategorijama ili tražilici</p>
+		<%= link_to "Obriši oglas", ad_path(@ad), :class => "sidebar-button-gray", style: "margin-top:34px;", :confirm => "Sigurno želite obrisati ovaj oglas?", :method=>:delete %>
+    </div>
+    <% end %>
   </aside>
   <div class="page-content">
-    <header class="page-content-header clearfix">
-      <ul class="breadcrumbs clearfix">
-        <li>@TODO - izvući u partial!</li>
-        <li><a href="#">Namještaj</a></li>
-        <li><span>Koprivničko-križevačka županija</span></li>
-      </ul>
-    </header>
-    <section class="page-content-container clearfix">
+    <%= render 'application/breadcrumbs' %>
+    <section class="page-content-container clearfix <%= ad_type_decode @ad.ad_type %>">
       <article class="card-details">
         <header>
           <h2><%= @ad.title %></h2>
-
-          <span class="card-place icon stroke location"><%= link_to "#{@ad.city.region.name}", ads_path(:city_id => 0, :category_id => 0,:region_id => @ad.city.region.id) %>, <%= link_to "#{@ad.city.name}", ads_path(:city_id => @ad.city.id, :category_id => 0, :region_id => 0) %></span>
+		 <span class="card-place icon stroke location"><%= link_to "#{@ad.city.region.name}", ads_path(:city_id => 0, :category_id => 0,:region_id => @ad.city.region.id) %>, <%= link_to "#{@ad.city.name}", ads_path(:city_id => @ad.city.id, :category_id => 0, :region_id => 0) %></span>
           <span class="card-category icon stroke category"><%= link_to "#{@ad.category.name}", ads_path(:category_id => @ad.category.id, :region_id => 0, :city_id => 0) %></span>
           <span class="card-time icon stroke time"><%= time_ago_in_words @ad.expires_at %></span>
           <% if current_user %>
             <%= link_to "&#xE0B5;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected' %>
             <%= link_to "&#xE49D;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite' %>
-            <a href="#" class="card-favorite selected" title="Makni iz favorita" data-add="Dodaj u favorite" data-remove="Makni iz favorita"></a>
           <% end %>
         </header>
         <figure class="icon window-2"><%= image_tag @ad.image.url(:medium) %></figure>

@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   private
 
     def prepare_filters
-      session[:filters] = {}
+      session[:filters] ||= {}
     end
 end

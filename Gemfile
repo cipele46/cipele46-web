@@ -17,6 +17,11 @@ gem "carrierwave"
 gem "activeadmin"
 gem "mini_magick"
 gem "high_voltage"
+gem 'omniauth-facebook'
+#gem 'omniauth-twitter'
+#gem 'omniauth-linkedin'
+#gem 'omniauth-google-oauth2'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
