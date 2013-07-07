@@ -63,4 +63,14 @@ class Ad < ActiveRecord::Base
     end
   end
 
+  def type_name
+    TYPES.invert[ad_type]
+  end
+
+  def type_name_css
+    case type_name
+    when :supply then :giving
+    when :demand then :receiving
+    end
+  end
 end
