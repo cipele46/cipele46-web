@@ -2,34 +2,13 @@
 
 <div class="page-content">
     <header class="page-content-header clearfix">
-        <div class="cards-counter clearfix"><strong><%= @total_ads_count %></strong> <%= ads_plural @total_ads_count %></div>
+      <div class="cards-counter clearfix">
+        <strong><%= @total_ads_count %> </strong> <%= ads_plural @total_ads_count %>
+      </div>
     </header>
 
     <section class="cards-board clearfix">
-
-        <% @ads.each do |ad| %>
-          <article class="card giving" data-details="<%= ad_path(ad) %>">
-              <figure class="icon window-2">
-                <%= link_to image_tag_for_ad(ad, :version => :small), ad_path(ad) %>
-              </figure>
-              <h2><%= link_to ad.title, ad_path(ad) %></h2>
-              <p><%= ad.description %></p>
-              <footer>
-                  <span class="card-place icon stroke location"><%= ad.city.region.name %></span>
-                  <span class="card-category icon stroke category"><%= ad.category.name %></span>
-                  <span class="card-time icon stroke time"><%= time_ago_in_words ad.expires_at %></span>
-                  <% if current_user %>
-                    <% if ad_is_favorite(ad.id) %>
-                      <%= link_to "&#xE0B5;".html_safe, toggle_path(ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: ad.id, :class => 'card-favorite selected' %>
-                    <% else %>
-                      <%= link_to "&#xE49D;".html_safe, toggle_path(ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: ad.id, :class => 'card-favorite' %>
-                    <% end %>
-                  <% end %>
-
-              </footer>
-          </article>
-        <% end -%>
-
+          <%= render @ads %>
     </section>
 
     <footer class="page-content-footer clearfix">
