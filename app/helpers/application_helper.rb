@@ -21,11 +21,11 @@ module ApplicationHelper
   end
 
   def supplies_count
-    @ads.supplies.count
+    Ad.active.supplies.count
   end
 
   def demands_count
-    @ads.demands.count
+    Ad.active.demands.count
   end
 
   def ads_in_category_count(category)
