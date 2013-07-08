@@ -35,6 +35,7 @@ class AdsController < ApplicationController
 
   def edit
     @ad = current_user.ads.find(params[:id])
+    respond_with @ad
   end
 
   def update

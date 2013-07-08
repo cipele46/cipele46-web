@@ -1,9 +1,8 @@
 class FavoritesController < ApplicationController
+  before_filter :authenticate_user!
+  respond_to :html, :json
 
-def toggle
-
-  if current_user
-
+  def toggle
     ad_id = params[:id].to_i
 
     favorite = Favorite.where("user_id = ? AND ad_id = ?", current_user.id, ad_id)
@@ -17,7 +16,4 @@ def toggle
       favorite.save
     end
   end
-
-end
-
 end
