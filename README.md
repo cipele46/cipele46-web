@@ -8,8 +8,7 @@ Nakon kloniranja:
 
 ```shell
 bundle install
-cp config/application.yml.example config/application.yml
-cp config/database.yml.example config/database.yml
+rake config:defaults
 foreman start
 open http://localhost:3000
 ```
