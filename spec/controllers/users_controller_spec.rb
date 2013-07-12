@@ -10,7 +10,7 @@ describe UsersController do
   describe "GET 'show'" do
     
     it "should be successful" do
-      get :show, :id => @user.id
+      get :show, :id => @user.id, format: :json
       response.should be_success
     end
     

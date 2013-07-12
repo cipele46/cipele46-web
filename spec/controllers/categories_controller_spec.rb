@@ -4,7 +4,7 @@ describe CategoriesController do
 
   describe "GET 'index'" do
     it "returns http success" do
-      get 'index'
+      get 'index', format: :json
       response.should be_success
     end
   end
