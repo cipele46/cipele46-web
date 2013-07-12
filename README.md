@@ -1,4 +1,4 @@
-# Cipele46 Web
+# Cipele46 Web [![Code Climate](https://codeclimate.com/github/cipele46/cipele46-web.png)](https://codeclimate.com/github/cipele46/cipele46-web)
 
 Source kod http://cipele46.org.
 
