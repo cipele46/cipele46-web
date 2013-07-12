@@ -18,6 +18,7 @@ gem "activeadmin"
 gem "mini_magick"
 gem "high_voltage"
 gem 'omniauth-facebook'
+gem 'friendly_id'
 #gem 'omniauth-twitter'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'

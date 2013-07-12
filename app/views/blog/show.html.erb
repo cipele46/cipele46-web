@@ -1,7 +1,16 @@
-<h2><%= @post.title %></h2>
-
-<% if @post.image.url %>
-  <p><%= image_tag @post.image.url(:large) %></p>
-<% end %>
-
-<p><%= @post.content %></p>
+<aside class="sidebar-wrapper"></aside>
+<div class="page-content">
+  <header class="page-content-header clearfix">&nbsp;</header>
+  <section class="page-content-container clearfix">
+    <article class="card-details">
+      <header>
+        <h2 class="page-blog-h2"><%= @post.title %></h2>
+        <span>Objavljeno <%= @post.created_at.strftime("%d.%m.%Y") %></span>
+      </header>
+      <% if @post.image.url %>
+      <figure class="icon window-2"><%= image_tag @post.image.url(:small) %></figure>
+      <% end -%>
+      <p class="card-text"><%= @post.content %></p>
+    </article>
+  </section>
+</div>

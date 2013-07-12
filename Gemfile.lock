@@ -107,6 +107,7 @@ GEM
       thor (>= 0.13.6)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    friendly_id (4.0.9)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -279,6 +280,7 @@ DEPENDENCIES
   factory_girl_rails (>= 4.2.0)
   figaro (>= 0.6.3)
   foreman
+  friendly_id
   haml-rails (>= 0.4)
   high_voltage
   html2haml (>= 1.0.1)

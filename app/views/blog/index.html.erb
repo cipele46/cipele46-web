@@ -1,12 +1,33 @@
-<% @posts.each do |post| %>
-  <h2><%= link_to post.title, blog_path(post) %></h2>
+<aside class="sidebar-wrapper">
+  <div class="page-sidebar">
+    <h3>Arhiva</h3>
+    <ul class="sidebar-blog-arhiva">
+      <% @all_posts.each do |post| %>
+      <li>
+        <%= link_to post.title, blog_path(post) %>
+      </li>
+      <% end -%>
+  </ul>
+  </div>
+</aside>
 
-  <% if post.image.url %>
-    <p><%= image_tag post.image.url(:small) %></p>
+<div class="page-content">
+  <header class="page-content-header clearfix">&nbsp;</header>
+  <% @main_posts.each do |post| %>
+  <section class="page-content-container clearfix">
+    <article class="card-details">
+      <header>
+        <h2 class="page-blog-h2"><%= post.title %></h2>
+        <span>Objavljeno <%= post.created_at.strftime("%d.%m.%Y") %></span>
+      </header>
+      <% if post.image.url %>
+      <figure class="icon window-2"><%= image_tag post.image.url(:small) %></figure>
+      <% end -%>
+      <% unless post.content.blank? %>
+      <p class="card-text"><%= post.content.truncate(320) %></p>
+      <% end -%>
+      <%= link_to "Više", blog_path(post), class: "link-vise" %>
+    </article>
+  </section>
   <% end %>
-
-  <p><%= post.content.truncate(300) %></p>
-
-  <h2><%= link_to "Više", blog_path(post) %></h2>
-  <hr>
-<% end %>
+</div>

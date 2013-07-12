@@ -18,7 +18,7 @@ module MainMenuHelper
   def main_menu_items
     [
       ["oglasi", root_path, /\A(\/\Z|\/ads)/],
-      # ["blog", blogs_path, //],
+      ["blog", blogs_path, /blog/],
       ["naša priča", page_path('nasa-prica'), /\A\/pages\/nasa-prica\Z/]
     ]
   end
