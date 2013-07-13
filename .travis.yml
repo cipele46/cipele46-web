@@ -1,0 +1,7 @@
+rvm:
+  - "1.9.3"
+before_script:
+  - rake config:defaults
+  - rake config:travis
+  - mysql -e 'create database cipele46_test;'
+  - rake db:migrate

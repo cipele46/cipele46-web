@@ -1,3 +1,8 @@
+[![Code Climate](https://codeclimate.com/github/cipele46/cipele46-web.png)](https://codeclimate.com/github/cipele46/cipele46-web) 
+[![Build Status](https://travis-ci.org/cipele46/cipele46-web.png?branch=master)](https://travis-ci.org/cipele46/cipele46-web) 
+[![Dependency Status](https://gemnasium.com/cipele46/cipele46-web.png)](https://gemnasium.com/cipele46/cipele46-web) 
+[![Coverage Status](https://coveralls.io/repos/cipele46/cipele46-web/badge.png)](https://coveralls.io/r/cipele46/cipele46-web) 
+
 # Cipele46 Web
 
 Source kod http://cipele46.org.
@@ -8,8 +13,7 @@ Nakon kloniranja:
 
 ```shell
 bundle install
-cp config/application.yml.example config/application.yml
-cp config/database.yml.example config/database.yml
+rake config:defaults
 rake db:setup
 foreman start
 open http://localhost:3000

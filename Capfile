@@ -17,3 +17,4 @@ namespace :deploy do
 end
 
 after "deploy:finalize_update", "deploy:copy_config"
+after "deploy", "deploy:migrate"
