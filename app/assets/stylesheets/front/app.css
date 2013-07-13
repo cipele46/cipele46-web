@@ -188,6 +188,11 @@ button {
     float: left;
 }
 
+.page-header .logo-staging
+{
+    background: url(/assets/shoes46_logo_staging.png) left center no-repeat;
+}
+
 .page-header nav {
     float: left;
     margin-left: 30px;
