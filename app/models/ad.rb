@@ -25,7 +25,10 @@ class Ad < ActiveRecord::Base
   scope :by_query, lambda { |query|
     joins(:city => :region).joins(:category).where("title like :q or description like :q or regions.name like :q or cities.name like :q or categories.name like :q", :q => "%#{query}%")
   }
-
+  scope :by_user_favorites, lambda { |user_id| 
+    joins(:favorites).where("favorites.user_id = ?", user_id)
+  }
+  
   validates :category_id, :presence => true
   validates :city_id, :presence => true
   validates :description, :presence => true
