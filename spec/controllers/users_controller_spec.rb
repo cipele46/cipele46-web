@@ -7,18 +7,19 @@ describe UsersController do
     sign_in @user
   end
 
-  describe "GET 'show'" do
-    
-    it "should be successful" do
-      get :show, :id => @user.id, format: :json
+  describe 'GET show' do
+    before { get :show }
+
+    it 'should be successful' do
       response.should be_success
     end
     
-    it "should find the right user" do
-      get :show, :id => @user.id
-      assigns(:user).should == @user
+    it 'should render template show' do
+      response.should render_template('show')
     end
     
+    it 'should return the logged on user' do
+      expect(assigns(:current_user)).to eq @user
+    end
   end
-
 end
