@@ -66,7 +66,10 @@ class AdsController < ApplicationController
   def destroy
     @ad = current_user.ads.find(params[:id])
     @ad.destroy
-    redirect_to root_url, :notice => "Oglas obrisan"
+    respond_to do |format|
+      format.html { redirect_to root_url, :notice => "Oglas obrisan" }
+      format.json { render :nothing => true }
+    end
   end
 
   def dispatch_email
