@@ -12,7 +12,7 @@ class Ad < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("ads.created_at >= :date", :date => 1.month.ago).where(status: 2) }
+  scope :active, lambda { where("ads.created_at >= :date", :date => VALID_FOR.days.ago).where(status: 2) }
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
