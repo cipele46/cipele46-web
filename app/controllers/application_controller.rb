@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+  responders :json
   before_filter :prepare_filters
 
   rescue_from CanCan::AccessDenied do |exception|
