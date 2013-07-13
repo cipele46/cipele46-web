@@ -31,6 +31,8 @@ group :assets do
 end
 
 group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
   gem "letter_opener"
   gem "quiet_assets", ">= 1.0.2"
   gem "better_errors", ">= 0.7.2"
