@@ -20,6 +20,13 @@ test:
   username: root
   password: 
 
+staging:
+  adapter: mysql2
+  encoding: utf8
+  database: cipele46_staging
+  username: root
+  password: 
+
 production:
   adapter: mysql2
   encoding: utf8
