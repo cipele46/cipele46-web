@@ -20,7 +20,6 @@ gem "high_voltage"
 gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'coveralls', require: false
-gem 'newrelic-rpm'
 #gem 'omniauth-twitter'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'
@@ -52,4 +51,8 @@ group :test do
   gem "capybara", ">= 2.0.3"
   gem "database_cleaner", ">= 1.0.0.RC1"
   gem "email_spec", ">= 1.4.0"
+end
+
+group :production, :staging, :development do
+  gem 'newrelic-rpm'
 end
