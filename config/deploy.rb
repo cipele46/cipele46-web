@@ -2,7 +2,6 @@ require 'rvm/capistrano'
 require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
 
-set :application,   'cipele46'
 set :repository,    'git@github.com:cipele46/cipele46-web.git'
 set :user,          'cipele46'
 set :use_sudo,      false
