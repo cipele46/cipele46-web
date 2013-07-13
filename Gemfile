@@ -19,6 +19,7 @@ gem "mini_magick"
 gem "high_voltage"
 gem 'omniauth-facebook'
 gem 'friendly_id'
+gem 'coveralls', require: false
 #gem 'omniauth-twitter'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'
@@ -31,6 +32,8 @@ group :assets do
 end
 
 group :development do
+  gem 'capistrano'
+  gem 'rvm-capistrano'
   gem "letter_opener"
   gem "quiet_assets", ">= 1.0.2"
   gem "better_errors", ">= 0.7.2"

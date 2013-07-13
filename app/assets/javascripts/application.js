@@ -12,4 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree ./front
+//= require front/app
+//= require jquery.cookie
+//= require jquery.csssupport
+//= require jquery.forms
+//= require jquery.validate
+//= require jquery.isotope
