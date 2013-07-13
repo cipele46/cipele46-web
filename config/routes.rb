@@ -12,7 +12,7 @@ Cipele46Web::Application.routes.draw do
   devise_for :users
 
   resources :ads
-  resources :users
+  resources :users, :only => [:new, :show, :update]
   resources :regions, :only => [:index]
   resources :categories, :only => [:index, :show]
 
