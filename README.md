@@ -15,4 +15,4 @@ Here is the [full story](http://www.facebook.com/Cipele46/info)
 Although the Web site is in Croatian and the initiative is local, you can help by writing some code and making
 a pull request. Everyone is welcome. Apart from UI strings, everything else is in English.
 
-[Here's how](./wiki/How-to-start-developing).
+[Here's how](https://github.com/cipele46/cipele46-web/wiki/How-to-start-developing).
