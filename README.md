@@ -14,6 +14,7 @@ Nakon kloniranja:
 ```shell
 bundle install
 rake config:defaults
+rake db:setup
 foreman start
 open http://localhost:3000
 ```

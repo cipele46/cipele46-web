@@ -2,11 +2,7 @@
   <div class="page-header-inner-wrapper clearfix">
     <%= link_to "Cipele46", root_path, { class: 'logo', title: 'Cipele46' } %>
     <nav>
-      <ul>
-          <li class="current"><%= link_to "oglasi", root_path %></li>
-          <li class="hidden"><%= link_to "Blog", blogs_path %></li>
-          <li><%= link_to "naša priča", page_path('nasa-prica') %></li>
-      </ul>
+      <%= main_menu %>
     </nav>
     <div id="search">
         <form action="/ads">

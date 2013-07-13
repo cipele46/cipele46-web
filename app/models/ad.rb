@@ -12,7 +12,7 @@ class Ad < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("ads.created_at >= :date", :date => 1.month.ago).where(status: 2) }
+  scope :active, lambda { where("ads.created_at >= :date", :date => VALID_FOR.days.ago).where(status: 2) }
   scope :supplies, where(ad_type: 1)
   scope :demands, where(ad_type: 2)
 
@@ -25,7 +25,10 @@ class Ad < ActiveRecord::Base
   scope :by_query, lambda { |query|
     joins(:city => :region).joins(:category).where("title like :q or description like :q or regions.name like :q or cities.name like :q or categories.name like :q", :q => "%#{query}%")
   }
-
+  scope :by_user_favorites, lambda { |user_id| 
+    joins(:favorites).where("favorites.user_id = ?", user_id)
+  }
+  
   validates :category_id, :presence => true
   validates :city_id, :presence => true
   validates :description, :presence => true
@@ -63,4 +66,14 @@ class Ad < ActiveRecord::Base
     end
   end
 
+  def type_name
+    TYPES.invert[ad_type]
+  end
+
+  def type_name_css
+    case type_name
+    when :supply then :giving
+    when :demand then :receiving
+    end
+  end
 end

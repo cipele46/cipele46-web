@@ -5,7 +5,11 @@
   <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="/assets/shoes46_icon_72.png">
   <link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="/assets/shoes46_icon_144.png">
   <link rel="Shortcut Icon" href="/assets/favicon.ico" type="image/x-icon" />
-  <title>Cipele46</title>
+  <% if @site_title %>
+    <title><%= @site_title %> | Cipele46</title>
+  <% else %>
+    <title>Cipele46</title>
+  <% end -%>
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -16,7 +20,7 @@
 </head>
 <body id="page">
   <%= render 'application/top_navigation' %>
-<div class="page-content-wrapper clearfix">
+<div class="page-content-wrapper clearfix<%= " inner-page giving" if params[:controller] == "blog" %>">
   <%= yield %>
 </div>
 

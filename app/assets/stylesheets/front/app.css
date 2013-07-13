@@ -3,8 +3,8 @@
     page background:    #fff1d8
     element border:     #ccc
     orange:             #f4715b
-    receiving blue:     #17c1c7
-    giving red:         #f4715b
+    receiving red:      #17c1c7
+    giving blue:        #f4715b
 */
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700&subset=latin,latin-ext);
@@ -644,10 +644,10 @@ button {
     border-radius: 50%;
 }
 .cards-board-filter li.giving a:after {
-    background: #f4715b;
+    background: #17c1c7;
 }
 .cards-board-filter li.receiving a:after {
-    background: #17c1c7;
+    background: #f4715b;
 }
 
 /* Board header */
