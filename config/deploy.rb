@@ -9,12 +9,19 @@ set :deploy_via,    :remote_cache
 set :default_stage, 'staging'
 set :keep_releases, 3
 
+after "deploy:finalize_update", "deploy:copy_config"
+
+after "deploy", "deploy:migrate"
+
 after 'deploy:restart', 'deploy:cleanup'
 
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
+  task :copy_config do
+    run "cd #{release_path} && rake config:defaults RAILS_ENV=#{rails_env}"
+  end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run "#{try_sudo} touch #{File.join(release_path,'tmp','restart.txt')}"
   end
 end
