@@ -21,6 +21,7 @@ gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'coveralls', require: false
 gem 'newrelic_rpm'
+gem 'airbrake'
 #gem 'omniauth-twitter'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'
