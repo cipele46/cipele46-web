@@ -18,3 +18,5 @@
 //= require jquery.forms
 //= require jquery.validate
 //= require jquery.isotope
+//= require URI
+//= require jquery.deserialize

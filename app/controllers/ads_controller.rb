@@ -3,44 +3,11 @@ class AdsController < ApplicationController
   respond_to :html, :json
 
   def index
-
-    respond_to do |format|
-      format.html {
-        @categories = Category.order(:name)
-        @regions = Region.order(:name)
-        @total_ads_count = Ad.active.count
-
-        @filter = Filter.new(session[:filters].merge(params))
-        @ads    = @filter.perform
-
-        session[:filters] = @filter.session
-
-        @selected_category_id = session[:filters][:category_id]
-        @selected_region_id   = session[:filters][:region_id]
-        @selected_type        = session[:filters][:type]
-
-        respond_with @ads, :include => [ :city, :category, :region ]        
-      }
-      format.json { 
-        ads = Ad.active
-        ads = ads.by_type(params[:type])              if params[:type]
-        ads = ads.by_region(params[:region_id])       if params[:region_id]
-        ads = ads.by_category(params[:category_id])   if params[:category_id]
-        ads = ads.by_query(params[:query])            if params[:query]
-        ads = ads.where(:ad_type => params[:ad_type]) if params[:ad_type]
-        ads = ads.where(:status => params[:status])   if params[:status]
-        if params[:user] || params[:favorites]
-          authenticate_user!
-          ads = ads.where(:user_id => current_user.id)  if params[:user]
-          ads = ads.by_user_favorites(current_user.id)  if params[:favorites]
-        end
-        ads = ads.order("id desc")
-        ads = ads.page(params[:page] || 1).per(params[:per_page])
-        
-        render json: ads, :include => [ :city, :category, :region ]
-      }
-    end
-    
+    @ads_search = Ad.search(@ad_filter, params[:page], params[:per_page])
+    @ads_without_category_id = Ad.search(@ad_filter.clone_without(:category_id), 1, 10000)
+    @ads_without_ad_type = Ad.search(@ad_filter.clone_without(:ad_type), 1, 10000)
+    @ads_without_region_id = Ad.search(@ad_filter.clone_without(:region_id), 1, 10000)
+    respond_with @ads = @ads_search.results
   end
 
   def show
@@ -75,7 +42,6 @@ class AdsController < ApplicationController
   def dispatch_email
     user_info = params[:user_info]
     ad = Ad.find(params[:id])
-
     if UserMailer.send_email(ad,user_info).deliver
       flash[:notice] = "Sent!"
     else

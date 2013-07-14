@@ -12,34 +12,10 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def ads_count
-    @ads.count
-  end
+  def number_of_ads_in(facet, value = nil)
 
-  def total_ads_count
-    Ad.active.count
-  end
-
-  def supplies_count
-    Ad.active.supplies.count
-  end
-
-  def demands_count
-    Ad.active.demands.count
-  end
-
-  def ads_in_category_count(category)
-    @ads.where(category_id: category.id).count
-  end
-
-  def ads_in_region_count(region)
-    cities = region.cities.map{ |c| c.id }
-    @ads.where(city_id: cities).count
-  end
-
-  def ads_in_region_and_category_count(region, category)
-    cities = region.cities.map{ |c| c.id }
-    @ads.where(city_id: cities).where(category_id: category.id)
+    instance_variable_get("@ads_without_#{facet}").facet(facet).rows.select{ |row| row.value == value || value == nil }.sum{ |row| row.count } || 0
+    #@ads_search.facet(facet).rows.select{ |row| row.value == value || value == nil }.sum{ |row| row.count } || 0
   end
 
   def ads_plural(ads_count)

@@ -1,4 +1,7 @@
 module AdsHelper
+  %w(region_id category_id ad_type).each do |param|
+    define_method("selected_#{param}") { params[param].to_i }
+  end
 
   def is_own_ad ad
     return true == (current_user && ad.user && ad.user.id == current_user.id)
