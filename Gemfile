@@ -23,6 +23,7 @@ gem 'coveralls', require: false
 gem 'newrelic_rpm'
 gem 'airbrake'
 gem 'sunspot_rails'
+gem 'sunspot_solr'
 #gem 'omniauth-twitter'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'
@@ -35,7 +36,6 @@ group :assets do
 end
 
 group :development do
-  gem 'sunspot_solr'
   gem 'capistrano'
   gem 'rvm-capistrano'
   gem "letter_opener"
