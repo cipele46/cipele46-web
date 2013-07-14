@@ -15,6 +15,8 @@ after "deploy:finalize_update", "deploy:copy_config"
 after "deploy", "deploy:migrate"
 
 after 'deploy:restart', 'deploy:cleanup'
+after 'deploy:stop',    'solr:stop'
+after 'deploy:start',   'solr:start'
 
 namespace :deploy do
   task :start do ; end
