@@ -8,7 +8,7 @@ The Web site is here to help by providing a place to post ads from both those gr
 
 It all began with a written ad from a disabled person asking for shoes number 46 ("cipele 46" in Croatian).
 
-![Ad for shoes number 46](http://sphotos-g.ak.fbcdn.net/hphotos-ak-prn1/45912_578222112192499_1864669754_n.jpg)
+![Ad for shoes number 46](http://cipele46.org/assets/static/nasa-prica.png)
 
 Here is the [full story](http://www.facebook.com/Cipele46/info)
 
