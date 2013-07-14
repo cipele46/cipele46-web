@@ -9,26 +9,13 @@ class Ad < ActiveRecord::Base
   belongs_to :city
   has_many :favorites, :dependent => :destroy
 
-  attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone, :email
+  attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone,
+    :email
 
   mount_uploader :image, ImageUploader
 
-  scope :active, lambda { where("ads.created_at >= :date", :date => VALID_FOR.days.ago).where(status: 2) }
-  scope :supplies, where(ad_type: 1)
-  scope :demands, where(ad_type: 2)
-
-  scope :by_region, lambda { |region_id|
-    region = Region.find(region_id)
-    Ad.where(city_id: region.cities.map(&:id))
-  }
-  scope :by_category, lambda {|category_id| where(category_id: category_id)}
-  scope :by_type, lambda {|type| where(ad_type: TYPES[type.to_sym])}
-  scope :by_query, lambda { |query|
-    joins(:city => :region).joins(:category).where("title like :q or description like :q or regions.name like :q or cities.name like :q or categories.name like :q", :q => "%#{query}%")
-  }
-  scope :by_user_favorites, lambda { |user_id| 
-    joins(:favorites).where("favorites.user_id = ?", user_id)
-  }
+  scope :active, -> { where("ads.created_at >= :date", :date => VALID_FOR.days.ago).where(status: 2) }
+  scope :by_user_favorites, ->(user_id) { joins(:favorites).where("favorites.user_id = ?", user_id) }
 
   default_scope includes({ city: :region }, :category)
   
