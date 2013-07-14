@@ -7,7 +7,7 @@ role :web, 'cipele46.org'
 role :app, 'cipele46.org'                       
 role :db,  'cipele46.org', :primary => true 
 
-# This dumps the production database and restores it to local develeopment one
+# This dumps the production database and restores it to local development one
 # For it to work you need to have your ssh key on cipele46.org
 # Local database is assumed to be MySQL with empty root password
 #
