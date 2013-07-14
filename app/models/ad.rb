@@ -46,7 +46,7 @@ class Ad < ActiveRecord::Base
     integer :category_id
     integer :ad_type
     integer :status
-    time :published_at
+    time :created_at
   end
 
   def expires_at
@@ -102,7 +102,7 @@ class Ad < ActiveRecord::Base
       facet(:region_id)
       facet(:ad_type)
       paginate(page: page || 1, per_page: per_page || PER_PAGE)
-      order_by(:published_at, :desc) if ad_filter.query.blank?
+      order_by(:created_at, :desc) if ad_filter.query.blank?
     end
   end
 end
