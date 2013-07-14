@@ -101,7 +101,7 @@ class Ad < ActiveRecord::Base
       facet(:category_id)
       facet(:region_id)
       facet(:ad_type)
-      paginate(page: page || 1, per_page: per_page || PER_PAGE)
+      paginate(page: page || 1, per_page: per_page)
       order_by(:created_at, :desc) if ad_filter.query.blank?
     end
   end

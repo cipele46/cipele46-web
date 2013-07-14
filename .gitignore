@@ -77,3 +77,6 @@ pickle-email-*.html
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore solr/data
+/solr/data
