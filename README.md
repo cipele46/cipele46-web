@@ -1,3 +1,5 @@
+![Cipele 46](http://cipele46.org/assets/shoes46_logo.png)
+
 # Cipele46 Web [![Code Climate](https://codeclimate.com/github/cipele46/cipele46-web.png)](https://codeclimate.com/github/cipele46/cipele46-web) [![Build Status](https://travis-ci.org/cipele46/cipele46-web.png?branch=master)](https://travis-ci.org/cipele46/cipele46-web) [![Dependency Status](https://gemnasium.com/cipele46/cipele46-web.png)](https://gemnasium.com/cipele46/cipele46-web) [![Coverage Status](https://coveralls.io/repos/cipele46/cipele46-web/badge.png)](https://coveralls.io/r/cipele46/cipele46-web) 
 
 [Cipele46 Web](http://cipele46.org) is the Web site of the [Cipele46](http://www.facebook.com/Cipele46?) initiative whose 
