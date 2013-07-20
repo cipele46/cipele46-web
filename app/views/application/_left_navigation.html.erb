@@ -31,11 +31,11 @@
                 </li>
 
                 <li class="giving <%= selected_ad_type == Ad::TYPES[:supply] ? 'current': ''%>">
-                  <%= link_to "Ponuda (#{number_of_ads_in(:ad_type, Ad::TYPES[:supply])})", ads_path(:ad_type => Ad::TYPES[:supply]), class: 'filter-action' %>
+                  <%= link_to "Poklanjam (#{number_of_ads_in(:ad_type, Ad::TYPES[:supply])})", ads_path(:ad_type => Ad::TYPES[:supply]), class: 'filter-action' %>
                 </li>
 
                 <li class="receiving <%= selected_ad_type == Ad::TYPES[:demand] ? 'current': ''%>">
-                  <%= link_to "Potražnja (#{number_of_ads_in(:ad_type, Ad::TYPES[:demand])})", ads_path(:ad_type => Ad::TYPES[:demand]), class: 'filter-action' %>
+                  <%= link_to "Trebam (#{number_of_ads_in(:ad_type, Ad::TYPES[:demand])})", ads_path(:ad_type => Ad::TYPES[:demand]), class: 'filter-action' %>
                 </li>
             </ul>
         </li>
