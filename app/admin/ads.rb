@@ -20,7 +20,7 @@ ActiveAdmin.register Ad do
       f.input :city, collection: City.order(:name)
       f.input :phone
       f.input :email
-      f.input :ad_type, as: :select, collection: Ad::TYPES
+      f.input :ad_type, as: :select, collection: Ad.type
       f.input :status, as: :select, collection: Ad::STATUS
       f.input :description
       f.input :user
