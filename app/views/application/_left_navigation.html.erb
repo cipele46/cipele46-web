@@ -25,17 +25,17 @@
         <li class="expanded">
             <a href="javascript:void(null)">Vrsta oglasa</a>
             <ul>
-                <li class="<%=[Ad::TYPES[:supply], Ad::TYPES[:demand]].include?(selected_ad_type) ? 
+                <li class="<%=[Ad.type[:supply], Ad.type[:demand]].include?(selected_ad_type) ? 
                   '' : 'current'%>">
                   <%= link_to "Svi oglasi (#{number_of_ads_in(:ad_type)})", ads_path(:ad_type => 0), class: 'filter-action' %>          
                 </li>
 
-                <li class="giving <%= selected_ad_type == Ad::TYPES[:supply] ? 'current': ''%>">
-                  <%= link_to "Poklanjam (#{number_of_ads_in(:ad_type, Ad::TYPES[:supply])})", ads_path(:ad_type => Ad::TYPES[:supply]), class: 'filter-action' %>
+                <li class="giving <%= selected_ad_type == Ad.type[:supply] ? 'current': ''%>">
+                  <%= link_to "Poklanjam (#{number_of_ads_in(:ad_type, Ad.type[:supply])})", ads_path(:ad_type => Ad.type[:supply]), class: 'filter-action' %>
                 </li>
 
-                <li class="receiving <%= selected_ad_type == Ad::TYPES[:demand] ? 'current': ''%>">
-                  <%= link_to "Trebam (#{number_of_ads_in(:ad_type, Ad::TYPES[:demand])})", ads_path(:ad_type => Ad::TYPES[:demand]), class: 'filter-action' %>
+                <li class="receiving <%= selected_ad_type == Ad.type[:demand] ? 'current': ''%>">
+                  <%= link_to "Trebam (#{number_of_ads_in(:ad_type, Ad.type[:demand])})", ads_path(:ad_type => Ad.type[:demand]), class: 'filter-action' %>
                 </li>
             </ul>
         </li>

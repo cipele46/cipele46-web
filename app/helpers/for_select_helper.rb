@@ -1,7 +1,7 @@
 module ForSelectHelper
 
   def ad_types_for_select
-    @ad_types_for_select ||= Ad::TYPES
+    @ad_types_for_select ||= Ad.type
   end
 
   def categories_for_select

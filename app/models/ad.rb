@@ -1,7 +1,4 @@
 class Ad < ActiveRecord::Base
-  VALID_FOR = 30 # in days
-  TYPES     = { :supply => 1, :demand => 2 }
-  STATUS    = { :pending => 1, :active => 2, :closed => 3 }
   PER_PAGE  = 20
 
   belongs_to :category
@@ -49,46 +46,10 @@ class Ad < ActiveRecord::Base
     time :created_at
   end
 
-  def expires_at
-    created_at + VALID_FOR.days
-  end
-
-  def supply?
-    ad_type.to_i == TYPES[:supply].to_i
-  end
-
-  def demand?
-    ad_type.to_i == TYPES[:demand].to_i
-  end
-
-  def closed?
-    Time.current > (created_at + VALID_FOR.days)
-  end
-
-  def region
-    city.region
-  end
-
-  def set_status
-    self.status = if supply?
-      STATUS[:pending]
-    elsif demand?
-      STATUS[:active]
-    else
-      STATUS[:closed]
-    end
-  end
-
-  def type_name
-    TYPES.invert[ad_type]
-  end
-
-  def type_name_css
-    case type_name
-    when :supply then :giving
-    when :demand then :receiving
-    end
-  end
+  include Extensions::Ad::Expiration
+  include Extensions::Ad::Type
+  include Extensions::Ad::Status
+  include Extensions::Ad::Delegation
 
   def self.search(ad_filter, page = nil, per_page = nil)
     print ad_filter.to_yaml
