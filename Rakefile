@@ -6,4 +6,5 @@ require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:test) do |task|
   task.pattern    = Dir['**/spec/models/*_spec.rb','**/spec/services/*_spec.rb']
+  task.rspec_opts = "--format d --color"
 end
