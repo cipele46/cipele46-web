@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Region do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { Region.new }
+  
+  it "should respond to ads" do
+    subject.respond_to?(:ads).should be_true
+  end
 end
