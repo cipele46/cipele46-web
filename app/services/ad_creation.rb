@@ -16,8 +16,7 @@ class AdCreation
 
   private
 
-  def notify_admin
-    AdminMailer.new_ad(ad).deliver
-  end
-
+    def notify_admin
+      AdminMailer.new_ad(ad).deliver
+    end
 end
