@@ -46,13 +46,10 @@ class Ad < ActiveRecord::Base
     time :created_at
   end
 
-  include ::Extensions::Ad::Expiration
-  include ::Extensions::Ad::Type
-  include ::Extensions::Ad::Status
-
-  def region
-    city.region
-  end
+  include Extensions::Ad::Expiration
+  include Extensions::Ad::Type
+  include Extensions::Ad::Status
+  include Extensions::Ad::Delegation
 
   def self.search(ad_filter, page = nil, per_page = nil)
     print ad_filter.to_yaml

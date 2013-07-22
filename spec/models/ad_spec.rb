@@ -3,6 +3,7 @@ require "active_support/core_ext"
 require_relative "../../lib/extensions/ad/expiration"
 require_relative "../../lib/extensions/ad/type"
 require_relative "../../lib/extensions/ad/status"
+require_relative "../../lib/extensions/ad/delegation"
 
 class Ad
   attr_accessor :status
@@ -10,6 +11,7 @@ class Ad
   include Extensions::Ad::Expiration
   include Extensions::Ad::Type
   include Extensions::Ad::Status
+  include Extensions::Ad::Delegation
 end
 
 describe Ad do
@@ -83,6 +85,15 @@ describe Ad do
       subject.stub(:ad_type)
       subject.set_status
       subject.status.should == Ad.status[:closed]
+    end
+  end
+
+  describe "delegations" do
+    it "delegates region to city" do
+      city = double
+      city.should_receive(:region)
+      subject.stub(:city) { city }
+      subject.region
     end
   end
 end
