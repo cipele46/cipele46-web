@@ -2,6 +2,9 @@ set :application, 'cipele46'
 set :rails_env,   'production'
 set :deploy_to,   "/home/#{user}/#{application}"
 set :branch,      'master'
+set :solr_port,   8983
+set :solr_data,   'data-production'
+
 
 role :web, 'cipele46.org'                         
 role :app, 'cipele46.org'                       

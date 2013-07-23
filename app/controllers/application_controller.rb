@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def prepare_filters
-      session[:filters] ||= {}
-    end
+  def prepare_filters
+    @ad_filter = AdFilter.new(params)
+  end
 end

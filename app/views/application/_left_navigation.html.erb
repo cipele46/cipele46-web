@@ -1,55 +1,68 @@
+<script type="text/javascript">
+  $(function() {
+    $("aside a.filter-action").click(function(e) {
+      e.preventDefault();
+      var query = $.deserialize(URI($(this).attr("href")).query());
+      for(var key in query) {
+        $("form#filter_form").find("[name=" + key + "]").val(query[key]);
+      }
+      $("form#filter_form").submit();
+    });
+  });
+</script>
 <aside class="page-sidebar">
   <nav class="cards-board-filter">
     <ul id="cards-board-filter-nav">
         <% if current_user %>
         <li class="expanded">
-          <a href="#">Moj kutak</a>
+          <a href="javascript:void(null)">Moj kutak</a>
           <ul>
-            <li><a href="#">Moji oglasi (<%= current_user.ads.count %>)</a></li>
-            <li><a href="#">Moji favoriti (123)</a></li>
+            <li><a href="javascript:void(null)">Moji oglasi (<%= current_user.ads.count %>)</a></li>
+            <li><a href="javascript:void(null)">Moji favoriti (123)</a></li>
           </ul>
         </li>
         <% end -%>
         <li class="expanded">
-            <a href="#">Vrsta oglasa</a>
+            <a href="javascript:void(null)">Vrsta oglasa</a>
             <ul>
-                <li class="<%=(["supply", "demand"].include? @selected_type) ? '': 'current'%>">
-                  <%= link_to "Svi oglasi (#{(total_ads_count)})", ads_path(:type => :all) %>
+                <li class="<%=[Ad.type[:supply], Ad.type[:demand]].include?(selected_ad_type) ? 
+                  '' : 'current'%>">
+                  <%= link_to "Svi oglasi (#{number_of_ads_in(:ad_type)})", ads_path(:ad_type => 0), class: 'filter-action' %>          
                 </li>
 
-                <li class="giving <%=@selected_type == "supply" ? 'current': ''%>">
-                  <%= link_to "Ponuda (#{(supplies_count)})", ads_path(:type => :supply) %>
+                <li class="giving <%= selected_ad_type == Ad.type[:supply] ? 'current': ''%>">
+                  <%= link_to "Poklanjam (#{number_of_ads_in(:ad_type, Ad.type[:supply])})", ads_path(:ad_type => Ad.type[:supply]), class: 'filter-action' %>
                 </li>
 
-                <li class="receiving <%=@selected_type == "demand" ? 'current': ''%>">
-                  <%= link_to "Potražnja (#{(demands_count)})", ads_path(:type => :demand)%>
+                <li class="receiving <%= selected_ad_type == Ad.type[:demand] ? 'current': ''%>">
+                  <%= link_to "Trebam (#{number_of_ads_in(:ad_type, Ad.type[:demand])})", ads_path(:ad_type => Ad.type[:demand]), class: 'filter-action' %>
                 </li>
             </ul>
         </li>
         <li class="expanded">
-            <a href="#">Kategorije</a>
+            <a href="javascript:void(null)">Kategorije</a>
             <ul>
-                <li class=<%=@selected_category_id.to_i == 0 ? 'current': ''%>>
-                  <%= link_to "Sve kategorije (#{ads_count})", ads_path(:category_id => 0) %>
+                <li class="<%= selected_category_id == 0 ? 'current' : ''%>">
+                  <%= link_to "Sve kategorije (#{number_of_ads_in(:category_id)})", ads_path(category_id: 0), class: 'filter-action' %>
                 </li>
-
-                <% @categories.each do |category| %>
-                  <li class=<%=@selected_category_id.to_i == category.id ? 'current': ''%>>
-                    <%=link_to "#{category.name} (#{ads_in_category_count(category)})", ads_path(:category_id => category.id)%>
+                <% Category.scoped.each do |category| %>
+                  <li class="<%= selected_category_id == category.id ? 'current' : ''%>">
+                    <%= link_to "#{category.name} (#{number_of_ads_in(:category_id, category.id)})", 
+                      ads_path(category_id: category.id), class: 'filter-action' %>
                   </li>
                 <% end -%>
             </ul>
         </li>
         <li class="expanded">
-            <a href="#">Županije</a>
+            <a href="javascript:void(null)">Županije</a>
             <ul>
-                <li class=<%=@selected_region_id.to_i == 0 ? 'current': ''%>>
-                  <%= link_to "Sve županije (#{ads_count})", ads_path(:region_id => 0) %>
+                <li class="<%= selected_region_id == 0 ? 'current' : ''%>">
+                  <%= link_to "Sve županije (#{number_of_ads_in(:region_id)})", ads_path(region_id: 0), class: 'filter-action' %>
                 </li>
-
-                <% @regions.each do |region| %>
-                  <li class=<%=@selected_region_id.to_i == region.id ? 'current': ''%>>
-                    <%= link_to "#{region.name} (#{ads_in_region_count(region)})", ads_path(:region_id => region.id) %>
+                <% Region.scoped.each do |region| %>
+                  <li class="<%= selected_region_id == region.id ? 'current' : '' %>">
+                    <%= link_to "#{region.name} (#{number_of_ads_in(:region_id, region.id)})", 
+                      ads_path(region_id: region.id), class: 'filter-action' %>
                   </li>
                 <% end -%>
             </ul>

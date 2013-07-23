@@ -14,9 +14,5 @@ class User < ActiveRecord::Base
 
   validates :phone, :presence => true
 
-
-  def name
-    "#{self.first_name} #{self.last_name}"
-  end
-
+  include Extensions::User::Naming
 end
