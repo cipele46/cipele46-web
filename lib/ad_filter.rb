@@ -10,7 +10,6 @@ class AdFilter
         instance_variable_set("@#{key}", value) unless value.nil?
       end
     end
-    print self.to_yaml
   end
 
   def clone_without(skip_attribute)
