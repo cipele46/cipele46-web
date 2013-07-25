@@ -21,7 +21,7 @@ ActiveAdmin.register Ad do
       f.input :phone
       f.input :email
       f.input :ad_type, as: :select, collection: Ad.type
-      f.input :status, as: :select, collection: Ad::STATUS
+      f.input :status, as: :select, collection: Ad::STATES
       f.input :description
       f.input :user
     end
