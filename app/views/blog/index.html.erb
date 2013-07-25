@@ -24,7 +24,7 @@
       <figure class="icon window-2"><%= image_tag post.image.url(:small) %></figure>
       <% end -%>
       <% unless post.content.blank? %>
-      <p class="card-text"><%= post.content.truncate(320) %></p>
+      <p class="card-text"><%= HTML_Truncator.truncate(post.content, 20).html_safe %></p>
       <% end -%>
       <%= link_to "Više", blog_path(post), class: "link-vise" %>
     </article>

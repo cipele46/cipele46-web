@@ -144,6 +144,8 @@ GEM
       haml (>= 4.0.0.rc.1)
       hpricot (~> 0.8.6)
       ruby_parser (~> 3.1.1)
+    html_truncator (0.3.1)
+      nokogiri (~> 1.5)
     httpauth (0.2.0)
     i18n (0.6.1)
     inherited_resources (1.4.0)
@@ -336,6 +338,7 @@ DEPENDENCIES
   haml-rails (>= 0.4)
   high_voltage
   html2haml (>= 1.0.1)
+  html_truncator
   jquery-rails
   letter_opener
   mini_magick
