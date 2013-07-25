@@ -4,12 +4,13 @@ class AdFilter
   def initialize(params = {})
     params ||= {}
     params.each do |key, value|
-      if(value.instance_of?(Symbol) && value.instance_of(String) && self.respond_to?(value))
+      if((value.instance_of?(Symbol) || value.instance_of?(String)) && self.respond_to?(key))        
         value = value.present? && value.to_i != 0 ? value.to_i : nil unless key.to_sym == :query
         value = nil if value.blank?
         instance_variable_set("@#{key}", value) unless value.nil?
       end
     end
+    print self.to_yaml
   end
 
   def clone_without(skip_attribute)
