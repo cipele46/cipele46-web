@@ -1,10 +1,10 @@
 //= require jquery
 //= require jquery_ujs
-//= require preload_ckeditor
-//= require ckeditor/ckeditor
+//= require redactor/redactor
 
 $(document).ready(function() {
-  if ($("#blog_content").length) {
-    CKEDITOR.replace('blog[content]', {height:"350"});
-  }
+  $('#blog_content').redactor({
+    iframe: true,
+    css: '/custom_redactor.css',
+  });
 });
