@@ -20,3 +20,4 @@
 //= require jquery.isotope
 //= require URI
 //= require jquery.deserialize
+//= require redactor/redactor

@@ -4,9 +4,11 @@ class AdFilter
   def initialize(params = {})
     params ||= {}
     params.each do |key, value|
-      value = value.present? && value.to_i != 0 ? value.to_i : nil unless key.to_sym == :query
-      value = nil if value.blank?
-      instance_variable_set("@#{key}", value) unless value.nil?
+      if(value.instance_of?(Symbol) && value.instance_of(String) && self.respond_to?(value))
+        value = value.present? && value.to_i != 0 ? value.to_i : nil unless key.to_sym == :query
+        value = nil if value.blank?
+        instance_variable_set("@#{key}", value) unless value.nil?
+      end
     end
   end
 

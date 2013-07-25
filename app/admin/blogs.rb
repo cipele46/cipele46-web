@@ -2,7 +2,7 @@ ActiveAdmin.register Blog do
 
   index do
     column :title, :sortable => :title do |article|
-      link_to article.title, edit_admin_ad_path(article)
+      link_to article.title, edit_admin_blog_path(article)
     end
     column :created_at, :sortable => :created_at
     default_actions
