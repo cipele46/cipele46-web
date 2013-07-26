@@ -51,14 +51,13 @@ class Ad < ActiveRecord::Base
   include Extensions::Ad::Status
   include Extensions::Ad::Delegation
 
-  def self.search(ad_filter, page = nil, per_page = nil)
-    print ad_filter.to_yaml
+  def self.search(ad_filter = AdFilter.new, page = nil, per_page = nil)
     Sunspot.search(Ad) do
       fulltext(ad_filter.query) if ad_filter.query
       with(:category_id, ad_filter.category_id) if ad_filter.category_id
       with(:region_id, ad_filter.region_id) if ad_filter.region_id
       with(:ad_type, ad_filter.ad_type) if ad_filter.ad_type
-      with(:status, 2)
+      with(:status, Ad.status[:active])
       facet(:category_id)
       facet(:region_id)
       facet(:ad_type)

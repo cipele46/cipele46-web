@@ -126,6 +126,7 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     friendly_id (4.0.9)
+    gherkin-ruby (0.3.0)
     haml (4.0.3)
       tilt
     haml-rails (0.4)
@@ -281,6 +282,13 @@ GEM
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.5)
+    spinach (0.8.3)
+      colorize (= 0.5.8)
+      gherkin-ruby (~> 0.3.0)
+    spinach-rails (0.2.1)
+      capybara (>= 2.0.0)
+      railties (>= 3)
+      spinach (>= 0.4)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -319,25 +327,24 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   airbrake
-  better_errors (>= 0.7.2)
-  binding_of_caller (>= 0.7.1)
-  bootstrap-sass (>= 2.3.0.0)
-  cancan (>= 1.6.9)
+  better_errors
+  binding_of_caller
+  bootstrap-sass
+  cancan
   capistrano
-  capybara (>= 2.0.3)
   carrierwave
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   coveralls
-  database_cleaner (>= 1.0.0.RC1)
-  devise (>= 2.2.3)
-  email_spec (>= 1.4.0)
-  factory_girl_rails (>= 4.2.0)
-  figaro (>= 0.6.3)
+  database_cleaner
+  devise
+  email_spec
+  factory_girl_rails
+  figaro
   foreman
   friendly_id
-  haml-rails (>= 0.4)
+  haml-rails
   high_voltage
-  html2haml (>= 1.0.1)
+  html2haml
   html_truncator
   jquery-rails
   letter_opener
@@ -346,16 +353,18 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-facebook
   pry
-  quiet_assets (>= 1.0.2)
+  quiet_assets
   rails (= 3.2.13)
-  rolify (>= 3.2.0)
+  rolify
   rspec
-  rspec-rails (>= 2.12.2)
+  rspec-rails
   rvm-capistrano
-  sass-rails (~> 3.2.3)
-  simple_form (>= 2.1.0)
+  sass-rails
+  simple_form
+  simplecov
+  spinach-rails
   sqlite3
   sunspot_rails
   sunspot_solr
   thin
-  uglifier (>= 1.0.3)
+  uglifier

@@ -1,5 +1,6 @@
 class AdsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
+
   respond_to :html, :json
 
   def index

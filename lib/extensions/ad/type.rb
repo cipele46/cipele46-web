@@ -6,9 +6,21 @@ module Extensions
       STATES  = { :supply => 1, :demand => 2 }
 
       included do
-        def self.type
-          STATES
+        class << self
+          def type
+            STATES
+          end
+
+          def receiving
+            demand
+          end
+
+          def giving
+            supply
+          end
         end
+        scope :supply, where(:ad_type => self.type[:supply])
+        scope :demand, where(:ad_type => self.type[:demand])
       end
 
       def supply?

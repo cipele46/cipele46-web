@@ -3,5 +3,4 @@ rvm:
 before_script:
   - rake config:defaults
   - rake config:travis
-  - mysql -e 'create database cipele46_test;'
-  - rake db:migrate
+  - rake db:test:prepare

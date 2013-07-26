@@ -13,7 +13,6 @@ module ApplicationHelper
   end
 
   def number_of_ads_in(facet, value = nil)
-
     instance_variable_get("@ads_without_#{facet}").facet(facet).rows.select{ |row| row.value == value || value == nil }.sum{ |row| row.count } || 0
     #@ads_search.facet(facet).rows.select{ |row| row.value == value || value == nil }.sum{ |row| row.count } || 0
   end

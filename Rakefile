@@ -9,4 +9,6 @@ Cipele46Web::Application.load_tasks
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :default => :spec
+task :default do
+  Rake::Task["spec"].invoke
+end

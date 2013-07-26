@@ -25,7 +25,7 @@
         <li class="expanded">
             <a href="javascript:void(null)">Vrsta oglasa</a>
             <ul>
-                <li class="<%=[Ad.type[:supply], Ad.type[:demand]].include?(selected_ad_type) ? 
+                <li class="all <%=[Ad.type[:supply], Ad.type[:demand]].include?(selected_ad_type) ? 
                   '' : 'current'%>">
                   <%= link_to "Svi oglasi (#{number_of_ads_in(:ad_type)})", ads_path(:ad_type => 0), class: 'filter-action' %>          
                 </li>

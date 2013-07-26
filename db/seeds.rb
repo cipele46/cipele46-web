@@ -9,6 +9,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # Environment variables (ENV['...']) are set in the file config/application.yml.
 # See http://railsapps.github.io/rails-environment-variables.html
+
+include SunspotHelper
+setup_solr
+
 YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
   puts 'role: ' << role
@@ -50,7 +54,6 @@ user.add_role :admin
       r.cities.create(:name => city)
     end
   end
-
 end
 
 
@@ -67,12 +70,7 @@ end
   "Hobi i zabava",
   "Ostalo"
 ].each do |categoryName|
-
-  category = Category.find_by_name categoryName
-  unless category
-    category = Category.create(:name => categoryName)
-  end
-
+    Category.find_or_create_by_name(:name => categoryName)
 end
 
 placeholderAdDescription =
@@ -80,57 +78,8 @@ placeholderAdDescription =
 " ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"\
 " laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in"\
 " voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat"\
-" non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."\
+" non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
-[
-  [ "Poklanjam kaput", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 100 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim plave papuče", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],  
-  [ "Poklanjam papigu", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 200 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim cipele 47", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Poklanjam commodore 64", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 300 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim zelene papuče", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Poklanjam ženu", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 400 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim aparat za gašenje požara", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Poklanjam babu", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 500 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim kunu za pivo", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Poklanjam punicu", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 600 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim đemper", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim aparat za gašenje požara", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Poklanjam ćukca", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 600 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim naočale", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Poklanjam kanarinca", 1, 1, 1, 'adSeedImg1.jpg', Ad.status[:active], Ad.type[:supply], "091 555 666", "email@domena.hr"],
-  [ "Trebalo bi mi 700 kuna", 2, 1, 20, 'adSeedImg2.jpg', Ad.status[:active], Ad::type[:demand], "091 555 666", "email@domena.hr"],
-  [ "Tražim macbook", 3, 1, 30, 'adSeedImg3.jpg', Ad.status[:active], Ad.type[:demand], "091 555 666", "email@domena.hr"]
-   
-  
-].each do |adData|
-
-  ad = Ad.find_by_title adData[0]
-  unless ad
-    ::Sunspot.session = ::Sunspot::Rails::StubSessionProxy.new(::Sunspot.session)
-
-    ad = Ad.create(
-      :title => adData[0],
-      :description => placeholderAdDescription,
-      :category_id => adData[1],
-      :user_id => adData[2],
-      :city_id => adData[3],
-      :image => File.open("db/seed/#{adData[4]}"),
-      :status => adData[5],
-      :ad_type => adData[6],
-      :phone => adData[7],
-      :email => adData[8]
-    )
-
-    ::Sunspot.session = ::Sunspot.session.original_session
-  end
-
+20.times do
+  FactoryGirl.create(:ad, category: Category.all.sample, city: City.all.sample, user: User.all.sample)
 end
-
