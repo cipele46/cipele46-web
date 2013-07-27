@@ -19,8 +19,6 @@ module Extensions
             supply
           end
         end
-        scope :supply, where(:ad_type => self.type[:supply])
-        scope :demand, where(:ad_type => self.type[:demand])
       end
 
       def supply?
