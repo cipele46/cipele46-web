@@ -42,4 +42,10 @@ module ApplicationHelper
     end
   end
 
+  def align_footer
+    if current_page?(root_path)
+      "align"
+    end
+  end
+
 end

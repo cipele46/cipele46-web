@@ -1765,6 +1765,9 @@ span.form-label{
     width: 310px;
 }
 
+.page-content-wrapper{
+  padding-bottom: 40px;
+}
 /* Content */
 .page-content {
     width: 960px;
@@ -1783,6 +1786,27 @@ span.form-label{
 }
 .page-content-wrapper.inner-page .page-sidebar {
    width: 240px;
+}
+
+/* Footer */
+
+.page-footer {
+   height:30px;
+   width: 940px;
+   margin-left: auto;
+   margin-right: auto;
+   margin-bottom: 15px;
+}
+
+.page-footer.align {
+   padding-left: 310px;
+}
+
+.page-footer p.host-info {
+    font-size: 1.4em;
+    color: #444;
+    margin-top: 10px;
+    float: right;
 }
 
 /* User settings
