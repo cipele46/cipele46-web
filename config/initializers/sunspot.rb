@@ -1,6 +1,20 @@
 $original_sunspot_session = Sunspot.session
 
+
 module SunspotHelper
+  def server_running?
+    begin
+      open("http://localhost:#{$sunspot.port}/")
+      true
+    rescue Errno::ECONNREFUSED
+      # server not running yet
+      false
+    rescue OpenURI::HTTPError
+      # getting a response so the server is running
+      true
+    end
+  end
+
   def setup_solr
     unless $sunspot
       $sunspot = Sunspot::Rails::Server.new
@@ -12,7 +26,12 @@ module SunspotHelper
       # shut down the Solr server
       at_exit { Process.kill('TERM', pid) }
       # wait for solr to start
-      sleep 5
+      print "Booting Sunspot server"
+      until server_running?
+        sleep 0.5
+        print '.' 
+      end
+      puts 'Done!'
     end
     Sunspot.session = $original_sunspot_session
 
