@@ -1,6 +1,11 @@
 class Ad < ActiveRecord::Base
   PER_PAGE  = 20
 
+  include Extensions::Ad::Expiration
+  include Extensions::Ad::Type
+  include Extensions::Ad::Status
+  include Extensions::Ad::Delegation
+
   belongs_to :category
   belongs_to :user
   belongs_to :city
@@ -48,10 +53,6 @@ class Ad < ActiveRecord::Base
     time :created_at
   end
 
-  include Extensions::Ad::Expiration
-  include Extensions::Ad::Type
-  include Extensions::Ad::Status
-  include Extensions::Ad::Delegation
 
   def self.search(ad_filter = AdFilter.new, page = nil, per_page = nil)
     Sunspot.search(Ad) do
