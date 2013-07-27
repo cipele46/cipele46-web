@@ -1,9 +1,10 @@
 language: ruby
 env:
-  - TRAVIS=true
+  - RAILS_ENV=test TRAVIS=true
 rvm:
   - "1.9.3"
 before_script:
   - rake config:defaults
   - rake config:travis
-  - RAILS_ENV=test rake db:setup
+  - rake db:create
+  - rake db:migrate
