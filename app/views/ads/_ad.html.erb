@@ -1,7 +1,9 @@
 <article class="card <%= ad.type_name_css %>" data-details="<%= ad_path(ad) %>">
-    <figure class="icon window-2">
+    <% if ad.image.present? %>
+      <figure class="icon window-2">
       <%= link_to image_tag_for_ad(ad, :version => :small), ad_path(ad) %>
-    </figure>
+      </figure>
+    <% end %>
     <h2><%= link_to ad.title, ad_path(ad) %></h2>
     <p><%= ad.description %></p>
     <footer>
