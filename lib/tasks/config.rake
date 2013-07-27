@@ -12,6 +12,7 @@ namespace :config do
     end
     exit 0
   end
+
   desc "Copy travis config over database.yml"
   task :travis do
     cp Rails.root.join('config/database.yml.travis'), Rails.root.join('config/database.yml')

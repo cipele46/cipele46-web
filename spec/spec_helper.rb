@@ -1,8 +1,15 @@
-require 'coveralls'
-Coveralls.wear!('rails')
+ENV["RAILS_ENV"] ||= 'test'
+
+if ENV['TRAVIS']
+  require 'coveralls'
+  Coveralls.wear!
+elsif ENV["RAILS_ENV"] == "test"
+  require 'simplecov'
+  SimpleCov.start 'rails'
+  SimpleCov.coverage_dir 'coverage/spec'
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] = 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'email_spec'
