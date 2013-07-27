@@ -193,6 +193,11 @@ button {
     background: url(/assets/shoes46_logo_staging.png) left center no-repeat;
 }
 
+.page-header .logo-under-construction
+{
+    background: url(/assets/under_construction_logo.png) left center no-repeat;
+}
+
 .page-header nav {
     float: left;
     margin-left: 30px;
