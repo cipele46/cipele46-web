@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+#
+# This command should be used for running unit tests. 
+# Unit tests should be fast and should not depend on Rails,
+# so we can't achieve the same with the Rake task.
+#
+# This command should be used only for local development.
+
+system("rspec spec/models spec/services")
