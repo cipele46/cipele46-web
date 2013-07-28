@@ -22,7 +22,7 @@
   <body id="page">
     <%= render 'application/top_navigation' %>
 
-    <div class="page-content-wrapper clearfix<%= " inner-page giving" if params[:controller] == "blog" %>">
+    <div class="page-content-wrapper clearfix<%= " blog inner-page giving" if controller_name == "blog" %>">
       <%= yield %>
     </div>
 

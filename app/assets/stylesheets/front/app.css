@@ -563,6 +563,34 @@ button {
     margin-bottom:34px;
 }
 
+/* Blog */
+
+.blog h1 {
+    font-size: 4em;
+    border-bottom: 1px dotted;
+}
+.blog h2 {
+    border: 0 !important;
+    font-weight: normal !important;
+    font-size: 3em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.blog h3 {
+    font-size: 2.5em;
+}
+.blog h4 {
+    font-size: 2em;
+}
+
+.blog h5 {
+    font-size: 1.5em;
+}
+
+.blog h6 {
+    font-size: 1em;
+}
+
 
 /* Board
 ***************************************************************/
@@ -938,8 +966,7 @@ a.card-favorite.selected:visited {
     margin: 0 30px;
 }
 .card-details figure {
-    width: 480px;
-    height: 300px;
+    width: 100%;
     text-align: center;
     overflow: hidden;
     background: #eee;
