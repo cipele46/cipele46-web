@@ -5,6 +5,7 @@ class Ad < ActiveRecord::Base
   include Extensions::Ad::Type
   include Extensions::Ad::Status
   include Extensions::Ad::Delegation
+  include Extensions::Ad::Searchable
 
   belongs_to :category
   belongs_to :user
@@ -30,42 +31,4 @@ class Ad < ActiveRecord::Base
   validates :title, :presence => true
   validates :ad_type, :presence => true
 
-  searchable do
-    text :title, boost: 4.0
-    text :description, boost: 2.0
-    text :phone
-    text :category do
-      category.name
-    end
-    text :city do
-      city.name
-    end
-    text :region do 
-      city.region.name 
-    end
-
-    integer :region_id do
-      city.region_id
-    end
-    integer :category_id
-    integer :ad_type
-    integer :status
-    time :created_at
-  end
-
-
-  def self.search(ad_filter = AdFilter.new, page = nil, per_page = nil)
-    Sunspot.search(Ad) do
-      fulltext(ad_filter.query) if ad_filter.query
-      with(:category_id, ad_filter.category_id) if ad_filter.category_id
-      with(:region_id, ad_filter.region_id) if ad_filter.region_id
-      with(:ad_type, ad_filter.ad_type) if ad_filter.ad_type
-      with(:status, Ad.status[:active])
-      facet(:category_id)
-      facet(:region_id)
-      facet(:ad_type)
-      paginate(page: page || 1, per_page: per_page)
-      order_by(:created_at, :desc) if ad_filter.query.blank?
-    end
-  end
-end
+ end
