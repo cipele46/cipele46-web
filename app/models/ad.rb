@@ -1,11 +1,11 @@
 class Ad < ActiveRecord::Base
-  PER_PAGE  = 20
 
   include Extensions::Ad::Expiration
   include Extensions::Ad::Type
   include Extensions::Ad::Status
   include Extensions::Ad::Delegation
   include Extensions::Ad::Searchable
+  include Extensions::Ad::Pagination
 
   belongs_to :category
   belongs_to :user
@@ -18,6 +18,7 @@ class Ad < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   scope :active, -> { where("ads.created_at >= :date", :date => VALID_FOR.days.ago).where(status: 2) }
+  scope :closed, -> { where(status: 3) }
   scope :by_user_favorites, ->(user_id) { joins(:favorites).where("favorites.user_id = ?", user_id) }
   scope :supply, where(:ad_type => self.type[:supply])
   scope :demand, where(:ad_type => self.type[:demand])

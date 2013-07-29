@@ -1,5 +1,5 @@
 #encoding: utf-8
-class Spinach::Features::TestHowDashboardWorks < Spinach::FeatureSteps
+class Spinach::Features::Dashboard < Spinach::FeatureSteps
   private
 
     def seed_ads

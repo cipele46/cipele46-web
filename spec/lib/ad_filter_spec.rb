@@ -1,3 +1,5 @@
+require "spec_helper"
+
 describe AdFilter do
   subject { AdFilter.new(params) }
   

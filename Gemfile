@@ -29,7 +29,8 @@ gem 'html_truncator'
 #gem 'omniauth-twitter'
 #gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'
-
+#
+gem "sinatra", require: false
 
 group :assets do
   gem 'sass-rails'
@@ -45,13 +46,13 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller", :platforms => [:mri_19, :rbx]
   gem "html2haml"
-  gem "pry-rails"
 end
 
 group :development, :test do
   gem "rspec-rails"
   gem "spinach-rails"
   gem "factory_girl_rails"
+  gem "pry-rails"
 end
 
 group :test do

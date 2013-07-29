@@ -26,4 +26,5 @@ Cipele46Web::Application.routes.draw do
   #match 'auth/google_oauth2/callback'   => 'social#google',   :as => :google
   #match 'auth/linkedin/callback'        => 'social#linkedin', :as => :linkedin
 
+  mount Api::Base => "/api", as: "api"
 end
