@@ -59,4 +59,6 @@ group :test do
   gem "database_cleaner"
   gem "email_spec"
   gem 'sunspot_matchers'
+  gem 'capybara'
+  gem 'poltergeist'
 end

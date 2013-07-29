@@ -12,6 +12,8 @@ end
 require "./config/environment"
 
 require "rspec/rails"
+require 'spinach/capybara'
+require 'capybara/poltergeist'
 
 DatabaseCleaner.strategy = :truncation
 
@@ -31,4 +33,8 @@ end
 Spinach.hooks.on_tag("search") do
   include SunspotHelper
   setup_solr
+end
+
+Spinach.hooks.on_tag("javascript") do
+  ::Capybara.current_driver = :poltergeist
 end
