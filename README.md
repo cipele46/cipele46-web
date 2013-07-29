@@ -20,3 +20,5 @@ Although the Web site is in Croatian and the initiative is local, you can help b
 a pull request. Everyone is welcome. Apart from UI strings, everything else is in English.
 
 [Here's how](https://github.com/cipele46/cipele46-web/wiki/How-to-start-developing).
+
+Travis
