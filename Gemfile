@@ -58,5 +58,4 @@ group :test do
   gem "simplecov", require: false
   gem "database_cleaner"
   gem "email_spec"
-  gem 'sunspot_matchers'
 end

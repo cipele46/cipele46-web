@@ -299,7 +299,6 @@ GEM
     sunspot (2.0.0)
       pr_geohash (~> 1.0)
       rsolr (~> 1.0.7)
-    sunspot_matchers (2.0.0.3)
     sunspot_rails (2.0.0)
       nokogiri
       sunspot (= 2.0.0)
@@ -365,7 +364,6 @@ DEPENDENCIES
   simplecov
   spinach-rails
   sqlite3
-  sunspot_matchers
   sunspot_rails
   sunspot_solr
   thin

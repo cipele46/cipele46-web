@@ -1,7 +1,5 @@
 class AdFilter
-  FILTER_ATTRIBUTES = [:region_id, :category_id, :ad_type]
-
-  attr_accessor :region_id, :category_id, :ad_type, :query, :page, :per_page
+  attr_accessor :region_id, :category_id, :ad_type, :query
 
   def initialize(params = {})
     params ||= {}
@@ -14,18 +12,11 @@ class AdFilter
     end
   end
 
-  def search_without(skip_attribute)
-    search(FILTER_ATTRIBUTES.reject{ |attr| attr == skip_attribute })
-  end
-  
-  def search(filter_attributes = FILTER_ATTRIBUTES)
-    Sunspot.search(Ad) do
-      fulltext(query)
-      filter_attributes.each { |attr| with(attr, self.send(attr)) if self.send(attr) }
-      FILTER_ATTRIBUTES.each { |attr| facet(attr) }
-      with(:status, Ad.status[:active])
-      paginate(page: page || 1, per_page: per_page || Ad::PER_PAGE)
-      order_by(:created_at, :desc) if query.blank?
+  def clone_without(skip_attribute)
+    new_filter = AdFilter.new
+    [:region_id, :category_id, :ad_type, :query].each do |method|
+      new_filter.send(method.to_s + '=', skip_attribute == method ? nil : self.send(method))
     end
+    new_filter
   end
 end

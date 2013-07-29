@@ -1,11 +1,9 @@
-require 'active_support/core_ext'
+require "active_support/core_ext"
 
-require_relative '../../lib/extensions/ad/expiration'
-require_relative '../../lib/extensions/ad/type'
-require_relative '../../lib/extensions/ad/status'
-require_relative '../../lib/extensions/ad/delegation'
-require_relative '../../lib/extensions/ad/searchable'
-
+require_relative "../../lib/extensions/ad/expiration"
+require_relative "../../lib/extensions/ad/type"
+require_relative "../../lib/extensions/ad/status"
+require_relative "../../lib/extensions/ad/delegation"
 
 class Ad
   attr_accessor :status
@@ -14,13 +12,6 @@ class Ad
   include Extensions::Ad::Type
   include Extensions::Ad::Status
   include Extensions::Ad::Delegation
-
-end
-
-class AdSearchMock
-  def self.searchable
-    yield
-  end
 end
 
 describe Ad do
@@ -103,30 +94,6 @@ describe Ad do
       city.should_receive(:region)
       subject.stub(:city) { city }
       subject.region
-    end
-  end
-
-  context 'Search setup', sunspot_matchers: true do
-    before do
-      AdSearchMock.stub(:text)
-      AdSearchMock.stub(:integer)
-      AdSearchMock.stub(:time)
-    end
-
-    #These can't be separated in a feasible way
-    it 'should add fields for fulltext search, filtering and sorting' do
-      AdSearchMock.should_receive(:text).with(:title, boost: 4.0)
-      AdSearchMock.should_receive(:text).with(:description, boost: 2.0)
-      AdSearchMock.should_receive(:text).with(:phone)
-      AdSearchMock.should_receive(:text).with(:category)
-      AdSearchMock.should_receive(:text).with(:city)
-      AdSearchMock.should_receive(:text).with(:region)
-      AdSearchMock.should_receive(:integer).with(:region_id)
-      AdSearchMock.should_receive(:integer).with(:category_id)
-      AdSearchMock.should_receive(:integer).with(:ad_type)
-      AdSearchMock.should_receive(:integer).with(:status)
-      AdSearchMock.should_receive(:time).with(:created_at)
-      AdSearchMock.send(:include, Extensions::Ad::Searchable)
     end
   end
 end

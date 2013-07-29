@@ -4,10 +4,10 @@ class AdsController < ApplicationController
   respond_to :html, :json
 
   def index
-    @ads_search = @ad_filter.search
-    @ads_without_category_id = @ad_filter.search_without(:category_id) 
-    @ads_without_ad_type = @ad_filter.search_without(:ad_type) 
-    @ads_without_region_id = @ad_filter.search_without(:region_id) 
+    @ads_search = Ad.search(@ad_filter, params[:page], params[:per_page] || Ad::PER_PAGE)
+    @ads_without_category_id = Ad.search(@ad_filter.clone_without(:category_id), 1)
+    @ads_without_ad_type = Ad.search(@ad_filter.clone_without(:ad_type), 1)
+    @ads_without_region_id = Ad.search(@ad_filter.clone_without(:region_id), 1)
     respond_with @ads = @ads_search.results
   end
 

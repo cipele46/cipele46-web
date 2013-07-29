@@ -31,7 +31,7 @@ module SunspotHelper
         sleep 0.5
         print '.' 
       end
-      puts "\nDone!"
+      puts 'Done!'
     end
     Sunspot.session = $original_sunspot_session
 
