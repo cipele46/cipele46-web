@@ -25,7 +25,7 @@ Feature: Test how dashboard works
     And I click to see the ad details
     Then I should see the ad details
 
-    @search @javascript
+    @search
   Scenario: Ad search
     When I enter the search query
     Then I should see only the ads that match the query
