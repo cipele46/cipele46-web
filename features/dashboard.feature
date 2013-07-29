@@ -1,4 +1,4 @@
-Feature: Test how dashboard works
+Feature: Dashboard
 
   In order to use Cipele46
   As a user
