@@ -229,6 +229,15 @@ describe "API" do
   context "for authenticated users" do
 
     context "ads" do
+        describe "fetching" do 
+          context "GET /api/ads?user=1" do
+            it "returns JSON success"
+          end
+
+          context "GET /api/ads?favorites=1" do
+            it "returns JSON success"
+          end
+        end
       describe "creating" do
         context "POST /api/ads" do
           it "returns JSON success" do
