@@ -21,7 +21,7 @@
         <span>Objavljeno <%= post.created_at.strftime("%d.%m.%Y") %></span>
       </header>
       <% if post.image.url %>
-      <figure class="icon window-2"><%= image_tag post.image.url(:small) %></figure>
+      <figure class="icon window-2"><%= image_tag post.image.url(:large) %></figure>
       <% end -%>
       <% unless post.content.blank? %>
       <p class="card-text"><%= HTML_Truncator.truncate(post.content, 20).html_safe %></p>
