@@ -3,12 +3,14 @@ require_relative("./v1/protected_handler")
 
 module Api 
   module V1
+    module Response
+     UNAUTHORIZED = {"error" => "Unauthorized"}.to_json
+    end
     class Base < Sinatra::Base
       before do
         content_type :json
       end
 
-      disable :raise_errors, :show_exceptions
 
       error do
         {"error" => request.env["sinatra.error"]}.to_json

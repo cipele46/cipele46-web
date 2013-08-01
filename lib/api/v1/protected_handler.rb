@@ -1,11 +1,12 @@
 module Api
   module V1
     class ProtectedHandler < Sinatra::Base
+
       helpers do
         def protect!
           return if authorized?
           headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
-          halt 401, "Not authorized\n"
+          halt 401
         end
 
         def authorized?
@@ -18,6 +19,15 @@ module Api
         def current_user
           @user ||= User.find_by_email(@auth.credentials.first)
         end
+      end
+
+      error 401 do
+        Response::UNAUTHORIZED
+      end
+
+      get "/ads", provides: :json do
+        protect! if params[:user] || params[:favorites]
+        AdFilter.new(params).search.results.to_json
       end
 
       post "/ads", provides: :json do
@@ -38,6 +48,11 @@ module Api
       put "/users/current", provides: :json do
         protect!
         current_user.update_attributes(params["user"]).to_json
+      end
+
+      get "/users/current", provides: :json do
+        protect!
+        current_user.to_json
       end
     end
   end

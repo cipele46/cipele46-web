@@ -4,6 +4,7 @@ class AdFilter
   attr_accessor :region_id, :category_id, :ad_type, :query, :page, :per_page
 
   def initialize(params = {})
+    # TODO: refactor me
     params ||= {}
     params.each do |key, value|
       if((value.instance_of?(Symbol) || value.instance_of?(String)) && self.respond_to?(key))        

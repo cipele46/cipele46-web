@@ -9,9 +9,6 @@ module Api
         Region.all.to_json :include => :cities
       end
 
-      get "/ads", provides: :json do
-        AdFilter.new(params).search.results.to_json
-      end
 
       post "/users", provides: :json do
         User.create(params["user"]).to_json
