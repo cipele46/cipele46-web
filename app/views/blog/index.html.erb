@@ -11,13 +11,13 @@
   </div>
 </aside>
 
-<div class="page-content">
+<div class="page-content blog">
   <header class="page-content-header clearfix">&nbsp;</header>
   <% @main_posts.each do |post| %>
   <section class="page-content-container clearfix">
-    <article class="card-details">
+    <article class="card-details formatted-user-input">
       <header>
-        <h2 class="page-blog-h2"><%= post.title %></h2>
+        <h1><%= post.title %></h1>
         <span>Objavljeno <%= post.created_at.strftime("%d.%m.%Y") %></span>
       </header>
       <% if post.image.url %>
