@@ -10,7 +10,7 @@ module Api
       end
 
       get "/ads", provides: :json do
-        Ad.search(AdFilter.new(params), params[:page], params[:per_page] || Ad.per_page(:api)).results.to_json
+        AdFilter.new(params).search.results.to_json
       end
 
       post "/users", provides: :json do

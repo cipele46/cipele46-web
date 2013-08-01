@@ -1,7 +1,3 @@
-require_relative('../../../config/application') 
-
-require "pry"
-
 module Api
   module V1
     class ProtectedHandler < Sinatra::Base

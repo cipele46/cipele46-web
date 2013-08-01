@@ -78,9 +78,14 @@ describe "API" do
       describe "listing" do
         context "GET /api/v1/ads" do
           it "renders JSON" do
-            Ad.should_receive(:search).with(instance_of(AdFilter), nil, anything)
+            results = {}
+            search = double(:results => results)
+
+            AdFilter.any_instance.should_receive(:search) { search }
+            results.should_receive(:to_json)
 
             get ads_api_path
+            response.status.should eq(200)
           end
         end
       end
@@ -90,8 +95,12 @@ describe "API" do
           it "renders JSON" do
             params = {"page" => "2", "per_page" => "1", "foo" => "bar", "baz" => "biz"}
 
-            AdFilter.should_receive(:new).with(params.with_indifferent_access).and_call_original
-            Ad.should_receive(:search).with(instance_of(AdFilter), "2", "1")
+            results = {}
+            search = double(:results => results)
+
+            AdFilter.should_receive(:new).with(params) { Ad }
+            Ad.should_receive(:search) { search }
+            results.should_receive(:to_json)
 
             get ads_api_path, params
           end
