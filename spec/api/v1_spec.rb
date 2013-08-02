@@ -106,9 +106,8 @@ describe "API" do
         context "GET /api/v1/ads" do
           it "returns JSON success" do
             results = {}
-            search = double(:results => results)
 
-            AdFilter.any_instance.should_receive(:search) { search }
+            Ad.should_receive(:search) { results }
             results.should_receive(:to_json)
 
             get ads_api_path
@@ -125,10 +124,8 @@ describe "API" do
               "query" => "query"}
 
             results = {}
-            search = double(:results => results)
 
-            AdFilter.should_receive(:new).with(params) { Ad }
-            Ad.should_receive(:search) { search }
+            Ad.should_receive(:search) { results }
             results.should_receive(:to_json)
 
             get ads_api_path, params
@@ -231,7 +228,13 @@ describe "API" do
     context "ads" do
         describe "fetching" do 
           context "GET /api/ads?user=1" do
-            it "returns JSON success"
+            it "returns JSON success" do
+              params = {"user" => "1"}
+              Ad.should_receive(:search).with({"user" => current_user})
+
+              get ads_api_path, params, 
+                {"HTTP_AUTHORIZATION" => valid_credentials }
+            end
           end
 
           context "GET /api/ads?favorites=1" do

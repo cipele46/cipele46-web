@@ -26,8 +26,9 @@ module Api
       end
 
       get "/ads", provides: :json do
-        protect! if params[:user] || params[:favorites]
-        AdFilter.new(params).search.results.to_json
+        protect! if params["user"] || params["favorites"]
+        params["user"] = current_user if params["user"]
+        Ad.search(params).to_json
       end
 
       post "/ads", provides: :json do
