@@ -27,7 +27,7 @@ module ApplicationHelper
   end
 
   def ad_is_favorite(ad_id)
-    Favorite.where("user_id = ? AND ad_id = ?", current_user.id, ad_id).count > 0 ? true : false
+    current_user.favorite_ads.map(&:id).include?(ad_id) ? true : false
   end
 
   def ad_type_decode(ad_type)
