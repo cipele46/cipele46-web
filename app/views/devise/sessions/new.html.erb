@@ -1,6 +1,6 @@
 <div class="page-content-wrapper inner-page clearfix">
-  <div class="page-content-container" style="height : 300px">
-    <div class="login-form-container">
+  <div class="page-content-container">
+    <div class="login-form-container clearfix">
     <h2 class="form-heading">Da bi ostavio oglas, moraš se prijaviti!</h2>
     <div class="login-col-container">
       <div class="login-col-content">
@@ -8,11 +8,11 @@
           <%= f.input :email, :label => "E-mail", :autofocus => true %>
           <%= f.input :password, :label => "Lozinka" %>
           <%= f.input :remember_me, :label => "Zapamti me", :as => :boolean if devise_mapping.rememberable? %>
-          <span><%= link_to "Zaboravili ste lozinku?", new_user_password_path %></span>
+          <span class="forgot-password form-label"><%= link_to "Zaboravili ste lozinku?", new_user_password_path %></span>
           <%= f.button :submit, "Prijavi se", :class => 'btn-primary' %>
         <% end %>
+        <div class="col-divider">ili</div>
       </div>
-      <div class="col-divider">ili</div>
     </div>
     <div class="login-col-container">
       <div class="login-col-content">
@@ -23,6 +23,10 @@
         </ul>
       </div>
     </div>
-    <div class="login-footer"></div>
+  </div>
+  <div class="login-footer">
+    <span>
+      <%= link_to "Nemam račun, želim se registrirati.", new_user_registration_path %>
+    </span>
   </div>
 </div>
