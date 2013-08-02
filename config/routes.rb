@@ -11,13 +11,15 @@ Cipele46Web::Application.routes.draw do
   get 'home' => 'ads#index'
   devise_for :users
 
-  resources :ads
+  resources :ads do
+    put :toggle
+  end
+
   resource :user, :only => [:new, :show, :update]
   resources :regions, :only => [:index]
   resources :categories, :only => [:index, :show]
   resources :blog, :only => [:index, :show]
 
-  match "favorites/toggle/:id" => "favorites#toggle", as: :toggle
   match "dispatch_email/:id", to: "ads#dispatch_email",  as: "dispatch_email", method: :post
 
   match 'auth/facebook/callback'        => 'social#facebook', :as => :facebook

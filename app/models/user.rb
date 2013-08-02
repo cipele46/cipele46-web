@@ -11,8 +11,17 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone
 
   has_many :ads
+  has_many :favorites
+  has_many :favorite_ads, :through => :favorites, :source => :ad
 
   validates :phone, :presence => true
 
   include Extensions::User::Naming
+
+  def toggle_favorite(ad)
+    case
+    when favorite_ads.map(&:id).include?(ad.id) then favorite_ads.destroy(ad.id)
+    else favorites.create(ad: ad)
+    end
+  end
 end

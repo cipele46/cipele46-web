@@ -50,4 +50,9 @@ class AdsController < ApplicationController
     end
     redirect_to ad_path(ad)
   end
+
+  def toggle
+    current_user.toggle_favorite @ad = Ad.find(params[:id])
+    respond_with @ad
+  end
 end
