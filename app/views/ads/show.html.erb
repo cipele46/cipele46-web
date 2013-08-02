@@ -34,9 +34,9 @@
           <span class="card-time icon stroke time"><%= time_ago_in_words @ad.expires_at %></span>
           <% if current_user %>
             <% if ad_is_favorite(@ad.id) %>
-              <%= link_to "&#xE0B5;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected' %>
+              <%= link_to "&#xE0B5;".html_safe, ad_toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected' %>
             <% else %>
-              <%= link_to "&#xE49D;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite' %>
+              <%= link_to "&#xE49D;".html_safe, ad_toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite' %>
             <% end %>
           <% end %>
         </header>
