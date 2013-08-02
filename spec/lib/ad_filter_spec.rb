@@ -23,7 +23,15 @@ describe AdFilter do
       let(:params) { { query: 'something' } }
       its(:query) { should == 'something' }
     end
+
+    context 'with user set' do
+      let(:user) { build(:user) }
+      let(:params) { { user: user } }
+      its(:user) { should == user }
+    end
   end
+
+  let(:user) { build(:user) }
 
   let(:filter_options) do
     { 
@@ -31,6 +39,7 @@ describe AdFilter do
       region_id: '10', 
       category_id: '4',
       query: 'some search',
+      user: user,
       page: '2',
       per_page: '10'
     }
@@ -39,7 +48,6 @@ describe AdFilter do
   describe '#search_without' do
     it 'should do a search without the specified attribute' do
       filter = AdFilter.new(filter_options)
-      filter.stub(:search)
       filter.should_receive(:search).with([:category_id, :ad_type])
       filter.search_without(:region_id)    
     end
@@ -75,6 +83,10 @@ describe AdFilter do
     
     it 'should filter by type' do
       Sunspot.session.should have_search_params(:with, :ad_type, 1)
+    end
+
+    it 'should filter by user_id' do
+      Sunspot.session.should have_search_params(:with, :user_id, user.id)
     end
     
     it 'should filter by category' do

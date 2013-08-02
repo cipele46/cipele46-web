@@ -1,7 +1,7 @@
 class AdFilter
   FILTER_ATTRIBUTES = [:region_id, :category_id, :ad_type]
 
-  attr_accessor :region_id, :category_id, :ad_type, :query, :page, :per_page, :email
+  attr_accessor :region_id, :category_id, :ad_type, :query, :page, :per_page, :user
 
   def initialize(params = {})
     normalized_hash_of(params).each do |key, value|
@@ -19,6 +19,7 @@ class AdFilter
       filter_attributes.each { |attr| with(attr, self.send(attr)) if self.send(attr) }
       FILTER_ATTRIBUTES.each { |attr| facet(attr) }
       with(:status, Ad.status[:active])
+      with(:user_id, user.id) if user.present?
       paginate(page: page || 1, per_page: per_page || Ad::PER_PAGE)
       order_by(:created_at, :desc) if query.blank?
     end
@@ -37,7 +38,7 @@ end
 
 module Helpers
   class NormalizedValue
-    ALLOWED_TO_BE_STRING = [:query]
+    NOT_NUMERIC = [:query, :user]
 
     def initialize(original, key)
       self.value = original
@@ -46,7 +47,7 @@ module Helpers
 
     def normalize
       case 
-      when ALLOWED_TO_BE_STRING.include?(key)
+      when NOT_NUMERIC.include?(key)
         value
       when present?
         value.to_i

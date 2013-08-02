@@ -4,6 +4,10 @@ module Extensions
       extend ActiveSupport::Concern
 
       included do
+        def self.search(options = {})
+          AdFilter.new(options).search.results
+        end
+
         searchable do
           text :title, boost: 4.0
           text :description, boost: 2.0
@@ -23,6 +27,7 @@ module Extensions
           integer :category_id
           integer :ad_type
           integer :status
+          integer :user_id
           time :created_at
         end
       end

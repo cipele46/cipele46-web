@@ -11,7 +11,6 @@ module Api
         content_type :json
       end
 
-
       error do
         {"error" => request.env["sinatra.error"]}.to_json
       end
