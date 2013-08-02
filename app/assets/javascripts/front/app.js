@@ -4,7 +4,14 @@ var app = (function($, window, document, undefined) {
 
     var _pageInit = function() {
          _cardBoardInit();
+         _setupFlashMsgs();
     };
+
+    var _setupFlashMsgs = function(){
+      $(".flash-message").delay(3000).fadeOut("slow", function() {
+        $(this).remove();
+      });
+    }
 
     var _cardBoardInit = function() {
 
@@ -131,6 +138,7 @@ var app = (function($, window, document, undefined) {
 
         });
     };
+
     return {
         init: _pageInit,
         dropDown: dropDown

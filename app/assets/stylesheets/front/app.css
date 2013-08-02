@@ -1848,3 +1848,30 @@ span.form-label{
 }
 
 }
+
+/* Flash messages */
+div.flash-message {
+  margin: auto;
+  height: 40px;
+  width: 300px;
+  border: 2px solid;
+  font-family: "Helvetica";
+  font-size: 8pt;
+  background: none repeat scroll 0 0 #FFFFFF;
+  text-align: center;
+  display: table;
+}
+
+div.flash-message#flash_alert 
+{
+  color: #E74B3C;
+}
+
+div.flash-message#flash_notice {
+  color: #0CBCA0;
+}
+
+div.flash-message .inner {
+  display: table-cell;
+  vertical-align: middle;
+}

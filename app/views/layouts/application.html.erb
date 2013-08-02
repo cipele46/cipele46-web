@@ -23,6 +23,8 @@
     <%= render 'application/top_navigation' %>
 
     <div class="page-content-wrapper clearfix<%= " blog inner-page giving" if controller_name == "blog" %>">
+      <%= render "application/flash_messages" %>
+
       <%= yield %>
     </div>
 
