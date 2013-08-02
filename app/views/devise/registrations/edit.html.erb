@@ -1,0 +1,22 @@
+<div class="page-content-wrapper inner-page clearfix">
+  <div class="page-content-container">
+    <div class="login-form-container clearfix">
+      <h2 class="form-heading">Tvoje postavke</h2>
+        <div class="login-col-container">
+          <div class="login-col-content">
+            <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+              <%= display_base_errors resource %>
+              <%= f.input :first_name, :autofocus => true, :label => "Ime" %>
+              <%= f.input :last_name, :label => "Prezime" %>
+              <%= f.input :email, :required => true, :label => "E-mail" %>
+              <%= f.input :password, :autocomplete => "off", :hint => "ostavi prazno polje ukoliko ju ne želiš mijenjati", :required => false, :label => "Lozinka" %>
+              <%= f.input :password_confirmation, :required => false, :label => "Ponovi lozinku" %>
+              <%= f.input :current_password, :hint => "trenutna lozinka potrebna nam je kao potvrda", :required => true, :label => "Trenutna lozinka" %>
+              <%= f.input :phone, :label => "Telefon" %>
+              <%= f.button :submit, 'Potvrdi promjene', :class => 'btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
