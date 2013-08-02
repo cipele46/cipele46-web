@@ -28,7 +28,13 @@ module Api
       get "/ads", provides: :json do
         protect! if params["user"] || params["favorites"]
         params["user"] = current_user if params["user"]
-        Ad.search(params).to_json
+
+        case
+        when params["favorites"]
+          current_user.favorite_ads.search(params)
+        else
+          Ad.search(params)
+        end.to_json
       end
 
       post "/ads", provides: :json do
@@ -44,6 +50,11 @@ module Api
       put "/ads/:id", provides: :json do
         protect!
         current_user.ads.find(params[:id]).update_attributes(params["ad"]).to_json
+      end
+
+      put "/ads/:id/toggle_favorite", provides: :json do
+        protect!
+        current_user.toggle_favorite(Ad.find(params[:id])).to_json
       end
 
       put "/users/current", provides: :json do

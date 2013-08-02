@@ -219,6 +219,18 @@ describe "API" do
           end
         end
 
+        describe "adding/removing it from/to favorites" do
+          context "PUT /api/ads/1/toggle_favorite" do
+            it "returns JSON unauthorized" do
+              ad_id = 1
+
+              put "#{api_path}/ads/#{ad_id}/toggle_favorite", {}
+
+              response.should be_unauthorized
+            end
+          end
+        end
+
       end # ads
     end # unauthorized requests
   end # for unauthenticated users
@@ -237,8 +249,17 @@ describe "API" do
             end
           end
 
-          context "GET /api/ads?favorites=1" do
-            it "returns JSON success"
+          context "GET /api/ads?favorites=1&query=query" do
+            it "returns JSON success" do
+              params = {"favorites" => "1", "query" => "query"}
+              ads = double "ads"
+
+              current_user.should_receive(:favorite_ads) { ads }
+              ads.should_receive(:search).with(params)
+
+              get "#{api_url}/ads", params,
+                {"HTTP_AUTHORIZATION" => valid_credentials }
+            end
           end
         end
       describe "creating" do
@@ -299,8 +320,21 @@ describe "API" do
       end
 
       describe "adding/removing it from/to favorites" do
-        context "PUT /api/favorites/toogle/1" do
-          it "returns JSON success"
+        context "PUT /api/ads/1/toggle_favorite" do
+          it "returns JSON success" do
+            ad_id = 1
+
+            ad = double "ad"
+
+            Ad.should_receive(:find).with("1") { ad }
+            current_user.should_receive(:toggle_favorite).with(ad) { ad }
+            ad.should_receive(:to_json)
+
+            put "#{api_path}/ads/#{ad_id}/toggle_favorite", {}, 
+            {"HTTP_AUTHORIZATION" => valid_credentials}
+
+            response.status.should eq(200)
+          end
         end
       end
 

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   def toggle_favorite(ad)
     case
     when favorite_ads.map(&:id).include?(ad.id) then favorite_ads.destroy(ad.id)
-    else favorites.create(ad: ad)
+    else favorites.create(ad: ad).ad
     end
   end
 end
