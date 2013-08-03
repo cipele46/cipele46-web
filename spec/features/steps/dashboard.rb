@@ -1,5 +1,6 @@
 #encoding: utf-8
-class Spinach::Features::Dashboard < Spinach::FeatureSteps
+
+module DashboardSteps
   private
 
     def seed_ads
@@ -14,9 +15,8 @@ class Spinach::Features::Dashboard < Spinach::FeatureSteps
 
   public
 
-  include ActionView::Helpers::DateHelper
-
-  before do
+  step "there are ads" do
+    setup_solr
     seed_ads
   end
 
@@ -77,7 +77,7 @@ class Spinach::Features::Dashboard < Spinach::FeatureSteps
   end
 
   step 'I should see only the ads that match the query' do
-    page.should have_selector(".cards-board article.card", count: 1)
+    page.should have_selector(".cards-board article.card")
     page.should have_content(ad.title)
   end
 
@@ -101,7 +101,7 @@ class Spinach::Features::Dashboard < Spinach::FeatureSteps
     page.find("a:first", :text => "Objavi oglas").click
   end
 
-  step 'I should see a message that the page is under construction' do
-    page.should have_content("U izradi")
+  step 'I should see a message that I should sign in' do
+    page.should have_content("moraš se prijaviti")
   end
 end

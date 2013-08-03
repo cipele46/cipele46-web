@@ -7,4 +7,4 @@ require 'rspec/core/rake_task'
 
 Cipele46Web::Application.load_tasks
 
-task :default => [:spec, :spinach]
+task :default => [:spec]
