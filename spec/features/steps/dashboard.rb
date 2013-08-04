@@ -21,7 +21,7 @@ module DashboardSteps
   end
 
   step "I visit the dashboard" do
-    visit "/"
+    visit root_path
   end
 
   step 'I click on giving ads filter' do
@@ -95,13 +95,5 @@ module DashboardSteps
 
   step 'I should see our story' do
     page.current_path.should == page_path("nasa-prica")
-  end
-
-  step 'I click on ad creation' do
-    page.find("a:first", :text => "Objavi oglas").click
-  end
-
-  step 'I should see a message that I should sign in' do
-    page.should have_content("moraš se prijaviti")
   end
 end

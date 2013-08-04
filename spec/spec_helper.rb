@@ -28,6 +28,7 @@ RSpec.configure do |config|
   config.include SunspotMatchers
 
   config.include DashboardSteps
+  config.include AdSteps
   
   config.include ActionView::Helpers::DateHelper
 

@@ -35,6 +35,3 @@ Feature: Dashboard
     When I click on our story
     Then I should see our story
 
-  Scenario: Ad creation
-    When I click on ad creation
-    Then I should see a message that I should sign in
