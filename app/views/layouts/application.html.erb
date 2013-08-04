@@ -22,7 +22,7 @@
   <body id="page">
     <%= render 'application/top_navigation' %>
 
-    <div class="page-content-wrapper clearfix<%= " blog inner-page giving" if controller_name == "blog" %>">
+    <div class="page-content-wrapper inner-page clearfix<%= " blog giving" if controller_name == "blog" %>">
       <%= render "application/flash_messages" %>
 
       <%= yield %>

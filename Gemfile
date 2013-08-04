@@ -61,5 +61,4 @@ group :test do
   gem 'sunspot_matchers'
   gem 'capybara'
   gem 'poltergeist'
-  gem "turnip"
 end
