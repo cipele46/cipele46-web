@@ -1,11 +1,15 @@
 class AdFilter
   FILTER_ATTRIBUTES = [:region_id, :category_id, :ad_type]
 
-  attr_accessor :region_id, :category_id, :ad_type, :query, :page, :per_page, :user
+  SEARCH_ATTRIBUTES = [:region_id, :category_id, :ad_type, :query, :page, :per_page, :user] 
+
+  SEARCH_ATTRIBUTES.each {|attr| attr_accessor attr }
 
   def initialize(params = {})
-    normalized_hash_of(params).each do |key, value|
-      set_attribute key, to: value 
+    if params.symbolize_keys.keys.any? {|key| SEARCH_ATTRIBUTES.include? key}
+      normalized_hash_of(params).each do |key, value|
+        set_attribute key, to: value 
+      end
     end
   end
 
@@ -62,6 +66,8 @@ module Helpers
 
     def blank?
       value.blank? || value.to_i == 0
+    rescue
+      false
     end
 
     attr_accessor :value, :key

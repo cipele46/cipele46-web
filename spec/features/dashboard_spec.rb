@@ -16,16 +16,18 @@ feature "Dashboard", :search => true do
 
   scenario "Ad filtering for giving" do
     filter(:for => :giving).click
-    expect_to_see(:giving_only)
+    expect_to_see Ad.giving
+    expect_not_to_see Ad.receiving
 
     filter(:for => :all).click
-    expect_to_see(:all)
+    expect_to_see Ad.all
   end
 
   scenario "Ad filtering for receiving" do
     filter(:for => :receiving).click
 
-    expect_to_see(:receiving_only)
+    expect_to_see Ad.receiving
+    expect_not_to_see Ad.giving
   end
 
   scenario "Ad should have details" do
@@ -37,7 +39,7 @@ feature "Dashboard", :search => true do
 
   scenario "Ad search" do
     enter_search(:for => ad)
-    expect_to_see ad: ad
+    expect_to_see ad
   end
 
 

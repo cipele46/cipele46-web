@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :favorite, :class => 'Favorites' do
-    ad nil
-    user nil
+    ad 
+    user 
   end
 end
