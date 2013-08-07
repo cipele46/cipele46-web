@@ -1,4 +1,4 @@
-module SessionHelper
+module SessionSteps
   def sign_up_with(email, password)
     visit sign_up_path
     fill_in 'email', with: email
@@ -11,6 +11,11 @@ module SessionHelper
     fill_in 'E-mail', with: user.email
     fill_in 'Lozinka', with: user.password
     click_button 'Prijavi se'
+    user
+  end
+
+  def sign_out
+    find("#sign-out").click
   end
 
   private

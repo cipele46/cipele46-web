@@ -18,6 +18,5 @@ describe User do
         user.toggle_favorite(ad)
       end
     end
-
   end
 end

@@ -31,6 +31,11 @@ class AdsController < ApplicationController
     respond_with @ad
   end
 
+  def edit
+    @ad = current_user.ads.find(params[:id])
+    respond_with @ad
+  end
+
   def destroy
     @ad = current_user.ads.find(params[:id])
     @ad.destroy

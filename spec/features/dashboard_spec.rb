@@ -1,14 +1,9 @@
 # encoding: utf-8
 require "spec_helper"
 
-include AdHelper
-
-def link(text)
-  page.find("a", :text => text)
-end
+include DashboardSteps
 
 feature "Dashboard", :search => true do
-
   before do
     seed_ads
     visit root_path
