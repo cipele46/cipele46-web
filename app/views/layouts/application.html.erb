@@ -19,10 +19,10 @@
     <![endif]-->
   </head>
 
-  <body id="page">
+  <body id="<%= controller_name == "ads" && (["new","edit","create"].include?(action_name)) ? "addPage" : "page" %>">
     <%= render 'application/top_navigation' %>
 
-    <div class="page-content-wrapper inner-page clearfix<%= " blog giving" if controller_name == "blog" %>">
+    <div class="page-content-wrapper clearfix<%= " inner-page blog giving" if controller_name == "blog" %> <%= " inner-page" if controller_name == "ads" && ["new", "edit", "create", "update"].include?(action_name) %>">
       <%= render "application/flash_messages" %>
 
       <%= yield %>
@@ -31,7 +31,76 @@
     <script>
         $(document).ready(function(){
             app.init();
-        });
+
+            $("input[type=radio]").checkBox();
+
+            //CUSTOM DROP DOWNS!
+            var dd = new app.dropDown( $('#zupanija') );
+            var dd = new app.dropDown( $('#kategorija') );
+            var dd = new app.dropDown( $('#grad') );
+
+            $(document).click(function(event) {
+              // all dropdowns
+              var id = event.target.id;
+              $('.dropdownSelect').removeClass('active');
+              if( id != "tekst" && $("#tekst").val() === ""){
+                $("#tekst").val("Upišite tekst oglasa");
+                $("#tekst").css("color","#999")
+              }
+            });
+
+            //CHOOSE PHOTO BUTTON
+            $('.uploadingImg').click(function(){
+              console.log("clicked");
+              $('#oglas_image').click();
+            });
+
+            $("#tekst").click(function(){
+              var $this = $(this);
+              if( $this.val() === "Upišite tekst oglasa"){
+                $this.css("color","black");
+                $this.val("")
+              }
+            });
+
+            //SHOW PHOTO WIDGET
+            $('#oglas_image').change(function () {
+              handleFiles( this );
+            });
+            function handleFiles( input ) {
+              if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  $('#uploadedImg').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+                $(".uploadingImg").addClass("haveImg");
+                resizeImg();
+              }
+            }
+
+            //RESIZE IMG TO FIT THE CONTAINER
+            function resizeImg() {
+              var $img = $('#uploadedImg');
+              $img
+              .load(function(){
+                var aspectRatio = $img.width() / $img.height(),
+                $container = $(".uploadingImg"),
+                contAspect = $container.width() / $container.height();
+                console.log( aspectRatio );
+                console.log(contAspect );
+                if ( contAspect < aspectRatio ) {
+                  $img
+                  .removeClass()
+                  .addClass('bgheight');
+                  } else {
+                  $img
+                  .removeClass()
+                  .addClass('bgwidth');
+                }
+              });
+            } 
+          });
     </script>
 
     <%= render "application/footer" %>

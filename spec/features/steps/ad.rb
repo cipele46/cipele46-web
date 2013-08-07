@@ -20,13 +20,13 @@ module AdSteps
   end
 
   def fill_in_ad_details(attributes = default_ad_attributes)
-    choose "oglas_ad_type_#{Ad.type[attributes[:ad_type]]}" unless attributes[:ad_type].blank?
-    fill_in "Title", with: attributes[:title] if attributes[:title]
-    fill_in "Description", with: attributes[:description] if attributes[:description]
-    select attributes[:city], from: "oglas_city_id" 
-    select attributes[:category], from: "oglas_category_id" 
-    fill_in "Phone", with: attributes[:phone] if attributes[:phone]
-    fill_in "Email", with: attributes[:email] if attributes[:email]
+    choose "rdb-#{Ad.type[attributes[:ad_type]]}" unless attributes[:ad_type].blank?
+    fill_in "ad[title]", with: attributes[:title] if attributes[:title]
+    fill_in "ad[description]", with: attributes[:description] if attributes[:description]
+    select attributes[:city], from: "ad_city_id" 
+    select attributes[:category], from: "ad_category_id" 
+    fill_in "ad[phone]", with: attributes[:phone] if attributes[:phone]
+    fill_in "ad[email]", with: attributes[:email] if attributes[:email]
   end
 
   def submit_ad
@@ -38,9 +38,7 @@ module AdSteps
 
     submit_ad
 
-    within(:css, "div.oglas_#{field}") do
-      page.should(have_css("label.error"))
-    end
+    page.should(have_css("span.error", count: 1))
   end
 
   def should_not_be_required(field)

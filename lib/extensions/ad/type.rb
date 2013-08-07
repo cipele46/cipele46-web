@@ -4,11 +4,20 @@ module Extensions
       extend ActiveSupport::Concern
 
       STATES  = { :supply => 1, :demand => 2 }
+      HUMANIZED = {:supply => :poklanjam, :demand => :trazim}
+
 
       included do
         class << self
           def type
             STATES
+          end
+
+          def humanized_type
+            type.inject({}) do |hash, (k, v)|
+              hash[HUMANIZED[k]] = v
+              hash
+            end
           end
 
           def receiving

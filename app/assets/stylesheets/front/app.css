@@ -1402,19 +1402,15 @@ body div.demand button.sidebar-button {
 /* CUSTOM DROP DOWNS! */
 /***************************************************************/
 .dropdownSelect {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     position: relative;
     width: 100%;
     height:100%;
-    padding: 10px;
     margin: 0;
 
     background: #eeeeee;
     color: #444444;
     cursor: pointer;
-    font-size:18px;
+    overflow: hidden;
 }
 .dropdownSelect input{
     display:none;
@@ -1874,4 +1870,18 @@ div.flash-message#flash_notice {
 div.flash-message .inner {
   display: table-cell;
   vertical-align: middle;
+}
+
+.dropdownSelect select {
+  width: 260px;
+  height: 45px;
+  background: transparent;
+  -webkit-appearance: none;
+  font-size: 18px;
+}
+
+/* Validation errors on forms */
+
+span.error {
+  color: red;
 }

@@ -1,3 +1,4 @@
+# encoding: utf-8
 class AdsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show, :index]
 
@@ -21,13 +22,13 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = AdCreation.new(current_user).create(params[:oglas] || params[:ad])
+    @ad = AdCreation.new.call :user => current_user, :params => params[:ad]
     respond_with @ad
   end
 
   def update
     @ad = current_user.ads.find(params[:id])
-    @ad.update_attributes(params[:oglas] || params[:ad])
+    @ad.update_attributes(params[:ad])
     respond_with @ad
   end
 

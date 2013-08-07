@@ -45,6 +45,11 @@ $("input[type=checkbox], input[type=radio]").checkBox(); // Replace all checkbox
             		});
             		
             		$label.addClass(checkedClass);
+            		if( $( this ).attr("id") === "trazim"){
+            			$(".page-content-wrapper").addClass("trazim");
+            		}else{
+                  $(".page-content-wrapper").removeClass("trazim");
+            		}
             	}
             });
             

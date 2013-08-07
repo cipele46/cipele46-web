@@ -42,6 +42,7 @@ db/*.sqlite3
 /public/stylesheets/compiled
 /public/system/*
 /public/uploads/tmp/*
+/app/assets/images/uploads
 /spec/tmp/*
 /cache
 /capybara*

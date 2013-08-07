@@ -11,7 +11,6 @@ feature "Ads" do
     sign_in
     visit new_ad_path
 
-    should_be_required :ad_type
     should_be_required :title
     should_be_required :description
     should_be_required :phone

@@ -1,8 +1,15 @@
-<h2>Uredi oglas</h2>
+    <div class="page-content">
+        <header class="page-content-header clearfix">
+        </header>
+        
+        <section class="page-content-container clearfix">
+          <%= render 'ads/form' %>
+        </section>
+    </div>
 
-<%= simple_form_for @ad, :as => :oglas do |f| %>
-  <%= render 'ads/form', :f => f %>
-
-  <%= f.button :submit %>
-  <%= link_to "Odustani", root_path %>
-<% end %>
+    <aside class="page-sidebar">
+        <div class="logo" title="Cipele46">Cipele46</div>
+        <p>Oglas će biti aktivan 30 dana od datuma objave. Prije objave administrator mora odobriti oglas. Hvala na strpljenju!</p>
+        <%= link_to_function "Objavi oglas", "$('form').submit()", :class => "addButton" %>
+        <%= link_to "Odustani", root_path, :class => "cancle" %>
+    </aside>
