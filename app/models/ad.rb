@@ -31,5 +31,4 @@ class Ad < ActiveRecord::Base
   validates :phone, :presence => true
   validates :title, :presence => true
   validates :ad_type, :presence => true
-
- end
+end

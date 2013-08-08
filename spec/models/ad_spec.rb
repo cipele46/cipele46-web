@@ -36,17 +36,50 @@ describe Ad do
     end
 
     describe "#closed?" do
-      context "when it's created more than VALID_DAYS ago" do
-        before { subject.stub(:created_at) { Time.now - (Ad::VALID_FOR + 1).days } }
+      context "when it has expired" do
+        before { subject.stub(:expired?) { true } }
         its(:closed?) { should be_true }
       end
 
-      context "when it's created less than VALID_DAYS ago" do
-        before { subject.stub(:created_at)  { Time.now - (Ad::VALID_FOR - 2).days } }
+      context "when it has not expired" do
+        before { subject.stub(:expired?)  { false } }
         its(:closed?) { should be_false }
+
+        context "and the status is explicitly set to closed" do
+          before { subject.stub(:status) { Ad.status[:closed] } }
+          its(:closed?) { should be_true }
+        end
+      end
+
+    end
+
+    describe "#pending?" do
+      context "when status is not set to pending" do
+        its(:pending?) { should be_false }
+      end
+
+      context "when status is set to pending" do
+        before { subject.stub(:status) { Ad.status[:pending] }}
+        its(:pending?) { should be_true }
       end
     end
 
+    describe "#active?" do
+      context "when it has expired" do
+        before { subject.stub(:expired?) { true } }
+        its(:active?) { should be_false }
+      end
+
+      context "when it has not expired" do
+        before { subject.stub(:expired?) { false } }
+        its(:active?) { should be_false }
+
+        context "and the status is explicitly set to active" do
+          before { subject.stub(:status) { Ad.status[:active] } }
+          its(:active?) { should be_true }
+        end
+      end
+    end
   end
 
   describe "#supply?" do
@@ -70,6 +103,56 @@ describe Ad do
     context "when ad is not demand" do
       before { subject.stub(:ad_type) }
       its(:demand?) { should_not be_true }
+    end
+  end
+
+  describe "#close!" do
+    it "calls close" do
+      subject.should_receive(:close)
+    end
+
+    it "calls save" do
+      subject.should_receive(:save)
+    end
+
+    after do
+      subject.stub(:save)
+      subject.close!
+    end
+  end
+
+  describe "close" do
+    before do
+      subject.close
+    end
+
+    it "sets status to :closed" do
+      subject.status.should eq(Ad.status[:closed])
+    end
+  end
+
+  describe "#activate!" do
+    it "calls activate" do
+      subject.should_receive(:activate)
+    end
+
+    it "calls save" do
+      subject.should_receive(:save)
+    end
+
+    after do
+      subject.stub(:save)
+      subject.activate!
+    end
+  end
+
+  describe "activate" do
+    before do
+      subject.activate
+    end
+
+    it "sets status to :active" do
+      subject.status.should eq(Ad.status[:active])
     end
   end
 
