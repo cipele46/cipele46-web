@@ -61,4 +61,9 @@ class AdsController < ApplicationController
     current_user.toggle_favorite @ad = Ad.find(params[:id])
     respond_with @ad
   end
+
+  def close
+    @ad = AdClosure.new.call :user => current_user, :id => params[:ad_id]
+    respond_with @ad
+  end
 end

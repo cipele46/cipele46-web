@@ -19,10 +19,10 @@
     <![endif]-->
   </head>
 
-  <body id="<%= controller_name == "ads" && (["new","edit","create"].include?(action_name)) ? "addPage" : "page" %>">
+  <body id="<%= body_id %>">
     <%= render 'application/top_navigation' %>
 
-    <div class="page-content-wrapper clearfix<%= " inner-page blog giving" if controller_name == "blog" %> <%= " inner-page" if controller_name == "ads" && ["new", "edit", "create", "update"].include?(action_name) %>">
+    <div class="<%= wrapper_class %>">
       <%= render "application/flash_messages" %>
 
       <%= yield %>

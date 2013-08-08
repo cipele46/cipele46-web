@@ -3,10 +3,6 @@ module AdsHelper
     define_method("selected_#{param}") { params[param].to_i }
   end
 
-  def is_own_ad ad
-    return true == (current_user && ad.user && ad.user.id == current_user.id)
-  end
-
   def image_tag_for_ad(ad, options = {})
     version = options[:version] || 'medium'
     src = "/assets#{ad.image_url}"

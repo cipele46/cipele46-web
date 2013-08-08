@@ -44,11 +44,7 @@ module AdSteps
   def should_not_be_required(field)
     fill_in_ad_details(default_ad_attributes.merge({field => ""}))
 
-    submit_ad
-
-    current_path.should eq(ad_path(Ad.last))
-
-    expect_to_see_details_for Ad.last
+    expect { submit_ad }.to change{ Ad.count }.by(1)
 
     visit new_ad_path
   end

@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def display_base_errors resource
     return '' if (resource.errors.empty?) or (resource.errors[:base].empty?)
     messages = resource.errors[:base].map { |msg| content_tag(:p, msg) }.join
@@ -14,7 +13,6 @@ module ApplicationHelper
 
   def number_of_ads_in(facet, value = nil)
     instance_variable_get("@ads_without_#{facet}").facet(facet).rows.select{ |row| row.value == value || value == nil }.sum{ |row| row.count } || 0
-    #@ads_search.facet(facet).rows.select{ |row| row.value == value || value == nil }.sum{ |row| row.count } || 0
   end
 
   def ads_plural(ads_count)
@@ -30,22 +28,32 @@ module ApplicationHelper
     current_user.favorite_ads.map(&:id).include?(ad_id) ? true : false
   end
 
-  def ad_type_decode(ad_type)
-    # TYPES = { :supply => 1, :demand => 2 }
-    case ad_type
-    when 1
-      'supply'
-    when 2
-      'demand'
-    else
-      ''
-    end
-  end
-
   def align_footer
     if current_page?(root_path)
       "align"
     end
   end
 
+  def body_id
+    if rendering_ad_form? then "addPage"
+    else "page"
+    end
+  end
+
+  def wrapper_class
+    klass = "page-content-wrapper clearfix"
+    klass << " inner-page blog giving" if rendering_blog?
+    klass << " inner-page" if rendering_ad_form?
+    klass
+  end
+
+  private
+
+    def rendering_ad_form?
+      controller_name == "ads" && ["new","edit","create", "update"].include?(action_name)
+    end
+
+    def rendering_blog?
+      controller_name == "blog"
+    end
 end

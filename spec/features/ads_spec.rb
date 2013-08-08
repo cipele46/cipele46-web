@@ -50,12 +50,32 @@ feature "Ads" do
 
     ad = create_ad(:user => current_user)
 
-    visit edit_ad_path(ad)
+    visit ad_path(ad)
+    find("#edit-ad").click
+    current_path.should eq(edit_ad_path(ad))
 
     fill_in_ad_details(:title => "Look mum, I can change the title!")
 
     submit_ad
 
-    expect_to_see_details_for Ad.last
+    expect_to_see_details_for ad.reload
+  end
+
+  scenario "user: closing", :sunspot_matchers => true, :js => true do
+    current_user = sign_in
+    ad = create_ad(:user => current_user)
+
+    visit ad_path(ad)
+
+    expect { find("#close-ad").click }.to change { ad.reload.status }.from(Ad.status[:active]).to(Ad.status[:closed])
+  end
+
+  scenario "user: removing", :sunspot_matchers => true, :js => true do
+    current_user = sign_in
+    ad = create_ad(:user => current_user)
+
+    visit ad_path(ad)
+
+    expect { find("#delete-ad").click }.to change { Ad.count }.by(-1)
   end
 end

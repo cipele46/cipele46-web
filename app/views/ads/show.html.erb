@@ -1,28 +1,34 @@
-<div class="page-content-wrapper inner-page giving clearfix <%= ad_type_decode @ad.ad_type %>">
+<div class="page-content-wrapper inner-page giving clearfix <%= @ad.type_name %>">
+
   <aside class="sidebar-wrapper">
-    <% unless is_own_ad @ad %>
-    <div class="page-sidebar">
-      <h3>Kontakt</h3>
-      <p class="sidebar-number"><%= @ad.phone %></p>
-		  <%= form_tag dispatch_email_path, method: :post, :class => "hidden" do %>
-		    <p class="sidebar-input-description">Poruka</p>
-			  <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku", :disabled => true %>
-	      <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
-		    <%= text_field_tag "user_info[email]", "", placeholder: "Upiši email", :disabled => true %><br />
-		    <%= button_tag "Pošalji", :class => 'sidebar-button', :disabled => true %>
-		<% end %>
-    </div>
-    <% else %>
+    <% if @ad.user == current_user %>
+
     <div class="page-sidebar">
       <h3>Kontakt</h3>
 	      <p class="sidebar-number"><%= @ad.phone %></p>
 	      <p class="sidebar-email"><%= @ad.email %></p>
-        <%= button_tag "Uredi oglas", :class => 'sidebar-button' %>
-        <%= button_tag "Zatvori oglas", :class => 'sidebar-button', :confirm => "Sigurno želite zatvoriti ovaj oglas?" %>
-        <%= button_tag "Obriši oglas", :class => 'sidebar-button', :confirm => "Sigurno želite obrisati ovaj oglas?" %>
+        <%= button_to "Uredi oglas", edit_ad_path(@ad), :class => 'sidebar-button', :id => "edit-ad", :method => :get %>
+        <%= button_to "Zatvori oglas", ad_close_path(@ad), :class => 'sidebar-button', :id => "close-ad", :method => :put, :confirm => "Sigurno želite zatvoriti ovaj oglas?" %>
+        <%= button_to "Obriši oglas", ad_path(@ad), :class => 'sidebar-button', :id => "delete-ad", :method => :delete, :confirm => "Sigurno želite obrisati ovaj oglas?" %>
     </div>
+
+    <% else %>
+
+    <div class="page-sidebar">
+      <h3>Kontakt</h3>
+      <p class="sidebar-number"><%= @ad.phone %></p>
+      <%= form_tag dispatch_email_path, method: :post, :class => "hidden" do %>
+        <p class="sidebar-input-description">Poruka</p>
+        <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku", :disabled => true %>
+        <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
+        <%= text_field_tag "user_info[email]", "", placeholder: "Upiši email", :disabled => true %><br />
+        <%= button_tag "Pošalji", :class => 'sidebar-button', :disabled => true %>
+      <% end %>
+    </div>
+
     <% end %>
   </aside>
+
   <div class="page-content">
     <%= render 'application/breadcrumbs' %>
     <section class="page-content-container clearfix">

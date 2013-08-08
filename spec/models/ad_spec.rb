@@ -180,6 +180,18 @@ describe Ad do
     end
   end
 
+  describe "#type_name" do
+    context "for supplying ad" do
+      before { subject.stub(:ad_type) { Ad.type[:supply] } }
+      its(:type_name) { should eq(:supply) }
+    end
+
+    context "for demanding ad" do
+      before { subject.stub(:ad_type) { Ad.type[:demand] } }
+      its(:type_name) { should eq(:demand) }
+    end
+  end
+
   describe "delegations" do
     it "delegates region to city" do
       city = double
