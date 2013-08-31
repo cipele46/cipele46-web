@@ -2,6 +2,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  include Sprockets::Helpers::IsolatedHelper
+  include Sprockets::Helpers::RailsHelper
+
   storage :file
 
   def store_dir
@@ -9,7 +12,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    asset_path
+    asset_path("images")
   end
 
   version :large do
@@ -31,5 +34,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 end
