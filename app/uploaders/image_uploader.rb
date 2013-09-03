@@ -2,6 +2,13 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  include Sprockets::Helpers::RailsHelper
+  include Sprockets::Helpers::IsolatedHelper
+
+  def default_url
+     asset_path("fallback/" + [version_name, "default.png"].compact.join('_')) 
+  end
+
   storage :file
 
   def store_dir
