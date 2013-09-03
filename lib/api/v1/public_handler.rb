@@ -2,16 +2,19 @@ module Api
   module V1
     class PublicHandler < Sinatra::Base
       get "/categories", provides: :json do
-        Category.all.to_json
+        @categories = Category.all
+        rabl :categories, :format => :json
       end
 
       get "/regions", provides: :json do
-        Region.all.to_json :include => :cities
+        @regions = Region.all
+        rabl :regions, :format => :json
       end
 
 
       post "/users", provides: :json do
-        User.create(params["user"]).to_json
+        @user = User.create(params["user"])
+        rabl :user, :format => :json
       end
     end
   end

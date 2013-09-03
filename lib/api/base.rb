@@ -2,7 +2,7 @@ require "sinatra"
 require "json"
 
 require_relative('../../config/application') 
-require_relative("./v1.rb")
+require_relative("./v1")
 
 module Api
   Base = Rack::Builder.new do

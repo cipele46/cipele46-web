@@ -31,6 +31,7 @@ gem 'html_truncator'
 #gem 'omniauth-google-oauth2'
 #
 gem "sinatra", require: false
+gem "rabl"
 
 group :assets do
   gem 'sass-rails'
@@ -60,4 +61,5 @@ group :test do
   gem 'sunspot_matchers'
   gem 'capybara'
   gem 'poltergeist'
+  gem 'database_cleaner'
 end

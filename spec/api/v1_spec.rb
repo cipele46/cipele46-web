@@ -63,40 +63,65 @@ end
 
 describe "API" do
   context "for unauthenticated users" do
-    describe "categories" do
-      context "GET /api/v1/categories" do
-        it "returns JSON success" do
-          Category.should_receive(:all)
+    describe "categories API" do
+      before do
+        create(:category, :name => "Clothing")
+        create(:category, :name => "Food")
+      end
 
+      context "fetching the list of categories" do
+        subject do
           get categories_api_path
+          JSON.parse response.body
+        end
+
+        it "returns JSON data for all categories" do
+          should == [
+            {"id" => 1, "name" => "Clothing"},
+            {"id" => 2, "name" => "Food"}
+          ]
         end
       end
     end
 
     describe "regions and cities" do
-      context "GET /api/v1/regions" do
-        it "returns JSON success" do
-          Region.should_receive(:all)
+      before do
+        @bjelovarska = create(:region, :name => "Bjelovarsko-Bilogorska")
+        @krapinska = create(:region, :name => "Krapinsko-Zagorska")
+        @krapina = create(:city, :name => "Krapina", :region => @krapinska)
+        @bjelovar = create(:city, :name => "Bjelovar", :region => @bjelovarska)
+      end
 
+      context "fetching the list of regions" do
+        subject do
           get regions_api_path
+          JSON.parse response.body
+        end
+
+        it "returns JSON data for all regions" do
+          should == [
+            {"id" => @bjelovarska.id, "name" => @bjelovarska.name,
+            "cities" => [{"id" => @bjelovar.id, "name" => @bjelovar.name}] },
+
+            {"id" => @krapinska.id, "name" => @krapinska.name,
+            "cities" => [{"id" => @krapina.id, "name" => @krapina.name}] },
+          ]
         end
       end
     end
 
     describe "registration" do
       context "POST /api/users" do
-        it "returns JSON success" do
-          user = double("user")
-
-          params = {"user"=> { "first_name"=> "Pero", "last_name"=> "Peric", "email"=> "pero@cipele46.org",
+        subject do
+          @params = {"user"=> { "first_name"=> "Pero", "last_name"=> "Peric", "email"=> "pero@cipele46.org",
             "phone"=> "123455", "password"=> "pwd1234", "password_confirmation"=> "pwd1234" }}
 
-          User.should_receive(:create).with(params["user"]) { user }
-          user.should_receive(:to_json)
+          post users_api_path, @params
+          JSON.parse(response.body)
+        end
 
-          post users_api_path, params
-
-          response.status.should eq(200)
+        it "returns JSON success" do
+          should == @params["user"].select {|k,v| k !~ /password/}
         end
       end
     end

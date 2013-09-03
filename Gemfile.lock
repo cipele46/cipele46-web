@@ -93,6 +93,7 @@ GEM
       simplecov (>= 0.7)
       thor
     daemons (1.1.9)
+    database_cleaner (1.1.0)
     debug_inspector (0.0.2)
     devise (3.0.0)
       bcrypt-ruby (~> 3.0)
@@ -224,6 +225,8 @@ GEM
       pry (>= 0.9.10)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
+    rabl (0.8.6)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -343,6 +346,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails
   coveralls
+  database_cleaner
   devise
   email_spec
   factory_girl_rails
@@ -362,6 +366,7 @@ DEPENDENCIES
   poltergeist
   pry-rails
   quiet_assets
+  rabl
   rails (= 3.2.13)
   rolify
   rspec
