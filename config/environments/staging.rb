@@ -46,7 +46,8 @@ Cipele46Web::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w[ckeditor/*] 
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -68,10 +69,10 @@ Cipele46Web::Application.configure do
   config.action_mailer.perform_deliveries = true
   #config.action_mailer.raise_delivery_errors = false
   config.action_mailer.raise_delivery_errors = true
-  
+
   config.action_mailer.default :charset => "utf-8"
 
-  
+
   config.action_mailer.sendmail_settings = {
     :location => '/usr/sbin/exim4',
     :arguments => '-i -t'
@@ -92,3 +93,4 @@ Cipele46Web::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 end
+
