@@ -6,10 +6,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def default_url
-    ActionController::Base.helpers.asset_path("images")
-  end
-
   version :large do
     resize_to_fit(800, 600)
   end
