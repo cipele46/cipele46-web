@@ -1,2 +1,2 @@
-object @categories
+collection @categories
 attributes :id, :name

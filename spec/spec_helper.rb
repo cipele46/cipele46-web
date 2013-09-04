@@ -23,6 +23,19 @@ Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f}
 
 include SunspotHelper
 
+class ActionDispatch::TestResponse
+  def unauthorized?
+    body.eql?(Api::V1::Response::UNAUTHORIZED) &&
+      status.eql?(401)
+  end
+end
+
+class String
+  def without_version
+    gsub("/v1","")
+  end
+end
+
 RSpec.configure do |config|
   config.include EmailSpec::Helpers
   config.include EmailSpec::Matchers

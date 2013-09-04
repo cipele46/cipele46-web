@@ -1,6 +1,17 @@
 module Api
   module V1
     class ProtectedHandler < Sinatra::Base
+      configure do
+        set :raise_errors, false
+        set :show_exceptions, false
+      end
+
+      error do
+        content_type :json
+
+        e = env["sinatra.error"]
+        {:error => {:message => e.message}}.to_json
+      end
 
       helpers do
         def protect!
@@ -39,32 +50,40 @@ module Api
 
       post "/ads", provides: :json do
         protect!
-        current_user.ads.create(params[:ad]).to_json
+        @ad = current_user.ads.create!(params[:ad])
+        rabl :ad, :format => :json
       end
 
       delete "/ads/:id", provides: :json do
         protect!
-        current_user.ads.find(params[:id]).destroy.to_json
+        @ad = current_user.ads.find(params[:id]).destroy
+        rabl :ad, :format => :json
       end
 
       put "/ads/:id", provides: :json do
         protect!
-        current_user.ads.find(params[:id]).update_attributes(params["ad"]).to_json
+        @ad = current_user.ads.find(params[:id])
+        @ad.update_attributes!(params["ad"])
+        rabl :ad, :format => :json
       end
 
       put "/ads/:id/toggle_favorite", provides: :json do
         protect!
-        current_user.toggle_favorite(Ad.find(params[:id])).to_json
+        @ad = current_user.toggle_favorite(Ad.find(params[:id]))
+        rabl :ad, :format => :json
       end
 
       put "/users/current", provides: :json do
         protect!
-        current_user.update_attributes(params["user"]).to_json
+        current_user.update_attributes!(params["user"])
+        @user = current_user
+        rabl :user, :format => :json
       end
 
       get "/users/current", provides: :json do
         protect!
-        current_user.to_json
+        @user = current_user
+        rabl :user, :format => :json
       end
     end
   end
