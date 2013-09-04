@@ -112,16 +112,31 @@ describe "API" do
 
     describe "registration" do
       context "POST /api/users" do
-        subject do
-          @params = {"user"=> { "first_name"=> "Pero", "last_name"=> "Peric", "email"=> "pero@cipele46.org",
-            "phone"=> "123455", "password"=> "pwd1234", "password_confirmation"=> "pwd1234" }}
+        context "when email has not been taken" do
+          before do
+            @params = {"user"=> { "first_name"=> "Pero", "last_name"=> "Peric", "email"=> "pero@cipele46.org",
+              "phone"=> "123455", "password"=> "pwd1234", "password_confirmation"=> "pwd1234" }}
 
-          post users_api_path, @params
-          JSON.parse(response.body)
+            post users_api_path, @params
+            @it = JSON.parse(response.body)
+          end
+
+          it "returns JSON success" do
+            @it.should == @params["user"].select {|k,v| k !~ /password/}
+          end
         end
+        context "when email has been taken" do
+          before do
+            create(:user, :email => "pero@cipele46.org")
+            @params = {"user"=> { "first_name"=> "Pero", "last_name"=> "Peric", "email"=> "pero@cipele46.org",
+              "phone"=> "123455", "password"=> "pwd1234", "password_confirmation"=> "pwd1234" }}
 
-        it "returns JSON success" do
-          should == @params["user"].select {|k,v| k !~ /password/}
+            post users_api_path, @params
+          end
+
+          it "returns error in the response" do
+            expect(response.status).to eq(500)
+          end
         end
       end
     end

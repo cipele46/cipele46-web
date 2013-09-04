@@ -13,7 +13,7 @@ module Api
 
 
       post "/users", provides: :json do
-        @user = User.create(params["user"])
+        @user = User.create!(params["user"])
         rabl :user, :format => :json
       end
     end
