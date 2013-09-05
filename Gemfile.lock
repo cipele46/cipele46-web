@@ -313,6 +313,8 @@ GEM
       nokogiri
       sunspot (= 2.0.0)
     sunspot_solr (2.0.0)
+    sunspot_test (0.4.0)
+      sunspot_rails (>= 1.2.1)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -380,5 +382,6 @@ DEPENDENCIES
   sunspot_matchers
   sunspot_rails
   sunspot_solr
+  sunspot_test
   thin
   uglifier

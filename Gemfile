@@ -58,6 +58,7 @@ end
 group :test do
   gem "simplecov", require: false
   gem "email_spec"
+  gem 'sunspot_test'
   gem 'sunspot_matchers'
   gem 'capybara'
   gem 'poltergeist'

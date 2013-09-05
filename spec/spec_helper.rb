@@ -16,12 +16,12 @@ require 'email_spec'
 
 require "capybara/poltergeist"
 
+require "sunspot_test/rspec"
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/features/steps/**/*.rb")].each {|f| require f}
-
-include SunspotHelper
 
 class ActionDispatch::TestResponse
   def unauthorized?
@@ -79,10 +79,6 @@ RSpec.configure do |config|
   end
   config.after(:each, sunspot_matchers: true) do
     ::Sunspot.session = ::Sunspot.session.original_session
-  end
-
-  config.before(:each, search: true) do
-    setup_solr
   end
 
   config.before(:each, javascript: true) do

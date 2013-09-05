@@ -66,7 +66,7 @@ describe "API" do
           end
 
           it "returns JSON success" do
-            @it.should == @params["user"].select {|k,v| k !~ /password/}
+            @it.should == @params["user"].select {|k,v| k !~ /password/}.merge("id" => User.last.id)
           end
         end
         context "when email has been taken" do
@@ -91,9 +91,10 @@ describe "API" do
 
     describe "ads" do
       describe "listing" do
-        context "GET /api/v1/ads" do
+        context "GET /api/v1/ads", :search => true do
           before do
             create_user_with_ads
+            sleep(4)
             get ads_api_path
           end
           it "returns JSON success" do
@@ -111,15 +112,7 @@ describe "API" do
             params = {"page" => "2", "per_page" => "1", "ad_type" => "1",
               "status" => "2", "category_id" => "1","region_id" => "1",
               "query" => "query"}
-
-            results = {}
-
-            Ad.should_receive(:search) { results }
-            results.should_receive(:to_json)
-
-            get ads_api_path, params
-
-            response.status.should eq(200)
+            pending "needs new integration tests"
           end
         end
       end
@@ -228,11 +221,12 @@ describe "API" do
   context "for authenticated users" do
 
     context "ads" do
-        describe "fetching" do 
+        describe "fetching", :search => true do 
           context "GET /api/ads?user=1" do
             before do
               create(:ad)
               @user = create_user_with_ads
+              sleep(4)
               params = {"user" => @user.id}
               get ads_api_path, params, 
                 {"HTTP_AUTHORIZATION" => valid_credentials }
@@ -251,10 +245,12 @@ describe "API" do
               @ad1 = create(:ad, :user => @user, :title => "bart simpson")
               @ad2 = create(:ad, :user => @user, :title => "lisa simpson")
               @ad3 = create(:ad, :user => @user, :title => "homer simpson")
+              sleep(4)
               
               @user.favorite_ads << [@ad1, @ad2]
 
             end
+
             context "filtering favorites" do
               before do
                 params = {"favorites" => "1", "query" => "lisa"}

@@ -40,12 +40,13 @@ module Api
         protect! if params["user"] || params["favorites"]
         params["user"] = current_user if params["user"]
 
-        case
+        @ads = case
         when params["favorites"]
           current_user.favorite_ads.search(params)
         else
           Ad.search(params)
-        end.to_json
+        end
+        rabl :ads, :format => :json
       end
 
       post "/ads", provides: :json do
