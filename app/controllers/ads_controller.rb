@@ -9,6 +9,12 @@ class AdsController < ApplicationController
     @ads_without_category_id = @ad_filter.search_without(:category_id) 
     @ads_without_ad_type = @ad_filter.search_without(:ad_type) 
     @ads_without_region_id = @ad_filter.search_without(:region_id) 
+    
+    # to display breadcrumbs
+    @ads_category = Category.find(@ad_filter.category_id) if @ad_filter.category_id != nil
+    @ads_region   = Region.find(@ad_filter.region_id) if @ad_filter.region_id != nil
+    @ads_type = @ad_filter.ad_type
+
     respond_with @ads = @ads_search.results
   end
 
