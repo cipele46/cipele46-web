@@ -1,18 +1,6 @@
 module Api
   module V1
-    class ProtectedHandler < Sinatra::Base
-      configure do
-        set :raise_errors, false
-        set :show_exceptions, false
-      end
-
-      error do
-        content_type :json
-
-        e = env["sinatra.error"]
-        {:error => {:message => e.message}}.to_json
-      end
-
+    class ProtectedHandler < APIHandler
       helpers do
         def protect!
           return if authorized?
@@ -30,10 +18,6 @@ module Api
         def current_user
           @user ||= User.find_by_email(@auth.credentials.first)
         end
-      end
-
-      error 401 do
-        Response::UNAUTHORIZED
       end
 
       get "/ads", provides: :json do
