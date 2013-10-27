@@ -219,6 +219,3 @@ describe "API" do
   end # for unauthenticated users
   describe "login via FB"
 end # API
-
-
-
