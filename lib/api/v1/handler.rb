@@ -50,7 +50,7 @@ module Api
 
       helpers do
         def json_params
-          JSON.parse(request.body.read)
+          @json_params ||= JSON.parse(request.body.read)
         end
       end
     end

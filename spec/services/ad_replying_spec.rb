@@ -4,12 +4,12 @@ describe AdReplying do
   context "when valid arguments were given" do
     before do
       ad = create(:ad)
-      user = create(:user)
+      email = "pero@cipele46.org"
       content = "wow, your ad is amazing!"
 
       valid_arguments = {
         ad: ad,
-        user: user,
+        email: email,
         content: content
       }
 
