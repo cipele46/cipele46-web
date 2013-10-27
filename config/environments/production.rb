@@ -46,8 +46,8 @@ Cipele46Web::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += %w[ckeditor/*] 
-  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif] 
+  config.assets.precompile += %w[ckeditor/*]
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -62,7 +62,7 @@ Cipele46Web::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'cipele46.org' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :sendmail
