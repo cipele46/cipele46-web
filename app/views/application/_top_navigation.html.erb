@@ -19,7 +19,7 @@
           <% if current_user %><%= link_to "Objavi oglas", new_ad_path %><% end -%>
         </li>
         <% unless current_user %>
-        <li class="nav-user-not-logged hidden">
+        <li class="nav-user-not-logged">
           <%= link_to "Prijavi se", new_user_session_path %>
         </li>
         <% end -%>
