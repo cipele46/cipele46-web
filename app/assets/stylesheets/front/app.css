@@ -1512,6 +1512,7 @@ input[type=text]{
 }
 .button:hover{
     opacity: 0.7;
+    cursor:pointer;
 }
 .login-form-container a,
 .login-footer a{
@@ -1602,6 +1603,18 @@ span.form-label{
     height: 22px;
     border-bottom: solid 2px rgba(0, 0, 0, 0.2);
     color: #777;
+}
+/* Authentication (Forgot password, Reset confirmation)
+***************************************************************/
+.page-authentication .authentication-shared-options {
+    margin:40px 0 0 0;
+    padding:20px 0;
+    border-top:1px solid #eee;
+}
+.page-authentication .authentication-shared-options a {
+    display:block;
+    font-size:1.2em;
+    margin:5px 0;
 }
 /*--------------------------------
     ICONS
@@ -1858,7 +1871,7 @@ div.flash-message {
   display: table;
 }
 
-div.flash-message#flash_alert 
+div.flash-message#flash_alert
 {
   color: #E74B3C;
 }
