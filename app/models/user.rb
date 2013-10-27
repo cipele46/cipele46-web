@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :ads
   has_many :favorites
   has_many :favorite_ads, :through => :favorites, :source => :ad
+  has_many :replies
 
   validates :phone, :presence => true
 
