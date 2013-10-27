@@ -35,7 +35,7 @@ module Api
 
       post "/ads", provides: :json do
         protect!
-        @ad = current_user.ads.create!(params[:ad])
+        @ad = current_user.ads.create!(json_params["ad"])
         rabl :ad, :format => :json
       end
 
@@ -48,7 +48,7 @@ module Api
       put "/ads/:id", provides: :json do
         protect!
         @ad = current_user.ads.find(params[:id])
-        @ad.update_attributes!(params["ad"])
+        @ad.update_attributes!(json_params["ad"])
         rabl :ad, :format => :json
       end
 
@@ -60,7 +60,7 @@ module Api
 
       put "/users/current", provides: :json do
         protect!
-        current_user.update_attributes!(params["user"])
+        current_user.update_attributes!(json_params["user"])
         @user = current_user
         rabl :user, :format => :json
       end
