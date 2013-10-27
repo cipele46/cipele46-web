@@ -29,7 +29,14 @@ class Ad < ActiveRecord::Base
   validates :category_id, :presence => true
   validates :city_id, :presence => true
   validates :description, :presence => true
-  validates :phone, :presence => true
   validates :title, :presence => true
   validates :ad_type, :presence => true
+  validate :phone_or_email_must_be_present
+
+  def phone_or_email_must_be_present
+    if !phone.present? && !email.present? then
+      errors.add(:phone, "Obavezan je ili telefon ili email")
+      errors.add(:email, "Obavezan je ili telefon ili email")
+    end
+  end
 end
