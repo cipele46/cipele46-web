@@ -18,7 +18,7 @@
         <h3>Kontakt</h3>
         <p class="sidebar-number"><%= @ad.phone %></p>
         <%= button_tag "Pošalji upit", :id => "posalji_upit_button", :onclick => "$('#kontakt_form').removeClass('hidden'); $('#posalji_upit_button').addClass('hidden');", :class => "sidebar-button" %>
-        <%= form_tag dispatch_email_path, method: :post, :id => 'kontakt_form', :class => "hidden" do %>
+        <%= form_tag ad_reply_path(@ad), method: :post, :id => 'kontakt_form', :class => "hidden" do %>
           <p class="sidebar-input-description">Poruka</p>
           <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku"%>
           <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
