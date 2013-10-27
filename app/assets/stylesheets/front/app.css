@@ -1604,6 +1604,12 @@ span.form-label{
     border-bottom: solid 2px rgba(0, 0, 0, 0.2);
     color: #777;
 }
+.social-item a{
+  display: inline-block;
+  width: 240px;
+  position: relative;
+  left: -30px;
+}
 /* Authentication (Forgot password, Reset confirmation)
 ***************************************************************/
 .page-authentication .authentication-shared-options {
