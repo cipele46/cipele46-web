@@ -13,9 +13,9 @@ module Extensions
 
       def set_status
         self.status = if supply?
-                        self.class.status[:pending]
-                      elsif demand?
                         activate
+                      elsif demand?
+                        self.class.status[:pending]
                       else
                         close
                       end
