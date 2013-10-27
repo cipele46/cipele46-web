@@ -20,13 +20,13 @@ module Api
       WELCOME_JSON ||= {
         message: "Welcome to 'Cipele46' JSON API. Find available routes in the 'routes' array.",
         routes: [
+          "GET /ads" => "lists all adds",
           "GET /categories" => "lists all categories",
           "GET /regions" => "lists all regions",
-          "GET /users" => "lists all users",
-          "GET /ads" => "lists all adds",
-          "POST /ads" => "create new ad with given params",
-          "DELETE /ads/:id" => "deletes desired ad",
-          "PUT /ads/:id" => "updates desired ad",
+          "POST /users" => "creates user",
+          "POST /ads" => "creates ad"
+          "DELETE /ads/:id" => "deletes ad",
+          "PUT /ads/:id" => "updates ad",
           "PUT /ads/:id/toggle_favorite" => "toggles ad as favorite",
           "PUT /users/current" => "updates current user",
           "GET /users/current" => "shows current user",
