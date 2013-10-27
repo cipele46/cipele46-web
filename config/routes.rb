@@ -14,14 +14,13 @@ Cipele46Web::Application.routes.draw do
   resources :ads do
     put :toggle
     put :close
+    put :reply
   end
 
   resource :user, :only => [:new, :show, :update]
   resources :regions, :only => [:index]
   resources :categories, :only => [:index, :show]
   resources :blog, :only => [:index, :show]
-
-  match "dispatch_email/:id", to: "ads#dispatch_email",  as: "dispatch_email", method: :post
 
   mount Api::Base => "/api", as: "api"
 end

@@ -1,6 +1,6 @@
 # encoding: utf-8
 class AdsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :reply]
 
   respond_to :html, :json
 
@@ -52,7 +52,7 @@ class AdsController < ApplicationController
     end
   end
 
-  def dispatch_email
+  def reply
     user_info = params[:user_info]
     ad = Ad.find(params[:id])
     if UserMailer.send_email(ad,user_info).deliver
