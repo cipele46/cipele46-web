@@ -23,7 +23,11 @@ ActiveAdmin.register Ad do
       f.input :ad_type, as: :select, collection: Ad.type
       f.input :status, as: :select, collection: Ad::STATES
       f.input :description
-      f.input :user
+
+      default_user = User.where(first_name: 'Cipele', last_name: '46').first
+      other_users = User.where("id NOT IN (?)", default_user.id)
+
+      f.input :user, as: :select, collection: [default_user] + other_users, include_blank: false
     end
 
     f.inputs "Image" do

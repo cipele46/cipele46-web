@@ -39,9 +39,18 @@ end
 def create_admin
   log "creating admin [username: #{ENV['ADMIN_EMAIL']} password: #{ENV['ADMIN_PASSWORD']}]"
   ActionMailer::Base.delivery_method = :test
-  user = User.find_or_create_by_email :first_name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup, :phone => '0989814972'
+  user = User.find_or_create_by_email :first_name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
   user.confirm!
   user.add_role :admin
+end
+
+# IMPORTANT NOTE: This user is selected as default in active admin when adding new Ad (recognized by first and last name)
+# See also app/admin/ads.rb
+def create_default_user
+  password = SecureRandom.hex(4)
+  u = User.new(first_name: 'Cipele', last_name: '46', email: 'contact@cipele46.org', password: password, password_confirmation: password)
+  u.confirmed_at = Time.current
+  u.save
 end
 
 def import_regions
@@ -123,6 +132,7 @@ setup_solr
 puts
 
 import_roles
+create_default_user
 create_admin
 import_regions
 import_categories
