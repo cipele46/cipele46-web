@@ -1877,7 +1877,7 @@ div.flash-message {
   display: table;
 }
 
-div.flash-message#flash_alert
+div.flash-message#flash_alert, div.flash-message#flash_error
 {
   color: #E74B3C;
 }
@@ -1889,6 +1889,7 @@ div.flash-message#flash_notice {
 div.flash-message .inner {
   display: table-cell;
   vertical-align: middle;
+  font-size:1.4em;
 }
 
 .dropdownSelect select {

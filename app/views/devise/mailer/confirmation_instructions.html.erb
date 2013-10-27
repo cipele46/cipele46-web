@@ -1,5 +1,5 @@
-<p>Welcome <%= @email %>!</p>
+<p>Bok <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Svoju e-mail adresu možeš potvrditi na linku niže:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<p><%= link_to 'Potvrdi moj račun', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
