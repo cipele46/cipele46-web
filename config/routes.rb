@@ -9,7 +9,7 @@ Cipele46Web::Application.routes.draw do
     root :to => 'ads#index'
   end
   get 'home' => 'ads#index'
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :ads do
     put :toggle
@@ -22,12 +22,6 @@ Cipele46Web::Application.routes.draw do
   resources :blog, :only => [:index, :show]
 
   match "dispatch_email/:id", to: "ads#dispatch_email",  as: "dispatch_email", method: :post
-
-  match 'auth/facebook/callback'        => 'social#facebook', :as => :facebook
-  match 'auth/failure'                  => 'social#failure',  :as => :social_failure
-  #match 'auth/twitter/callback'         => 'social#twitter',  :as => :twitter
-  #match 'auth/google_oauth2/callback'   => 'social#google',   :as => :google
-  #match 'auth/linkedin/callback'        => 'social#linkedin', :as => :linkedin
 
   mount Api::Base => "/api", as: "api"
 end
