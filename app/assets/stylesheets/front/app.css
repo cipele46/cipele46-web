@@ -1250,7 +1250,7 @@ body div.demand button.sidebar-button {
 #addPage .page-content-container .radio{
     display:none;
 }
-#addPage .page-content-container #poklanjam, #trazim{
+#addPage .page-content-container #poklanjam, #trebam{
     background:url("/assets/circle_empty.png") no-repeat;
     background-size: 20px 20px;
     background-position: left center;
@@ -1264,11 +1264,11 @@ body div.demand button.sidebar-button {
     background:url("/assets/circle_blue.png") no-repeat;
     color:#17c1c7;
 }
-#addPage .page-content-container #trazim.field-radio-label-checked{
+#addPage .page-content-container #trebam.field-radio-label-checked{
     color:#f4715b;
     background:url("/assets/circle_red.png") no-repeat;
 }
-#addPage .page-content-container #trazim{
+#addPage .page-content-container #trebam{
     margin-left:50px;
 }
 #addPage .page-content-container #naslov{
@@ -1348,13 +1348,13 @@ body div.demand button.sidebar-button {
 .bgheight { height: 100%; }
 /*CHANGES FOR TRAZIM VIEW*/
 /**********************************************************/
-#addPage .trazim .page-sidebar{
+#addPage .trebam .page-sidebar{
     border-top: solid 6px #f4715b;
 }
-#addPage .trazim .page-sidebar .addButton{
+#addPage .trebam .page-sidebar .addButton{
     background: #f4715b;
 }
-#addPage .page-content-wrapper.inner-page.trazim .page-content-container{
+#addPage .page-content-wrapper.inner-page.trebam .page-content-container{
     border-top: solid 6px #f4715b;
 }
 
@@ -1759,7 +1759,7 @@ span.form-label{
 #nasaPrica .page-contant .box p{
     font-size: 18px;
 }
-#nasaPrica .page-contant .trazim{
+#nasaPrica .page-contant .trebam{
     border-top:6px solid #f4715b;
 }
 #nasaPrica .page-contant .poklanjam{

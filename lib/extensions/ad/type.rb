@@ -4,7 +4,7 @@ module Extensions
       extend ActiveSupport::Concern
 
       STATES  = { :supply => 1, :demand => 2 }
-      HUMANIZED = {:supply => :poklanjam, :demand => :trazim}
+      HUMANIZED = {:supply => :poklanjam, :demand => :trebam}
 
 
       included do
