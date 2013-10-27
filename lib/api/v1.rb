@@ -24,7 +24,7 @@ module Api
           "GET /categories" => "lists all categories",
           "GET /regions" => "lists all regions",
           "POST /users" => "creates user",
-          "POST /ads" => "creates ad"
+          "POST /ads" => "creates ad",
           "DELETE /ads/:id" => "deletes ad",
           "PUT /ads/:id" => "updates ad",
           "PUT /ads/:id/toggle_favorite" => "toggles ad as favorite",
