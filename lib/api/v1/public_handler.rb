@@ -11,9 +11,8 @@ module Api
         rabl :regions, :format => :json
       end
 
-
-      post "/users", provides: :json do
-        @user = User.create!(params["user"])
+      post "/users" do
+        @user = User.create!(json_params["user"])
         rabl :user, :format => :json
       end
     end
