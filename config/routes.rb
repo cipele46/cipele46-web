@@ -14,7 +14,7 @@ Cipele46Web::Application.routes.draw do
   resources :ads do
     put :toggle
     put :close
-    put :reply
+    post :reply
   end
 
   resource :user, :only => [:new, :show, :update]

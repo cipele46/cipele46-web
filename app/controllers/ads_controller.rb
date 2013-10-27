@@ -53,9 +53,10 @@ class AdsController < ApplicationController
   end
 
   def reply
-    user_info = params[:user_info]
-    ad = Ad.find(params[:id])
-    if UserMailer.send_email(ad,user_info).deliver
+    ad = Ad.find(params[:ad_id])
+    content, email = params[:content], params[:email]
+
+    if AdReplying.new.call ad: ad, content: content, email: email
       flash[:notice] = "Sent!"
     else
       flash[:error] = "Could't send you message."
