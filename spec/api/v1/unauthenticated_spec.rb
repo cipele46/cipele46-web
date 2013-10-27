@@ -61,7 +61,7 @@ describe "API" do
             @params = {"user"=> { "first_name"=> "Pero", "last_name"=> "Peric", "email"=> "pero@cipele46.org",
               "phone"=> "123455", "password"=> "pwd1234", "password_confirmation"=> "pwd1234" }}
 
-            post users_api_path, @params
+            post users_api_path, @params.to_json
             @it = json_response
           end
 
@@ -148,7 +148,7 @@ describe "API" do
             it "returns JSON unauthorized" do
               ad_params = {"title" => "new title", "description" => "new description", "category_id" =>"1", "city_id" =>"1"}
 
-              post "#{ads_api_path}", {:ad => ad_params}
+              post "#{ads_api_path}", {:ad => ad_params.to_json}
 
               response.should be_unauthorized
             end
