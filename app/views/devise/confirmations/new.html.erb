@@ -1,11 +1,11 @@
 <div class="page-content-wrapper inner-page clearfix page-authentication">
   <div class="page-content-container">
-      <h2 class="form-heading">Zaboravljena lozinka</h2>
+      <h2 class="form-heading">Ponovno pošalji upute za povrdu računa</h2>
 
       <%= simple_form_for(
         resource,
         :as => resource_name,
-        :url => password_path(resource_name),
+        :url => confirmation_path(resource_name),
         :html => { :method => :post }
       ) do |f| %>
 
@@ -19,4 +19,3 @@
       <%= render "devise/shared/links" %>
   </div>
 </div>
-

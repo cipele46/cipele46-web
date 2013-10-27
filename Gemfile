@@ -17,7 +17,6 @@ gem "carrierwave"
 gem "activeadmin"
 gem "mini_magick"
 gem "high_voltage"
-gem 'omniauth-facebook'
 gem 'friendly_id'
 gem 'coveralls', require: false
 gem 'newrelic_rpm'
@@ -26,10 +25,11 @@ gem 'sunspot_solr'
 gem 'sunspot_rails'
 gem 'rspec'
 gem 'html_truncator'
+gem 'omniauth'
+gem 'omniauth-facebook'
 #gem 'omniauth-twitter'
-#gem 'omniauth-linkedin'
 #gem 'omniauth-google-oauth2'
-#
+
 gem "sinatra", require: false
 gem "rabl"
 

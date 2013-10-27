@@ -165,11 +165,6 @@ describe "API" do
         end
       end
 
-      describe "replying" do
-        context "POST /api/ads/1/reply" do
-          it "returns JSON success"
-        end
-      end
     end # ads
 
     describe "changing current user data" do

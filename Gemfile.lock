@@ -364,6 +364,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   newrelic_rpm
+  omniauth
   omniauth-facebook
   poltergeist
   pry-rails

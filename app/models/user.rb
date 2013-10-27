@@ -4,19 +4,20 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :phone,
+    :provider, :uid, :name
 
   has_many :ads
   has_many :favorites
   has_many :favorite_ads, :through => :favorites, :source => :ad
 
-  validates :phone, :presence => true
-
   include Extensions::User::Naming
+  extend Extensions::User::Social
 
   def toggle_favorite(ad)
     case

@@ -11,6 +11,7 @@ class Ad < ActiveRecord::Base
   belongs_to :user
   belongs_to :city
   has_many :favorites, :dependent => :destroy
+  has_many :replies, :dependent => :destroy
 
   attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone,
     :email
