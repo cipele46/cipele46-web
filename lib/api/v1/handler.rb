@@ -47,6 +47,12 @@ module Api
       error 401 do
         Response::UNAUTHORIZED
       end
+
+      helpers do
+        def json_params
+          JSON.parse(request.body.read)
+        end
+      end
     end
   end
 end

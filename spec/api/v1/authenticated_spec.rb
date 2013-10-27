@@ -74,7 +74,7 @@ describe "API" do
         context "with valid params" do
           before do
             create_user
-            post "#{ads_api_path}", {:ad => valid_ad_params},
+            post "#{ads_api_path}", {:ad => valid_ad_params}.to_json,
               {"HTTP_AUTHORIZATION" => valid_credentials}
           end
           it "returns JSON success" do
@@ -109,7 +109,7 @@ describe "API" do
             ad = Ad.first
             ad_params = {"title" => "new title"}
 
-            put "#{ads_api_path}/#{ad.id}", {:ad => ad_params},
+            put "#{ads_api_path}/#{ad.id}", {:ad => ad_params}.to_json,
             {"HTTP_AUTHORIZATION" => valid_credentials }
           end
 
@@ -177,7 +177,7 @@ describe "API" do
         before do
           @user = create_user
           user_params = {"first_name" => "Pero"}
-          put "#{users_api_path}/current", {:user => user_params},
+          put "#{users_api_path}/current", {:user => user_params}.to_json,
             {"HTTP_AUTHORIZATION" => valid_credentials }
         end
         it "returns JSON success" do

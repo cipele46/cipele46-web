@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 include AdSteps
 include SessionSteps
 
@@ -22,6 +21,15 @@ feature "Ads" do
   scenario "guest: creating" do
     visit new_ad_path
     expect_to_see("moraš se prijaviti")
+  end
+
+  scenario "guest: contacting advertiser", :js => true  do
+    ad = create_ad
+
+    visit ad_path(ad)
+    expect_to_see("Pošalji upit")
+    find('#posalji_upit_button').click
+    find('#posalji_button').visible?.should be_true
   end
 
   scenario "user: creating", :sunspot_matchers => true do
