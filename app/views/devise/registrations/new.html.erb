@@ -11,11 +11,17 @@
               <%= f.input :email, :label => "E-mail", :required => true %>
               <%= f.input :password, :label => "Lozinka", :required => true %>
               <%= f.input :password_confirmation, :label => "Ponovi lozinku", :required => true %>
-              <%= f.input :phone, :label => "Telefon", :required => "false" %>
+              <%= f.input :phone, :label => "Telefon", :required => false %>
               <%= f.button :submit, 'Registriraj se', :class => 'btn-primary' %>
             <% end %>
+            <div class="col-divider">ili</div>
           </div>
         </div>
+        <div class="login-col-container">
+        <div class="login-col-content">
+          <%= render 'users/social_login' %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

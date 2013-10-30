@@ -17,12 +17,7 @@
     </div>
     <div class="login-col-container">
       <div class="login-col-content">
-        <ul class="social-list clearfix">
-          <li class="social-item button facebook"><%= link_to 'Facebook', user_omniauth_authorize_path(:facebook) %></li>
-          <!--
-          <li class="social-item button google">Sign in</li>
-          -->
-        </ul>
+        <%= render 'users/social_login' %>
       </div>
     </div>
   </div>
