@@ -1,5 +1,5 @@
 module AdsHelper
-  %w(region_id category_id ad_type).each do |param|
+  %w(region_id category_id ad_type user_id).each do |param|
     define_method("selected_#{param}") { params[param].to_i }
   end
 

@@ -25,9 +25,9 @@ describe AdFilter do
     end
 
     context 'with user set' do
-      let(:user) { build(:user) }
-      let(:params) { { user: user } }
-      its(:user) { should == user }
+      let(:user_id) { build(:user).id }
+      let(:params) { { user_id: user.id } }
+      its(:user_id) { should == user.id }
     end
   end
 
@@ -39,7 +39,7 @@ describe AdFilter do
       region_id: '10', 
       category_id: '4',
       query: 'some search',
-      user: user,
+      user_id: user.id,
       page: '2',
       per_page: '10'
     }
@@ -48,7 +48,7 @@ describe AdFilter do
   describe '#search_without' do
     it 'should do a search without the specified attribute' do
       filter = AdFilter.new(filter_options)
-      filter.should_receive(:search).with([:category_id, :ad_type])
+      filter.should_receive(:search).with([:category_id, :ad_type, :user_id])
       filter.search_without(:region_id)    
     end
   end

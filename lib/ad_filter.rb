@@ -1,7 +1,7 @@
 class AdFilter
-  FILTER_ATTRIBUTES = [:region_id, :category_id, :ad_type]
+  FILTER_ATTRIBUTES = [:region_id, :category_id, :ad_type, :user_id]
 
-  SEARCH_ATTRIBUTES = [:region_id, :category_id, :ad_type, :query, :page, :per_page, :user] 
+  SEARCH_ATTRIBUTES = [:region_id, :category_id, :ad_type, :query, :page, :per_page, :user_id] 
 
   SEARCH_ATTRIBUTES.each {|attr| attr_accessor attr }
 
@@ -23,7 +23,6 @@ class AdFilter
       filter_attributes.each { |attr| with(attr, self.send(attr)) if self.send(attr) }
       FILTER_ATTRIBUTES.each { |attr| facet(attr) }
       with(:status, Ad.status[:active])
-      with(:user_id, user.id) if user.present?
       paginate(page: page || 1, per_page: per_page || Ad::PER_PAGE)
       order_by(:created_at, :desc) if query.blank?
     end

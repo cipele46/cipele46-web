@@ -15,6 +15,9 @@ Cipele46Web::Application.routes.draw do
     put :toggle
     put :close
     post :reply
+    collection do
+      get :my
+    end
   end
 
   resource :user, :only => [:new, :show, :update]
