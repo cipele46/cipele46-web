@@ -231,6 +231,7 @@ button {
 .page-header nav li.current a:link,
 .page-header nav li.current a:visited {
     color: #f4715b;
+    cursor: pointer;
 }
 
 #search {
@@ -1904,4 +1905,31 @@ div.flash-message .inner {
 
 span.error {
   color: red;
+}
+
+a.big-link,
+a.big-link:link,
+a.big-link:visited {
+    display: block;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.5em;
+    -webkit-transition: color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
+    padding: 0;
+}
+
+a.big-link:hover,
+a.big-link:active,
+a.big-link:focus {
+    color: #f4715b;
+    cursor: pointer;
+}
+
+form a.big-link {
+  height: 44px;
+  line-height: 44px;
+  margin-bottom: 20px;
 }

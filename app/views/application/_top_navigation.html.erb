@@ -30,7 +30,7 @@
             <div>
               <ul>
                 <li><%= link_to "Postavke", edit_user_registration_path %></li>
-                <li><a href="#">Moji oglasi</a></li>
+                <li><%= link_to 'Moji oglasi', ads_path(user_id: current_user.id) %></li>
                 <li><%= link_to "Odjavi se", destroy_user_session_path, { id: "sign-out", method: 'DELETE' } %></li>
               </ul>
             <div>
