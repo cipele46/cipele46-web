@@ -75,6 +75,7 @@ pickle-email-*.html
 
 # vim artifacts
 **.swp
+**.swo
 
 # Ignore application configuration
 /config/application.yml
@@ -82,3 +83,6 @@ pickle-email-*.html
 # Ignore solr/data
 /solr/data
 /solr/pids
+
+# Carrierwave 
+#/app/assets/images/uploads
