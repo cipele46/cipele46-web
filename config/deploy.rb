@@ -11,7 +11,7 @@ set :keep_releases, 3
 set :solr_path, '/opt/apache-solr-3.6.2/example'
 
 #for carrierwave uploads
-set :shared_children, shared_children + %w{app/assets/uploads}
+set :shared_children, shared_children + %w{public/uploads}
 
 after "deploy:finalize_update", "deploy:copy_config"
 

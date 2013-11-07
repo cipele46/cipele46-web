@@ -1,3 +1,3 @@
 CarrierWave.configure do |config|
-  config.root = "#{Rails.application.root}/app/assets"
+  config.root = "#{Rails.application.root}/public/uploads"
 end
