@@ -5,7 +5,6 @@ module AdsHelper
 
   def image_tag_for_ad(ad, options = {})
     version = options[:version] || 'medium'
-    src = "/assets#{ad.image_url}"
-    image_tag src, options.merge(:class => "")
+    image_tag ad.image_url, options.merge(:class => "")
   end
 end
