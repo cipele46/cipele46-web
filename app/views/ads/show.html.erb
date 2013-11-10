@@ -5,8 +5,12 @@
 
       <div class="page-sidebar">
         <h3>Kontakt</h3>
-  	      <p class="sidebar-number"><%= @ad.phone %></p>
-  	      <p class="sidebar-email"><%= @ad.email %></p>
+          <% if @ad.phone != nil && @ad.phone.strip != "" %>
+            <p class="sidebar-number"><%= @ad.phone %></p>
+          <% end %>
+          <% if @ad.email != nil && @ad.email.strip != "" %>
+            <p class="sidebar-email"><%= @ad.email %></p>
+          <% end %>
           <%= button_to "Uredi oglas", edit_ad_path(@ad), :class => 'sidebar-button', :id => "edit-ad", :method => :get %>
           <%= button_to "Zatvori oglas", ad_close_path(@ad), :class => 'sidebar-button', :id => "close-ad", :method => :put, :confirm => "Sigurno želite zatvoriti ovaj oglas?" %>
           <%= button_to "Obriši oglas", ad_path(@ad), :class => 'sidebar-button', :id => "delete-ad", :method => :delete, :confirm => "Sigurno želite obrisati ovaj oglas?" %>
@@ -16,7 +20,9 @@
 
       <div class="page-sidebar">
         <h3>Kontakt</h3>
-        <p class="sidebar-number"><%= @ad.phone %></p>
+        <% if @ad.phone != nil && @ad.phone.strip != "" %>
+          <p class="sidebar-number"><%= @ad.phone %></p>
+        <% end %>
         <%= button_tag "Pošalji upit", :id => "posalji_upit_button", :onclick => "$('#kontakt_form').removeClass('hidden'); $('#posalji_upit_button').addClass('hidden');", :class => "sidebar-button" %>
         <%= form_tag ad_reply_path(@ad), method: :post, :id => 'kontakt_form', :class => "hidden" do %>
           <p class="sidebar-input-description">Poruka</p>
