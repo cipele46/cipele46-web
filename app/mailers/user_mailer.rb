@@ -4,11 +4,11 @@ class UserMailer < ActionMailer::Base
   headers = {'Return-Path' => 'no-reply@cipele46.org'}
   
   def send_email(ad, content, email)
-    @email, @content = email, content
+    @ad, @content, @email = ad, content, email
 
     mail(
       to: ad.user.email,
-      subject: "Cipele46: #{ad.title}",
+      subject: "Cipele46: Novi odgovor na oglas '#{ad.title}'",
       reply_to: email
     )
   end
