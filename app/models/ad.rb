@@ -1,15 +1,17 @@
 class Ad < ActiveRecord::Base
-  PER_PAGE  = 20
 
   include Extensions::Ad::Expiration
   include Extensions::Ad::Type
   include Extensions::Ad::Status
   include Extensions::Ad::Delegation
+  include Extensions::Ad::Searchable
+  include Extensions::Ad::Pagination
 
   belongs_to :category
   belongs_to :user
   belongs_to :city
   has_many :favorites, :dependent => :destroy
+  has_many :replies, :dependent => :destroy
 
   attr_accessible :description, :status, :title, :ad_type, :category_id, :user_id, :city_id, :image, :phone,
     :email
@@ -17,6 +19,7 @@ class Ad < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
   scope :active, -> { where("ads.created_at >= :date", :date => VALID_FOR.days.ago).where(status: 2) }
+  scope :closed, -> { where(status: 3) }
   scope :by_user_favorites, ->(user_id) { joins(:favorites).where("favorites.user_id = ?", user_id) }
   scope :supply, where(:ad_type => self.type[:supply])
   scope :demand, where(:ad_type => self.type[:demand])
@@ -26,46 +29,14 @@ class Ad < ActiveRecord::Base
   validates :category_id, :presence => true
   validates :city_id, :presence => true
   validates :description, :presence => true
-  validates :phone, :presence => true
   validates :title, :presence => true
   validates :ad_type, :presence => true
+  validate :phone_or_email_must_be_present
 
-  searchable do
-    text :title, boost: 4.0
-    text :description, boost: 2.0
-    text :phone
-    text :category do
-      category.name
-    end
-    text :city do
-      city.name
-    end
-    text :region do 
-      city.region.name 
-    end
-
-    integer :region_id do
-      city.region_id
-    end
-    integer :category_id
-    integer :ad_type
-    integer :status
-    time :created_at
-  end
-
-
-  def self.search(ad_filter = AdFilter.new, page = nil, per_page = nil)
-    Sunspot.search(Ad) do
-      fulltext(ad_filter.query) if ad_filter.query
-      with(:category_id, ad_filter.category_id) if ad_filter.category_id
-      with(:region_id, ad_filter.region_id) if ad_filter.region_id
-      with(:ad_type, ad_filter.ad_type) if ad_filter.ad_type
-      with(:status, Ad.status[:active])
-      facet(:category_id)
-      facet(:region_id)
-      facet(:ad_type)
-      paginate(page: page || 1, per_page: per_page)
-      order_by(:created_at, :desc) if ad_filter.query.blank?
+  def phone_or_email_must_be_present
+    if !phone.present? && !email.present? then
+      errors.add(:phone, "Obavezan je ili telefon ili email")
+      errors.add(:email, "Obavezan je ili telefon ili email")
     end
   end
 end

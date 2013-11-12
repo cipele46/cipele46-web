@@ -1,0 +1,21 @@
+<div class="page-content-wrapper inner-page clearfix page-authentication">
+  <div class="page-content-container">
+      <h2 class="form-heading">Ponovno pošalji upute za povrdu računa</h2>
+
+      <%= simple_form_for(
+        resource,
+        :as => resource_name,
+        :url => confirmation_path(resource_name),
+        :html => { :method => :post }
+      ) do |f| %>
+
+        <%= devise_error_messages! %>
+
+        <%= f.input :email, :autofocus => true %>
+
+        <%= f.button :submit, "Pošalji mi upute", :class => 'button red' %>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+  </div>
+</div>

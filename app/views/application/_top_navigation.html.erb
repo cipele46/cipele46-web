@@ -6,6 +6,7 @@
     </nav>
     <div id="search">
       <%= form_tag(ads_path, method: :get, id: :filter_form) do %>
+        <%= hidden_field_tag :user_id, @ad_filter.user_id %>
         <%= hidden_field_tag :category_id, @ad_filter.category_id %>
         <%= hidden_field_tag :region_id, @ad_filter.region_id %>
         <%= hidden_field_tag :ad_type, @ad_filter.ad_type %>
@@ -15,12 +16,11 @@
     </div>
     <ul class="nav-user">
         <li class="nav-user-new-add">
-          <%= link_to "Objavi oglas", page_path('u-izradi') %>
-          <% unless current_user %><%= link_to "Objavi oglas", new_user_session_path, :class => 'hidden' %><% end -%>
-          <% if current_user %><%= link_to "Objavi oglas", new_ad_path, :class => 'hidden' %><% end -%>
+          <% unless current_user %><%= link_to "Objavi oglas", new_user_session_path %><% end -%>
+          <% if current_user %><%= link_to "Objavi oglas", new_ad_path %><% end -%>
         </li>
         <% unless current_user %>
-        <li class="nav-user-not-logged hidden">
+        <li class="nav-user-not-logged">
           <%= link_to "Prijavi se", new_user_session_path %>
         </li>
         <% end -%>
@@ -30,8 +30,8 @@
             <div>
               <ul>
                 <li><%= link_to "Postavke", edit_user_registration_path %></li>
-                <li><a href="#">Moji oglasi</a></li>
-                <li><%= link_to "Odjavi se", destroy_user_session_path, { method: 'DELETE' } %></li>
+                <li><%= link_to 'Moji oglasi', ads_path(user_id: current_user.id) %></li>
+                <li><%= link_to "Odjavi se", destroy_user_session_path, { id: "sign-out", method: 'DELETE' } %></li>
               </ul>
             <div>
         </li>

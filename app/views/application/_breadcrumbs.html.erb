@@ -1,6 +1,16 @@
-    <header class="page-content-header clearfix">
       <ul class="breadcrumbs clearfix">
-        <li><%= link_to @ad.category.name, ads_path(:category_id => @ad.category.id) %></li>
-        <li><%= link_to @ad.city.region.name, ads_path(:region_id => @ad.city.region.id) %></li>
+      	<% if @ad != nil then %>
+	        <li><%= link_to @ad.category.name, ads_path(:category_id => @ad.category.id) %></li>
+	        <li><%= link_to @ad.city.region.name, ads_path(:region_id => @ad.city.region.id) %></li>
+        <% else %>
+	        <% if @ads_type != nil then %>
+	        	<li><%= link_to Ad::humanized_type.invert[@ads_type].capitalize, ads_path(:ad_type => @ads_type) %></li>
+	        <% end %>
+        	<% if @ads_category != nil then %>
+	        	<li><%= link_to @ads_category.name, ads_path(:category_id => @ads_category.id) %></li>
+	        <% end %>
+	        <% if @ads_region != nil then %>
+	        	<li><%= link_to @ads_region.name, ads_path(:region_id => @ads_region.id) %></li>
+	        <% end %>
+        <% end %>
       </ul>
-    </header>

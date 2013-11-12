@@ -1,0 +1,5 @@
+<p>Bok <%= @email %>!</p>
+
+<p>Svoju e-mail adresu možeš potvrditi na linku niže:</p>
+
+<p><%= link_to 'Potvrdi moj račun', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>

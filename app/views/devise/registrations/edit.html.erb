@@ -1,0 +1,41 @@
+<script type="text/javascript">
+  function toggleChangePassword(source) {
+    if($("#changePasswordPanel").attr('data-active') == 0) {
+      $("#changePasswordPanel").attr('data-active', 1);
+      $(source).html("Promijeni lozinku <<");
+    }
+    else {
+      $("#changePasswordPanel").attr('data-active', 0);
+      $("#changePasswordPanel input").val("");
+      $(source).html("Promijeni lozinku >>");
+    }
+    $("#changePasswordPanel").slideToggle();
+  }
+</script>
+<div class="page-content-wrapper inner-page clearfix">
+  <div class="page-content-container">
+    <div class="login-form-container clearfix">
+      <h2 class="form-heading">Tvoje postavke</h2>
+        <div class="login-col-container">
+          <div class="login-col-content">
+            <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f| %>
+              <%= display_base_errors resource %>
+              <%= f.input :first_name, :autofocus => true, :label => "Ime" %>
+              <%= f.input :last_name, :label => "Prezime" %>
+              <%= f.input :email, :required => true, :label => "E-mail" %>
+              <%= f.input :phone, :label => "Telefon" %>
+              <% unless current_user.uid %>
+                <a class="big-link" onclick="toggleChangePassword(this)">Promijeni lozinku &gt;&gt;</a>
+                <div id="changePasswordPanel" style="display:none" data-active="0">
+                  <%= f.input :password, :autocomplete => "off", :hint => "ostavi prazno polje ukoliko ju ne želiš mijenjati", :required => false, :label => "Lozinka" %>
+                  <%= f.input :password_confirmation, :required => false, :label => "Ponovi lozinku" %>
+                  <%= f.input :current_password, :hint => "trenutna lozinka potrebna nam je kao potvrda", :required => true, :label => "Trenutna lozinka" %>
+                </div>
+              <% end %>
+              <%= f.button :submit, 'Potvrdi promjene', :class => 'btn-primary' %>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

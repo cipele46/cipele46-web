@@ -4,6 +4,8 @@
       e.preventDefault();
       var query = $.deserialize(URI($(this).attr("href")).query());
       for(var key in query) {
+        console.log(key);
+        console.log(query[key]);
         $("form#filter_form").find("[name=" + key + "]").val(query[key]);
       }
       $("form#filter_form").submit();
@@ -17,8 +19,12 @@
         <li class="expanded">
           <a href="javascript:void(null)">Moj kutak</a>
           <ul>
-            <li><a href="javascript:void(null)">Moji oglasi (<%= current_user.ads.count %>)</a></li>
-            <li><a href="javascript:void(null)">Moji favoriti (123)</a></li>
+            <li class="<%= selected_user_id == 0 ? 'current' : '' %>">
+              <%= link_to "Svi oglasi (#{number_of_ads_in(:user_id)})", ads_path(user_id: 0), class: 'filter-action' %> 
+            </li>
+            <li class="<%= selected_user_id == current_user.id ? 'current' : '' %>">
+              <%= link_to "Moji oglasi (#{number_of_ads_in(:user_id, current_user.id)})", ads_path(user_id: current_user.id), class: 'filter-action' %> 
+            </li>
           </ul>
         </li>
         <% end -%>

@@ -1,13 +1,21 @@
+# encoding: utf-8
 class AdsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:show, :index]
+  before_filter :authenticate_user!, :except => [:show, :index, :reply]
 
   respond_to :html, :json
 
   def index
-    @ads_search = Ad.search(@ad_filter, params[:page], params[:per_page] || Ad::PER_PAGE)
-    @ads_without_category_id = Ad.search(@ad_filter.clone_without(:category_id), 1)
-    @ads_without_ad_type = Ad.search(@ad_filter.clone_without(:ad_type), 1)
-    @ads_without_region_id = Ad.search(@ad_filter.clone_without(:region_id), 1)
+    @ads_search = @ad_filter.search
+    @ads_without_category_id = @ad_filter.search_without(:category_id) 
+    @ads_without_ad_type = @ad_filter.search_without(:ad_type) 
+    @ads_without_region_id = @ad_filter.search_without(:region_id) 
+    @ads_without_user_id = @ad_filter.search_without(:user_id)
+    
+    # to display breadcrumbs
+    @ads_category = Category.find(@ad_filter.category_id) if @ad_filter.category_id != nil
+    @ads_region   = Region.find(@ad_filter.region_id) if @ad_filter.region_id != nil
+    @ads_type = @ad_filter.ad_type
+
     respond_with @ads = @ads_search.results
   end
 
@@ -21,13 +29,18 @@ class AdsController < ApplicationController
   end
 
   def create
-    @ad = AdCreation.new(current_user).create(params[:oglas] || params[:ad])
+    @ad = AdCreation.new.call :user => current_user, :params => params[:ad]
     respond_with @ad
   end
 
   def update
     @ad = current_user.ads.find(params[:id])
-    @ad.update_attributes(params[:oglas] || params[:ad])
+    @ad.update_attributes(params[:ad])
+    respond_with @ad
+  end
+
+  def edit
+    @ad = current_user.ads.find(params[:id])
     respond_with @ad
   end
 
@@ -40,14 +53,25 @@ class AdsController < ApplicationController
     end
   end
 
-  def dispatch_email
-    user_info = params[:user_info]
-    ad = Ad.find(params[:id])
-    if UserMailer.send_email(ad,user_info).deliver
+  def reply
+    ad = Ad.find(params[:ad_id])
+    content, email = params[:content], params[:email]
+
+    if AdReplying.new.call ad: ad, content: content, email: email
       flash[:notice] = "Sent!"
     else
       flash[:error] = "Could't send you message."
     end
     redirect_to ad_path(ad)
+  end
+
+  def toggle
+    current_user.toggle_favorite @ad = Ad.find(params[:id])
+    respond_with @ad
+  end
+
+  def close
+    @ad = AdClosure.new.call :user => current_user, :id => params[:ad_id]
+    respond_with @ad
   end
 end

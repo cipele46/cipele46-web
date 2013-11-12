@@ -231,6 +231,7 @@ button {
 .page-header nav li.current a:link,
 .page-header nav li.current a:visited {
     color: #f4715b;
+    cursor: pointer;
 }
 
 #search {
@@ -569,26 +570,13 @@ button {
     font-size: 4em;
     border-bottom: 1px dotted;
 }
+
 .blog h2 {
-    border: 0 !important;
-    font-weight: normal !important;
-    font-size: 3em !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-.blog h3 {
-    font-size: 2.5em;
-}
-.blog h4 {
-    font-size: 2em;
-}
-
-.blog h5 {
-    font-size: 1.5em;
-}
-
-.blog h6 {
-    font-size: 1em;
+    border: 0;
+    font-weight: normal;
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -1208,7 +1196,7 @@ body div.demand button.sidebar-button {
 .page-content-wrapper.inner-page .page-sidebar {
     background: #fff;
     border-bottom: solid 2px rgba(0, 0, 0, 0.2);
-    border-top: solid 6px #f4715b;
+    border-top: solid 6px #17c1c7;
 
 }
 #addPage .page-sidebar{
@@ -1242,7 +1230,7 @@ body div.demand button.sidebar-button {
     width:100%;
     height:35px;
     color:white;
-    background:#f4715b;
+    background:#17c1c7;
     font-size: 20px;
     line-height:35px;
     text-align: center;
@@ -1263,7 +1251,7 @@ body div.demand button.sidebar-button {
 #addPage .page-content-container .radio{
     display:none;
 }
-#addPage .page-content-container #poklanjam, #trazim{
+#addPage .page-content-container #poklanjam, #trebam{
     background:url("/assets/circle_empty.png") no-repeat;
     background-size: 20px 20px;
     background-position: left center;
@@ -1274,14 +1262,14 @@ body div.demand button.sidebar-button {
     font-size:16px;
 }
 #addPage .page-content-container #poklanjam.field-radio-label-checked{
-    color:#f4715b;
-    background:url("/assets/circle_red.png") no-repeat;
-}
-#addPage .page-content-container #trazim.field-radio-label-checked{
     background:url("/assets/circle_blue.png") no-repeat;
     color:#17c1c7;
 }
-#addPage .page-content-container #trazim{
+#addPage .page-content-container #trebam.field-radio-label-checked{
+    color:#f4715b;
+    background:url("/assets/circle_red.png") no-repeat;
+}
+#addPage .page-content-container #trebam{
     margin-left:50px;
 }
 #addPage .page-content-container #naslov{
@@ -1359,16 +1347,16 @@ body div.demand button.sidebar-button {
 }
 .bgwidth { width: 100%; }
 .bgheight { height: 100%; }
-/*CHANGES FPR TRAZIM VIEW*/
+/*CHANGES FOR TRAZIM VIEW*/
 /**********************************************************/
-#addPage .trazim .page-sidebar{
-    border-top: solid 6px #17c1c7;
+#addPage .trebam .page-sidebar{
+    border-top: solid 6px #f4715b;
 }
-#addPage .trazim .page-sidebar .addButton{
-    background: #17c1c7;
+#addPage .trebam .page-sidebar .addButton{
+    background: #f4715b;
 }
-#addPage .page-content-wrapper.inner-page.trazim .page-content-container{
-    border-top: solid 6px #17c1c7;
+#addPage .page-content-wrapper.inner-page.trebam .page-content-container{
+    border-top: solid 6px #f4715b;
 }
 
 #addPage .page-content-container .inputArea .input-container > * {
@@ -1415,19 +1403,15 @@ body div.demand button.sidebar-button {
 /* CUSTOM DROP DOWNS! */
 /***************************************************************/
 .dropdownSelect {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     position: relative;
     width: 100%;
     height:100%;
-    padding: 10px;
     margin: 0;
 
     background: #eeeeee;
     color: #444444;
     cursor: pointer;
-    font-size:18px;
+    overflow: hidden;
 }
 .dropdownSelect input{
     display:none;
@@ -1529,6 +1513,7 @@ input[type=text]{
 }
 .button:hover{
     opacity: 0.7;
+    cursor:pointer;
 }
 .login-form-container a,
 .login-footer a{
@@ -1619,6 +1604,24 @@ span.form-label{
     height: 22px;
     border-bottom: solid 2px rgba(0, 0, 0, 0.2);
     color: #777;
+}
+.social-item a{
+  display: inline-block;
+  width: 240px;
+  position: relative;
+  left: -30px;
+}
+/* Authentication (Forgot password, Reset confirmation)
+***************************************************************/
+.page-authentication .authentication-shared-options {
+    margin:40px 0 0 0;
+    padding:20px 0;
+    border-top:1px solid #eee;
+}
+.page-authentication .authentication-shared-options a {
+    display:block;
+    font-size:1.2em;
+    margin:5px 0;
 }
 /*--------------------------------
     ICONS
@@ -1757,7 +1760,7 @@ span.form-label{
 #nasaPrica .page-contant .box p{
     font-size: 18px;
 }
-#nasaPrica .page-contant .trazim{
+#nasaPrica .page-contant .trebam{
     border-top:6px solid #f4715b;
 }
 #nasaPrica .page-contant .poklanjam{
@@ -1860,4 +1863,73 @@ span.form-label{
     padding: 30px 40px;
 }
 
+}
+
+/* Flash messages */
+div.flash-message {
+  margin: auto;
+  height: 40px;
+  width: 300px;
+  border: 2px solid;
+  font-family: "Helvetica";
+  font-size: 8pt;
+  background: none repeat scroll 0 0 #FFFFFF;
+  text-align: center;
+  display: table;
+}
+
+div.flash-message#flash_alert, div.flash-message#flash_error
+{
+  color: #E74B3C;
+}
+
+div.flash-message#flash_notice {
+  color: #0CBCA0;
+}
+
+div.flash-message .inner {
+  display: table-cell;
+  vertical-align: middle;
+  font-size:1.4em;
+}
+
+.dropdownSelect select {
+  width: 260px;
+  height: 45px;
+  background: transparent;
+  -webkit-appearance: none;
+  font-size: 18px;
+}
+
+/* Validation errors on forms */
+
+span.error {
+  color: red;
+}
+
+a.big-link,
+a.big-link:link,
+a.big-link:visited {
+    display: block;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.5em;
+    -webkit-transition: color .1s linear;
+    -moz-transition: color .1s linear;
+    -o-transition: color .1s linear;
+    transition:  color .1s linear;
+    padding: 0;
+}
+
+a.big-link:hover,
+a.big-link:active,
+a.big-link:focus {
+    color: #f4715b;
+    cursor: pointer;
+}
+
+form a.big-link {
+  height: 44px;
+  line-height: 44px;
+  margin-bottom: 20px;
 }

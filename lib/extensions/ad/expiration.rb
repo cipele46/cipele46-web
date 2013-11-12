@@ -10,8 +10,23 @@ module Extensions
       end
 
       def closed?
-        Time.current > (created_at + VALID_FOR.days)
+        status == self.class.status[:closed] ||
+          expired?
       end
+
+      def active?
+        !expired? && status == self.class.status[:active]
+      end
+
+      def pending?
+        status == self.class.status[:pending]
+      end
+
+      private
+
+        def expired?
+          Time.current > (created_at + VALID_FOR.days)
+        end
     end
   end
 end

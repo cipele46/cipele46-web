@@ -38,5 +38,3 @@ module SunspotHelper
     Ad.remove_all_from_index!
   end
 end
-
-

@@ -2,13 +2,13 @@
 <div class="page-content">
   <header class="page-content-header clearfix">&nbsp;</header>
   <section class="page-content-container clearfix">
-    <article class="card-details">
+    <article class="card-details formatted-user-input">
       <header>
-        <h2 class="page-blog-h2"><%= @post.title %></h2>
+        <h1><%= @post.title %></h2>
         <span>Objavljeno <%= @post.created_at.strftime("%d.%m.%Y") %></span>
       </header>
       <% if @post.image.url %>
-      <figure class="icon window-2"><%= image_tag @post.image.url(:small) %></figure>
+      <figure class="icon window-2"><%= image_tag @post.image.url(:large) %></figure>
       <% end -%>
       <p class="card-text"><%= @post.content.html_safe %></p>
     </article>

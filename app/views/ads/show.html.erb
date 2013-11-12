@@ -1,30 +1,45 @@
-<div class="page-content-wrapper inner-page giving clearfix <%= ad_type_decode @ad.ad_type %>">
+<div class="page-content-wrapper inner-page giving clearfix <%= @ad.type_name %>">
+
   <aside class="sidebar-wrapper">
-    <% unless is_own_ad @ad %>
-    <div class="page-sidebar">
-      <h3>Kontakt</h3>
-      <p class="sidebar-number"><%= @ad.phone %></p>
-		  <%= form_tag dispatch_email_path, method: :post, :class => "hidden" do %>
-		    <p class="sidebar-input-description">Poruka</p>
-			  <%= text_area_tag "user_info[message]", "", rows: "8", name: "sidebar-texarea", placeholder: "Upiši poruku", :disabled => true %>
-	      <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
-		    <%= text_field_tag "user_info[email]", "", placeholder: "Upiši email", :disabled => true %><br />
-		    <%= button_tag "Pošalji", :class => 'sidebar-button', :disabled => true %>
-		<% end %>
-    </div>
+    <% if @ad.user == current_user %>
+
+      <div class="page-sidebar">
+        <h3>Kontakt</h3>
+          <% if @ad.phone != nil && @ad.phone.strip != "" %>
+            <p class="sidebar-number"><%= @ad.phone %></p>
+          <% end %>
+          <% if @ad.email != nil && @ad.email.strip != "" %>
+            <p class="sidebar-email"><%= @ad.email %></p>
+          <% end %>
+          <%= button_to "Uredi oglas", edit_ad_path(@ad), :class => 'sidebar-button', :id => "edit-ad", :method => :get %>
+          <%= button_to "Zatvori oglas", ad_close_path(@ad), :class => 'sidebar-button', :id => "close-ad", :method => :put, :confirm => "Sigurno želite zatvoriti ovaj oglas?" %>
+          <%= button_to "Obriši oglas", ad_path(@ad), :class => 'sidebar-button', :id => "delete-ad", :method => :delete, :confirm => "Sigurno želite obrisati ovaj oglas?" %>
+      </div>
+
     <% else %>
-    <div class="page-sidebar">
-      <h3>Kontakt</h3>
-	      <p class="sidebar-number"><%= @ad.phone %></p>
-	      <p class="sidebar-email"><%= @ad.email %></p>
-        <%= button_tag "Uredi oglas", :class => 'sidebar-button' %>
-        <%= button_tag "Zatvori oglas", :class => 'sidebar-button', :confirm => "Sigurno želite zatvoriti ovaj oglas?" %>
-        <%= button_tag "Obriši oglas", :class => 'sidebar-button', :confirm => "Sigurno želite obrisati ovaj oglas?" %>
-    </div>
+
+      <div class="page-sidebar">
+        <h3>Kontakt</h3>
+        <% if @ad.phone != nil && @ad.phone.strip != "" %>
+          <p class="sidebar-number"><%= @ad.phone %></p>
+        <% end %>
+        <%= button_tag "Pošalji upit", :id => "posalji_upit_button", :onclick => "$('#kontakt_form').removeClass('hidden'); $('#posalji_upit_button').addClass('hidden');", :class => "sidebar-button" %>
+        <%= form_tag ad_reply_path(@ad), method: :post, :id => 'kontakt_form', :class => "hidden" do %>
+          <p class="sidebar-input-description">Poruka</p>
+          <%= text_area_tag :content, "", rows: "8", placeholder: "Upiši poruku"%>
+          <p class="sidebar-input-description-email">Email adresa na koju želite dobiti odgovor</p>
+          <%= text_field_tag :email, "", placeholder: "Upiši email"%><br />
+          <%= button_tag "Pošalji", :id => 'posalji_button', :onclick => "$('form').submit();", :class => 'sidebar-button'%>
+        <% end %>
+      </div>
+
     <% end %>
   </aside>
+
   <div class="page-content">
-    <%= render 'application/breadcrumbs' %>
+    <header class="page-content-header clearfix">
+      <%= render 'application/breadcrumbs' %>
+    </header>
     <section class="page-content-container clearfix">
       <article class="card-details">
         <header>
@@ -34,9 +49,9 @@
           <span class="card-time icon stroke time"><%= time_ago_in_words @ad.expires_at %></span>
           <% if current_user %>
             <% if ad_is_favorite(@ad.id) %>
-              <%= link_to "&#xE0B5;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected' %>
+              <%= link_to "&#xE0B5;".html_safe, ad_toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected hidden' %>
             <% else %>
-              <%= link_to "&#xE49D;".html_safe, toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite' %>
+              <%= link_to "&#xE49D;".html_safe, ad_toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite hidden' %>
             <% end %>
           <% end %>
         </header>

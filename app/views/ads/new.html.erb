@@ -1,14 +1,15 @@
-<h2>Dodaj oglas</h2>
+    <div class="page-content">
+        <header class="page-content-header clearfix">
+        </header>
+        
+        <section class="page-content-container clearfix">
+          <%= render 'ads/form' %>
+        </section>
+    </div>
 
-<%= simple_form_for @ad, :as => :oglas do |f| %>
-  <%# NOTE: It is not possible to edit ad type %>
-  <%= f.input :ad_type, :as => :radio_buttons, :collection => ad_types_for_select %>
-
-  <%= render 'ads/form', :f => f %>
-
-  <p>
-    Oglas će biti aktivan 30 dana ...
-  </p>
-  <%= f.button :submit %>
-  <%= link_to "Odustani", root_path %>
-<% end %>
+    <aside class="page-sidebar">
+        <div class="logo" title="Cipele46">Cipele46</div>
+        <p>Oglas će biti aktivan 30 dana od datuma objave. Prije objave administrator mora odobriti oglas. Hvala na strpljenju!</p>
+        <%= link_to_function "Objavi oglas", "$('form#new_ad').submit()", :class => "addButton" %>
+        <%= link_to "Odustani", root_path, :class => "cancle" %>
+    </aside>

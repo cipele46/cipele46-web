@@ -45,6 +45,11 @@ $("input[type=checkbox], input[type=radio]").checkBox(); // Replace all checkbox
             		});
             		
             		$label.addClass(checkedClass);
+            		if( $( this ).attr("id") === "trebam"){
+            			$(".page-content-wrapper").addClass("trebam");
+            		}else{
+                  $(".page-content-wrapper").removeClass("trebam");
+            		}
             	}
             });
             

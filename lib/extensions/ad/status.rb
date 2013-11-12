@@ -13,12 +13,30 @@ module Extensions
 
       def set_status
         self.status = if supply?
-                        self.class.status[:pending]
+                        activate
                       elsif demand?
-                        self.class.status[:active]
+                        self.class.status[:pending]
                       else
-                        self.class.status[:closed]
+                        close
                       end
+      end
+
+      def close
+        self.status = self.class.status[:closed]
+      end
+
+      def close!
+        close
+        save
+      end
+
+      def activate
+        self.status = self.class.status[:active]
+      end
+
+      def activate!
+        activate
+        save
       end
     end
   end

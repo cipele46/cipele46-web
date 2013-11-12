@@ -1,7 +1,54 @@
-<%= f.input :title %>
-<%= f.input :description %>
-<%= f.input :category_id, :collection => categories_for_select, :prompt => false %>
-<%= f.input :city_id, :as => :grouped_select, :collection => cities_for_select, :prompt => false, :group_method => :last %>
-<%= f.input :phone, :hint => "Neće biti direktno vidljiv drugim korisnicima" %>
-<%= f.input :image %>
-<%= f.input :email, :hint => "Opcionalno, bit će javno prikazan uz oglas" %>
+<%= form_for @ad  do |f| %>
+
+
+  <% ad_types_for_select.each do |key, value| %>
+    <%= f.radio_button :ad_type, value, :id => "rdb-#{value}", :class => "radio", :checked => key == ad_types_for_select.keys.first  %>
+    <%= f.label :ad_type, key.capitalize, :value => value, :id => key, :for => "rdb-#{value}" %>
+  <% end %>
+
+  <%= f.text_field :title, id: "naslov", placeholder: "Upišite naslov oglasa..." %> 
+  <%= f.text_field :description, id: "tekst", placeholder: "Upišite tekst oglasa...", type: "textbox" %>
+
+  <div class="inputArea">
+    <div class="left">
+
+      <%= f.label "Kategorija", class: "title" %>
+      <div id="kategorija" class="dropdownSelect">
+        <%= f.select :category_id, categories_for_select %></br>
+      </div>
+
+      <%= f.label "Grad", class: "title" %>
+      <div id="grad" class="dropdownSelect">
+        <%= f.select :city_id , grouped_options_for_select(cities_for_select) %>
+      </div>
+
+      <div class="input-container">
+        <label> Kako bi vas zainteresirani mogli kontaktirati potrebno je ostaviti broj telefona ili email adresu. </label>
+      </div>
+
+      <div class="input-container">
+        <%= f.label "Broj telefona/mobitela", class: "title" %>
+        <%= f.text_field :phone, id: "telNum" %>
+        <p>Biti će direktno vidljiv drugim korisnicima</p>
+      </div>
+
+      <div class="input-container">
+        <%= f.label "Email adresa" %>
+        <%= f.text_field :email, :hint => "Opcionalno, bit će javno prikazan uz oglas" %>
+        <p>Neće biti direktno vidljiv drugim korisnicima</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <label class="title">Dodajte fotografiju</label>
+      <input id="uploadPhotoBtn" type="button">
+      <%= f.file_field :image, id: "oglas_image", class: "file optional", style: "visibility:hidden;width:1px;height:1px" %>
+
+      <div class="uploadingImg">
+        <img id="uploadedImg" src="" type="file">
+        <div class="bck"></div>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "Rokaj", :class => "btn" if Rails.env.test? %>
+<% end %>

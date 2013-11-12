@@ -1,7 +1,7 @@
 module ForSelectHelper
 
   def ad_types_for_select
-    @ad_types_for_select ||= Ad.type
+    Ad.humanized_type
   end
 
   def categories_for_select

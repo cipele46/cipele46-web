@@ -2,14 +2,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
-  storage :file
-
-  def default_url
-     ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_')) 
-  end
-
   def store_dir
-    "system/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   version :large do
@@ -31,5 +25,4 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
-
 end

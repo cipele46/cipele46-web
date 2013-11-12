@@ -1,2 +1,13 @@
-<p><%= @user_info["email"] %>:</p>
-<p><%= @user_info["message"] %></p>
+Poštovani,
+
+Obavještavamo vas da je zaprimljen upit za vaš oglas "<%= @ad.title %>" objavljen na portalu Cipele46.org na adresi <%= ad_url(@ad) %>.
+
+
+    Poruka od <%= @email %>:
+
+    <%= @content %>
+
+
+Molimo vas da osobu kontaktirate putem kontakata (broj telefona ili email adresa) navedenih u poruci.
+
+Cipele46.org

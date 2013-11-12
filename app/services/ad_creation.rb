@@ -1,20 +1,21 @@
 class AdCreation
   attr_reader :user, :ad
 
-  def initialize(user)
-    @user = user
-  end
+  def call(opts = {})
+    params, user = opts.fetch(:params), opts.fetch(:user)
+    self.ad      = user.ads.new(params)
 
-  def create(params)
-    @ad = user.ads.new(params)
-    @ad.set_status
-    if @ad.save
+    ad.set_status
+    if ad.save
       notify_admin
     end
-    @ad
+
+    ad
   end
 
   private
+
+    attr_writer :ad
 
     def notify_admin
       AdminMailer.new_ad(ad).deliver
