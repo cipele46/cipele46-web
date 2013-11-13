@@ -560,6 +560,10 @@ button {
     display: block;
 }
 
+.page-sidebar ul.sidebar-blog-arhiva li a:visited {
+    color:#f4715b;
+}
+
 .page-sidebar ul.sidebar-blog-arhiva {
     margin-bottom:34px;
 }
@@ -982,6 +986,11 @@ a.card-favorite.selected:visited {
     border-bottom: solid 1px #ccc;
     margin-bottom: 20px;
     font-size: 1.4em;
+    color: #777;
+}
+
+.card-details header a,
+.card-details header a:visited{
     color: #777;
 }
 
