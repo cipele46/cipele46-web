@@ -1762,11 +1762,14 @@ span.form-label{
     padding:80px;
     margin-bottom: 220px;
 }
-#nasaPrica .page-contant .box h3{
+#nasaPrica .page-contant .box h3,
+#nasaPrica .page-contant .box h3 a,
+#nasaPrica .page-contant .box h3 a:visited{
     font-size:34px;
     color:#f4715b;
     margin-bottom:10px;
 }
+
 #nasaPrica .page-contant .box p{
     font-size: 18px;
 }
@@ -1777,7 +1780,9 @@ span.form-label{
     border-top:6px solid #10c1c7;
     float:right;
 }
-#nasaPrica .page-contant .poklanjam h3{
+#nasaPrica .page-contant .poklanjam h3,
+#nasaPrica .page-contant .poklanjam h3 a,
+#nasaPrica .page-contant .poklanjam h3 a:visited{
     color:#10c1c7;
 }
 
