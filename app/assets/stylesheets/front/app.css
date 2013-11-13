@@ -1056,20 +1056,32 @@ a.card-favorite.selected:visited {
     padding: 20px;
 }
 
+.page-content-wrapper.inner-page.supply .page-content-container,
+.page-content-wrapper.inner-page-single.supply .page-content-container {
+    border-top: solid 6px #17c1c7 !important;
+}
+.page-content-wrapper.inner-page.supply .page-content-header a {
+    color: #17c1c7 !important;
+}
+
 body div.supply section,body div.supply .page-sidebar {
     border-top-color: #17c1c7 !important;
 }
 
-body div.supply .page-sidebar h3, body div.supply .sidebar-number,body div.supply .sidebar-number:before,body div.supply .sidebar-email:before{
+body div.supply .page-sidebar h3, body div.supply .sidebar-number:before,body div.supply .sidebar-email:before{
     color: #17c1c7 !important;
 }
 
 body div.supply button.sidebar-button {
-    background-color:#f4715b;
+    background-color:#17c1c7;
+}
+
+body div.supply section,body div.demand .page-sidebar {
+    border-top-color: #f4715b !important;
 }
 
 body div.demand button.sidebar-button {
-    background-color:#17c1c7 !important;
+    background-color: #f4715b !important;
 }
 
 .page-content-wrapper.inner-page .page-content-container {
