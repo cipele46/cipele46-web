@@ -990,8 +990,11 @@ a.card-favorite.selected:visited {
 }
 
 .card-details header a,
-.card-details header a:visited{
+.card-details header a:visited,
+.card-details header label
+{
     color: #777;
+    margin-left: 4px;
 }
 
 /* User settings
