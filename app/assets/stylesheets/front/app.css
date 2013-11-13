@@ -1627,6 +1627,7 @@ span.form-label{
     ICONS
 --------------------------------*/
 .social-item.facebook{
+    margin-top:45px;
     background-color: #44619d;
 }
 .social-item.google{
