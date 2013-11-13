@@ -500,7 +500,7 @@ button {
     outline: none;
     font-size: 1.7em;
     padding:10px;
-    width: 220px;
+    width: 221px;
 }
 
 .page-sidebar input {
@@ -528,7 +528,7 @@ button {
     margin-top: 20px;
     border: 0px;
     text-align: center;
-    width:100%;
+    width:243px;
 }
 .page-sidebar .sidebar-button:hover {
     cursor:pointer;
