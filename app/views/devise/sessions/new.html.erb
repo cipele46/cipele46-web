@@ -9,8 +9,8 @@
           <%= f.input :email, :label => "E-mail", :autofocus => true, :required => true %>
           <%= f.input :password, :label => "Lozinka", :required => true %>
           <%= f.input :remember_me, :label => "Zapamti me", :as => :boolean if devise_mapping.rememberable? %>
-          <span class="forgot-password form-label"><%= link_to "Zaboravio si lozinku?", new_user_password_path %></span>
           <%= f.button :submit, "Prijavi se", :class => 'btn-primary' %>
+          <span class="forgot-password form-label"><%= link_to "Zaboravio si lozinku?", new_user_password_path %></span>
         <% end %>
         <div class="col-divider">ili</div>
       </div>

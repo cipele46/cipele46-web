@@ -13,12 +13,12 @@
         <p>Nastavite niz i pomozite drugima, jer nikad ne znate što vam život nosi i na kojoj strani priče se možete naći.  Hvala vam od srca.</p>
     </div>
     <div class="page-contant">
-        <div class="trebam box">
-            <h3>Trebam</h3>
+        <div class="trebam box", class: 'filter-action' >
+            <h3><%= link_to "Trebam", ads_path(:ad_type => Ad.type[:demand]), class: 'filter-action' %></h3>
             <p>Moje ime je Marko, Hrvoje, Anita ili Gordana. Živim pored tebe, ali me ti često ne primjećuješ jer živimo drugačijim životima. Nisam dovoljno blagoslovljen da mogu živjeti bez tuđe pomoći i vjeruj mi da me to boli. Pomozi mi ako možeš, na način na koji možeš...</p>
         </div>
         <div class="poklanjam box">
-            <h3>Poklanjam</h3>
+            <h3><%= link_to "Poklanjam", ads_path(:ad_type => Ad.type[:supply]), class: 'filter-action' %></h3>
             <p>Često kupim nešto što mi u tom trenutku ne treba, jer mislim da će jednog dana super poslužiti. Imam takvih “sigurnih” stvari previše: u ormaru s cipelama, u ostavi, u garaži. Stalno čekam da nešto ponovo koristim i sjetim ih se tek kad mi zatreba još prostora. Vrijeme je da tim stvarima dam pravu funkciju.</p>
         </div>
     </div>

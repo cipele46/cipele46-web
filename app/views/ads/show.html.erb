@@ -46,7 +46,7 @@
           <h2><%= @ad.title %></h2>
 		      <span class="card-place icon stroke location"><%= link_to "#{@ad.city.region.name}", ads_path(:city_id => 0, :category_id => 0,:region_id => @ad.city.region.id) %>, <%= link_to "#{@ad.city.name}", ads_path(:city_id => @ad.city.id, :category_id => 0, :region_id => 0) %></span>
           <span class="card-category icon stroke category"><%= link_to "#{@ad.category.name}", ads_path(:category_id => @ad.category.id, :region_id => 0, :city_id => 0) %></span>
-          <span class="card-time icon stroke time"><%= time_ago_in_words @ad.expires_at %></span>
+          <span class="card-time icon stroke time"><label><%= time_ago_in_words @ad.expires_at %></label></span>
           <% if current_user %>
             <% if ad_is_favorite(@ad.id) %>
               <%= link_to "&#xE0B5;".html_safe, ad_toggle_path(@ad.id), add: 'Dodaj u favorite', remove: 'Makni iz favorita', card: @ad.id, :class => 'card-favorite selected hidden' %>

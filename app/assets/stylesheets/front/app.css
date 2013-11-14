@@ -500,7 +500,7 @@ button {
     outline: none;
     font-size: 1.7em;
     padding:10px;
-    width: 220px;
+    width: 221px;
 }
 
 .page-sidebar input {
@@ -528,7 +528,7 @@ button {
     margin-top: 20px;
     border: 0px;
     text-align: center;
-    width:100%;
+    width:243px;
 }
 .page-sidebar .sidebar-button:hover {
     cursor:pointer;
@@ -558,6 +558,10 @@ button {
     font-weight: bold;
     margin-top:18px;
     display: block;
+}
+
+.page-sidebar ul.sidebar-blog-arhiva li a:visited {
+    color:#f4715b;
 }
 
 .page-sidebar ul.sidebar-blog-arhiva {
@@ -985,6 +989,14 @@ a.card-favorite.selected:visited {
     color: #777;
 }
 
+.card-details header a,
+.card-details header a:visited,
+.card-details header label
+{
+    color: #777;
+    margin-left: 4px;
+}
+
 /* User settings
 ***************************************************************/
 .settings .form-section-container {
@@ -1044,20 +1056,32 @@ a.card-favorite.selected:visited {
     padding: 20px;
 }
 
+.page-content-wrapper.inner-page.supply .page-content-container,
+.page-content-wrapper.inner-page-single.supply .page-content-container {
+    border-top: solid 6px #17c1c7 !important;
+}
+.page-content-wrapper.inner-page.supply .page-content-header a {
+    color: #17c1c7 !important;
+}
+
 body div.supply section,body div.supply .page-sidebar {
     border-top-color: #17c1c7 !important;
 }
 
-body div.supply .page-sidebar h3, body div.supply .sidebar-number,body div.supply .sidebar-number:before,body div.supply .sidebar-email:before{
+body div.supply .page-sidebar h3, body div.supply .sidebar-number:before,body div.supply .sidebar-email:before{
     color: #17c1c7 !important;
 }
 
 body div.supply button.sidebar-button {
-    background-color:#f4715b;
+    background-color:#17c1c7;
+}
+
+body div.supply section,body div.demand .page-sidebar {
+    border-top-color: #f4715b !important;
 }
 
 body div.demand button.sidebar-button {
-    background-color:#17c1c7 !important;
+    background-color: #f4715b !important;
 }
 
 .page-content-wrapper.inner-page .page-content-container {
@@ -1627,6 +1651,7 @@ span.form-label{
     ICONS
 --------------------------------*/
 .social-item.facebook{
+    margin-top:45px;
     background-color: #44619d;
 }
 .social-item.google{
@@ -1752,11 +1777,14 @@ span.form-label{
     padding:80px;
     margin-bottom: 220px;
 }
-#nasaPrica .page-contant .box h3{
+#nasaPrica .page-contant .box h3,
+#nasaPrica .page-contant .box h3 a,
+#nasaPrica .page-contant .box h3 a:visited{
     font-size:34px;
     color:#f4715b;
     margin-bottom:10px;
 }
+
 #nasaPrica .page-contant .box p{
     font-size: 18px;
 }
@@ -1767,7 +1795,9 @@ span.form-label{
     border-top:6px solid #10c1c7;
     float:right;
 }
-#nasaPrica .page-contant .poklanjam h3{
+#nasaPrica .page-contant .poklanjam h3,
+#nasaPrica .page-contant .poklanjam h3 a,
+#nasaPrica .page-contant .poklanjam h3 a:visited{
     color:#10c1c7;
 }
 
