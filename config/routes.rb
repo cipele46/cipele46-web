@@ -1,6 +1,7 @@
 Cipele46Web::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-
+  devise_for :users, controllers: { registrations: 'registrations' }
+  
   root :to => "ads#index"
 
   ActiveAdmin.routes(self)

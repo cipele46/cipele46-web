@@ -29,6 +29,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 #gem 'omniauth-twitter'
 #gem 'omniauth-google-oauth2'
+gem 'recaptcha', :require => 'recaptcha/rails'
 
 gem "sinatra", require: false
 gem "rabl"
@@ -47,6 +48,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller", :platforms => [:mri_19, :rbx]
   gem "html2haml"
+  gem "debugger"
 end
 
 group :development, :test do
