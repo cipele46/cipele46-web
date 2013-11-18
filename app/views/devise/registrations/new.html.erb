@@ -12,6 +12,9 @@
               <%= f.input :password, :label => "Lozinka", :required => true %>
               <%= f.input :password_confirmation, :label => "Ponovi lozinku", :required => true %>
               <%= f.input :phone, :label => "Telefon", :required => false %>
+              <div class="recaptcha" >
+                <%= recaptcha_tags :display => {:theme => "white"} %>
+              </div>
               <%= f.button :submit, 'Registriraj se', :class => 'btn-primary' %>
             <% end %>
             <div class="col-divider">ili</div>

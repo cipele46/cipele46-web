@@ -1635,6 +1635,15 @@ span.form-label{
   position: relative;
   left: -30px;
 }
+/*recaptcha exceptions*/
+input#recaptcha_response_field{
+    height:22px !important;
+    line-height: 20px;
+}
+div#recaptcha_widget_div {
+    margin-bottom:20px;
+}
+
 /* Authentication (Forgot password, Reset confirmation)
 ***************************************************************/
 .page-authentication .authentication-shared-options {

@@ -29,6 +29,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 #gem 'omniauth-twitter'
 #gem 'omniauth-google-oauth2'
+gem 'recaptcha', :require => 'recaptcha/rails'
 
 gem "sinatra", require: false
 gem "rabl"
