@@ -53,16 +53,36 @@ class AdsController < ApplicationController
     end
   end
 
+  def validate_content_and_email content, email
+    if !email.present? then
+      return "Obavezno je unjeti email za kontakt."
+    elsif !email.match /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      return "Email za kontakt je neispravan."
+    end
+    if !content.present? then
+      return "Obavezno je unjeti tekst poruke."
+    end
+    return nil
+  end
+
   def reply
     ad = Ad.find(params[:ad_id])
     content, email = params[:content], params[:email]
 
-    if AdReplying.new.call ad: ad, content: content, email: email
+    error = validate_content_and_email content, email
+    if error then
+      flash[:error] = error
+    elsif AdReplying.new.call ad: ad, content: content, email: email
       flash[:notice] = "Sent!"
     else
       flash[:error] = "Could't send you message."
     end
-    redirect_to ad_path(ad)
+
+    if flash[:error] then
+      redirect_to ad_path(ad, {:email => email, :content => content}), :error => flash[:error]
+    else
+      redirect_to ad_path(ad, {:email => email, :content => content}), :notice => flash[:notice]
+    end
   end
 
   def toggle
