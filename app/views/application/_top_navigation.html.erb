@@ -16,8 +16,7 @@
     </div>
     <ul class="nav-user">
         <li class="nav-user-new-add">
-          <% unless current_user %><%= link_to "Objavi oglas", new_user_session_path %><% end -%>
-          <% if current_user %><%= link_to "Objavi oglas", new_ad_path %><% end -%>
+          <%= render 'application/new_add_button' %>
         </li>
         <% unless current_user %>
         <li class="nav-user-not-logged">

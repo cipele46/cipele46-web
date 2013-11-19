@@ -41,6 +41,7 @@ db/*.sqlite3
 /public/cache
 /public/stylesheets/compiled
 /public/system/*
+/public/uploads
 /public/uploads/tmp/*
 /app/assets/images/uploads
 /spec/tmp/*
@@ -76,6 +77,7 @@ pickle-email-*.html
 # vim artifacts
 **.swp
 **.swo
+**.un~
 
 # Ignore application configuration
 /config/application.yml
