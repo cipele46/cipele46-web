@@ -1,0 +1,7 @@
+<% if current_user && ["ads/new", "ads/create"].include?("#{controller_name}/#{action_name}") %>
+  <%# Do not show button in header when posting new ad %>  
+<% elsif current_user %>  
+  <%= link_to "Objavi oglas", new_ad_path %>
+<% else %>
+  <%= link_to "Objavi oglas", new_user_session_path %>
+<% end -%>
