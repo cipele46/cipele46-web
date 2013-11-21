@@ -1,6 +1,6 @@
 Cipele46Web::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', :omniauth_callbacks => 'users/omniauth_callbacks' }
   
   root :to => "ads#index"
 
@@ -10,7 +10,6 @@ Cipele46Web::Application.routes.draw do
     root :to => 'ads#index'
   end
   get 'home' => 'ads#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :ads do
     put :toggle
